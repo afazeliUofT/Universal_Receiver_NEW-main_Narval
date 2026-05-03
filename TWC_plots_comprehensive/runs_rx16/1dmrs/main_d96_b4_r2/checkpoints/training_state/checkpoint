@@ -1,0 +1,8 @@
+model_checkpoint_path: "ckpt-2175"
+all_model_checkpoint_paths: "ckpt-2125"
+all_model_checkpoint_paths: "ckpt-2150"
+all_model_checkpoint_paths: "ckpt-2175"
+all_model_checkpoint_timestamps: 1777782851.980599
+all_model_checkpoint_timestamps: 1777782867.3838444
+all_model_checkpoint_timestamps: 1777782882.7111528
+last_preserved_timestamp: 1777781371.2991629

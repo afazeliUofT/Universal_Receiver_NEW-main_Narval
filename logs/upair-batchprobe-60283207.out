@@ -1,0 +1,53 @@
+Sat May  2 21:28:22 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
+| N/A   27C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[BATCHPROBE] start phase=training batch=64 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=64 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=473.3
+[BATCHPROBE] start phase=training batch=64 dmrs_case=1dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=training batch=64 dmrs_case=1dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=306.9
+[BATCHPROBE] start phase=training batch=64 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=training batch=64 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=290.9
+[BATCHPROBE] start phase=training batch=64 dmrs_case=2dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=64 dmrs_case=2dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=352.0
+[BATCHPROBE] start phase=training batch=64 dmrs_case=2dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=training batch=64 dmrs_case=2dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=301.7
+[BATCHPROBE] start phase=training batch=64 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=training batch=64 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=288.1
+[BATCHPROBE] start phase=evaluation batch=64 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=64 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=36.5
+[BATCHPROBE] start phase=evaluation batch=32 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=32 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=30.4
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=57.9
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=1dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=1dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=55.6
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=53.9
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=2dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=2dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=54.9
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=2dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=2dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=54.3
+[BATCHPROBE] start phase=evaluation batch=16 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=evaluation batch=16 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=55.2
+[BATCHPROBE] safe_batch_size=16
+[BATCHPROBE] safe_batch_size_training=64
+[BATCHPROBE] safe_batch_size_evaluation=16
+[BATCHPROBE] wrote /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/batch_probe_summary.json
+[BATCHPROBE] wrote /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/batch_probe_results.csv

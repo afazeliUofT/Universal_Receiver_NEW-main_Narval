@@ -1,0 +1,433 @@
+from __future__ import annotations
+
+from typing import Any
+
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+
+from .baselines import (
+    PERFECT_RECEIVER,
+    PROPOSED_RECEIVER,
+    build_classical_baseline_suite,
+    classical_receivers_from_cfg,
+    enabled_receivers_from_cfg,
+    wants_receiver,
+)
+from .builders import build_channel, build_ls_estimator, build_pusch_transmitter, build_receiver, get_resource_grid, max_num_users, multiuser_enabled
+from .compat import safe_call_variants
+from .config import ensure_output_tree, get_cfg
+from .estimator import UPAIRChannelEstimator
+from .impairments import apply_symbol_phase_impairment
+from .utils import (
+    call_channel,
+    call_receiver,
+    call_transmitter,
+    compute_ber,
+    compute_bler_from_crc,
+    compute_nmse,
+    ebno_db_to_no,
+    save_json,
+    set_global_seed,
+)
+
+
+def _call_channel_estimator(estimator: Any, y: tf.Tensor, no: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
+    out = safe_call_variants(estimator, y, no)
+    if not isinstance(out, (tuple, list)) or len(out) < 2:
+        raise ValueError("Channel estimator must return (h_hat, err_var).")
+    return tf.convert_to_tensor(out[0]), tf.convert_to_tensor(out[1])
+
+
+def _make_eval_batch(
+    tx: Any,
+    channel: Any,
+    cfg: dict[str, Any],
+    batch_size: int,
+    ebno_db: float,
+) -> dict[str, tf.Tensor]:
+    x, bits = call_transmitter(tx, batch_size)
+    no = ebno_db_to_no(tf.constant(float(ebno_db), tf.float32), tx=tx, resource_grid=get_resource_grid(tx))
+    y, h = call_channel(channel, x, no)
+    y, h = apply_symbol_phase_impairment(y, h, cfg, training=False)
+    return {"b": bits, "y": y, "h": h, "no": no, "ebno_db": tf.constant(float(ebno_db), tf.float32)}
+
+
+def _metric_min(df: pd.DataFrame, receiver: str, metric: str) -> float | None:
+    sub = df[df["receiver"] == receiver][metric].dropna()
+    if sub.empty:
+        return None
+    return float(sub.min())
+
+
+def _best_classical_row(df: pd.DataFrame, metric: str, reliable_only: bool = False) -> dict[str, float | str] | None:
+    sub = df[["receiver", metric]].dropna().copy()
+    if reliable_only and metric in {"ber", "bler"}:
+        reliability_col = f"reliable_{metric}"
+        if reliability_col in df.columns:
+            sub = df.loc[df[reliability_col].fillna(False), ["receiver", metric]].dropna().copy()
+    if sub.empty:
+        return None
+    idx = sub[metric].idxmin()
+    row = sub.loc[idx]
+    return {"receiver": str(row["receiver"]), "value": float(row[metric])}
+
+
+def _build_summary(
+    df: pd.DataFrame,
+    checkpoint_path: str | None,
+    enabled_receivers: list[str],
+    artifacts: dict[str, str],
+    eval_cfg: dict[str, Any],
+) -> dict[str, Any]:
+    classical_receivers = classical_receivers_from_cfg({"baselines": {"enabled_receivers": enabled_receivers}})
+    classical_df = df[df["receiver"].isin(classical_receivers)].copy()
+
+    summary: dict[str, Any] = {
+        "checkpoint_path": str(checkpoint_path) if checkpoint_path is not None else None,
+        "enabled_receivers": enabled_receivers,
+        "classical_receivers": classical_receivers,
+        "num_users": int(df["num_users"].dropna().iloc[0]) if "num_users" in df.columns and not df["num_users"].dropna().empty else None,
+        "num_curve_rows": int(len(df)),
+        "evaluation_controls": {
+            "min_num_batches_per_point": int(eval_cfg["min_num_batches_per_point"]),
+            "max_num_batches_per_point": int(eval_cfg["max_num_batches_per_point"]),
+            "target_block_errors_per_receiver": int(eval_cfg["target_block_errors_per_receiver"]),
+            "reliable_min_block_errors": int(eval_cfg["reliable_min_block_errors"]),
+            "reliable_min_bit_errors": int(eval_cfg["reliable_min_bit_errors"]),
+            "stopping_receivers": list(eval_cfg["stopping_receivers"]),
+        },
+    }
+    summary.update(artifacts)
+
+    if PROPOSED_RECEIVER in enabled_receivers:
+        summary["best_ber_upair5g"] = _metric_min(df, PROPOSED_RECEIVER, "ber")
+        summary["best_bler_upair5g"] = _metric_min(df, PROPOSED_RECEIVER, "bler")
+        summary["best_nmse_upair5g"] = _metric_min(df, PROPOSED_RECEIVER, "nmse")
+
+    if classical_receivers:
+        summary["best_ber_classical"] = _best_classical_row(classical_df, "ber", reliable_only=False)
+        summary["best_bler_classical"] = _best_classical_row(classical_df, "bler", reliable_only=False)
+        summary["best_nmse_classical"] = _best_classical_row(classical_df, "nmse", reliable_only=False)
+        summary["best_ber_classical_reliable_only"] = _best_classical_row(classical_df, "ber", reliable_only=True)
+        summary["best_bler_classical_reliable_only"] = _best_classical_row(classical_df, "bler", reliable_only=True)
+
+    per_ebno_best_classical: list[dict[str, Any]] = []
+    if classical_receivers and PROPOSED_RECEIVER in enabled_receivers:
+        for ebno_db in sorted(df["ebno_db"].unique().tolist()):
+            row_summary: dict[str, Any] = {"ebno_db": float(ebno_db)}
+            classical_slice = classical_df[classical_df["ebno_db"] == ebno_db]
+            proposed_slice = df[(df["receiver"] == PROPOSED_RECEIVER) & (df["ebno_db"] == ebno_db)]
+            if proposed_slice.empty:
+                continue
+            proposed_row = proposed_slice.iloc[0]
+            for metric in ["ber", "bler", "nmse"]:
+                reliable_only = metric in {"ber", "bler"}
+                best_classical = _best_classical_row(classical_slice, metric, reliable_only=reliable_only)
+                if best_classical is None:
+                    continue
+                row_summary[f"best_{metric}_classical_receiver"] = best_classical["receiver"]
+                row_summary[f"best_{metric}_classical"] = best_classical["value"]
+                if pd.notna(proposed_row[metric]):
+                    upair_value = float(proposed_row[metric])
+                    row_summary[f"{metric}_upair5g"] = upair_value
+                    row_summary[f"{metric}_gap_upair_minus_best_classical"] = upair_value - float(best_classical["value"])
+                    if metric in {"ber", "bler"}:
+                        row_summary[f"upair_{metric}_reliable"] = bool(proposed_row.get(f"reliable_{metric}", False))
+            per_ebno_best_classical.append(row_summary)
+    summary["per_ebno_best_classical"] = per_ebno_best_classical
+    return summary
+
+
+def _bool_cfg_list(cfg: dict[str, Any], key: str, default: list[str]) -> list[str]:
+    value = get_cfg(cfg, key, default)
+    if isinstance(value, str):
+        return [value]
+    return [str(x) for x in value]
+
+
+def _init_counter() -> dict[str, float | int]:
+    return {
+        "bit_errors": 0,
+        "num_bits": 0,
+        "block_errors": 0,
+        "num_blocks": 0,
+        "nmse_sum": 0.0,
+        "num_nmse_batches": 0,
+        "num_batches_run": 0,
+    }
+
+
+def _update_error_counters(counter: dict[str, float | int], bits: tf.Tensor | None, b_hat: tf.Tensor | None, crc: tf.Tensor | None) -> None:
+    if bits is not None and b_hat is not None:
+        num_bits = int(tf.size(bits).numpy())
+        ber_value = float(compute_ber(bits, b_hat).numpy())
+        bit_errors = int(np.rint(ber_value * num_bits))
+        counter["num_bits"] = int(counter["num_bits"]) + num_bits
+        counter["bit_errors"] = int(counter["bit_errors"]) + bit_errors
+
+    if crc is not None:
+        num_blocks = int(tf.size(crc).numpy())
+        bler_value = float(compute_bler_from_crc(crc).numpy())
+        block_errors = int(np.rint(bler_value * num_blocks))
+        counter["num_blocks"] = int(counter["num_blocks"]) + num_blocks
+        counter["block_errors"] = int(counter["block_errors"]) + block_errors
+
+
+def _should_stop(
+    agg: dict[str, dict[str, float | int]],
+    stopping_receivers: list[str],
+    batches_run: int,
+    min_num_batches: int,
+    max_num_batches: int,
+    target_block_errors: int,
+) -> bool:
+    if batches_run < min_num_batches:
+        return False
+    if batches_run >= max_num_batches:
+        return True
+    if target_block_errors <= 0:
+        return False
+    for receiver_name in stopping_receivers:
+        block_errors = int(agg[receiver_name]["block_errors"])
+        if block_errors < target_block_errors:
+            return False
+    return True
+
+
+def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_users: int | None = None) -> dict[str, Any]:
+    set_global_seed(int(cfg["system"]["seed"]))
+    if bool(get_cfg(cfg, "system.graph_mode", True)):
+        tf.config.run_functions_eagerly(False)
+    paths = ensure_output_tree(cfg)
+    curves_path = paths["metrics"] / "curves.csv"
+    eval_state_path = paths["metrics"] / "evaluation_state.json"
+
+    eval_num_users = int(num_users if num_users is not None else get_cfg(cfg, "multiuser.fixed_num_users", max_num_users(cfg) if multiuser_enabled(cfg) else 1))
+    tx, _ = build_pusch_transmitter(cfg, num_users=eval_num_users)
+    channel = build_channel(cfg, tx)
+
+    ls_estimator = build_ls_estimator(tx, cfg, interpolation_type="lin")
+    estimator = UPAIRChannelEstimator(ls_estimator=ls_estimator, resource_grid=get_resource_grid(tx), cfg=cfg)
+
+    warmup_batch = _make_eval_batch(
+        tx=tx,
+        channel=channel,
+        cfg=cfg,
+        batch_size=int(cfg["system"]["batch_size_eval"]),
+        ebno_db=float(get_cfg(cfg, "system.ebno_db_eval", [10])[0]),
+    )
+    estimator.estimate_with_ls(warmup_batch["y"], warmup_batch["no"], training=False)
+
+    if checkpoint_path is not None:
+        estimator.load_weights(str(checkpoint_path))
+
+    enabled_receivers = enabled_receivers_from_cfg(cfg)
+    classical_receivers, classical_estimators, baseline_artifacts = build_classical_baseline_suite(
+        cfg=cfg,
+        tx=tx,
+        channel=channel,
+        paths=paths,
+    )
+
+    proposed_rx = None
+    if wants_receiver(cfg, PROPOSED_RECEIVER):
+        proposed_rx = build_receiver(tx, cfg, channel_estimator=estimator, perfect_csi=False)
+
+    perfect_rx = None
+    if wants_receiver(cfg, PERFECT_RECEIVER):
+        perfect_rx = build_receiver(tx, cfg, channel_estimator=None, perfect_csi=True)
+
+    ebno_grid = [float(x) for x in get_cfg(cfg, "system.ebno_db_eval", [0, 4, 8, 12])]
+
+    max_num_batches = int(get_cfg(cfg, "evaluation.max_num_batches_per_point", get_cfg(cfg, "evaluation.num_batches_per_point", 256)))
+    min_num_batches = int(get_cfg(cfg, "evaluation.min_num_batches_per_point", min(64, max_num_batches)))
+    target_block_errors = int(get_cfg(cfg, "evaluation.target_block_errors_per_receiver", 0))
+    reliable_min_block_errors = int(get_cfg(cfg, "evaluation.reliable_min_block_errors", 1))
+    reliable_min_bit_errors = int(get_cfg(cfg, "evaluation.reliable_min_bit_errors", 1))
+    stopping_receivers = _bool_cfg_list(cfg, "evaluation.stopping_receivers", enabled_receivers)
+
+    rows: list[dict[str, Any]] = []
+    completed_ebno: set[float] = set()
+    resume_eval = bool(get_cfg(cfg, "evaluation.resume", True)) and not bool(get_cfg(cfg, "evaluation.force", False))
+    if resume_eval and curves_path.exists():
+        try:
+            existing = pd.read_csv(curves_path)
+            if "num_users" in existing.columns:
+                existing = existing[existing["num_users"] == eval_num_users].copy()
+            required_receivers = set(enabled_receivers)
+            for ebno_value, group in existing.groupby("ebno_db"):
+                if required_receivers.issubset(set(group["receiver"].astype(str))):
+                    completed_ebno.add(float(ebno_value))
+            rows = existing.to_dict("records")
+            if completed_ebno:
+                done = ", ".join(f"{x:g}" for x in sorted(completed_ebno))
+                print(f"[EVAL] resuming num_users={eval_num_users}; completed Eb/N0 points: {done}")
+        except Exception as exc:
+            print(f"[EVAL] ignoring unreadable partial curves {curves_path}: {exc!r}")
+
+    example_saved = False
+
+    for ebno_db in ebno_grid:
+        if float(ebno_db) in completed_ebno:
+            print(f"[EVAL] reusing completed Eb/N0={ebno_db:g} dB for num_users={eval_num_users}")
+            continue
+
+        agg: dict[str, dict[str, float | int]] = {
+            receiver_name: _init_counter()
+            for receiver_name in enabled_receivers
+        }
+
+        for batch_idx in range(max_num_batches):
+            batch = _make_eval_batch(
+                tx=tx,
+                channel=channel,
+                cfg=cfg,
+                batch_size=int(cfg["system"]["batch_size_eval"]),
+                ebno_db=ebno_db,
+            )
+
+            h_hat_prop = None
+            h_ls = None
+            if proposed_rx is not None:
+                h_hat_prop, _, h_ls, _ = estimator.estimate_with_ls(batch["y"], batch["no"], training=False)
+
+            classical_h_hats: dict[str, tf.Tensor] = {}
+            for receiver_name, estimator_block in classical_estimators.items():
+                h_hat_base, _ = _call_channel_estimator(estimator_block, batch["y"], batch["no"])
+                classical_h_hats[receiver_name] = h_hat_base
+
+            for receiver_name, receiver_block in classical_receivers.items():
+                b_hat, crc = call_receiver(receiver_block, batch["y"], batch["no"])
+                h_hat_base = classical_h_hats[receiver_name]
+                _update_error_counters(agg[receiver_name], batch["b"], b_hat, crc)
+                agg[receiver_name]["nmse_sum"] = float(agg[receiver_name]["nmse_sum"]) + float(compute_nmse(batch["h"], h_hat_base).numpy())
+                agg[receiver_name]["num_nmse_batches"] = int(agg[receiver_name]["num_nmse_batches"]) + 1
+                agg[receiver_name]["num_batches_run"] = int(agg[receiver_name]["num_batches_run"]) + 1
+
+            if proposed_rx is not None and h_hat_prop is not None:
+                b_hat_prop, crc_prop = call_receiver(proposed_rx, batch["y"], batch["no"])
+                _update_error_counters(agg[PROPOSED_RECEIVER], batch["b"], b_hat_prop, crc_prop)
+                agg[PROPOSED_RECEIVER]["nmse_sum"] = float(agg[PROPOSED_RECEIVER]["nmse_sum"]) + float(compute_nmse(batch["h"], h_hat_prop).numpy())
+                agg[PROPOSED_RECEIVER]["num_nmse_batches"] = int(agg[PROPOSED_RECEIVER]["num_nmse_batches"]) + 1
+                agg[PROPOSED_RECEIVER]["num_batches_run"] = int(agg[PROPOSED_RECEIVER]["num_batches_run"]) + 1
+
+            if perfect_rx is not None:
+                b_hat_perf, crc_perf = call_receiver(perfect_rx, batch["y"], batch["no"], h=batch["h"])
+                _update_error_counters(agg[PERFECT_RECEIVER], batch["b"], b_hat_perf, crc_perf)
+                agg[PERFECT_RECEIVER]["num_nmse_batches"] = int(agg[PERFECT_RECEIVER]["num_nmse_batches"]) + 1
+                agg[PERFECT_RECEIVER]["num_batches_run"] = int(agg[PERFECT_RECEIVER]["num_batches_run"]) + 1
+
+            if not example_saved and bool(get_cfg(cfg, "evaluation.save_example_batch", True)):
+                example_payload: dict[str, Any] = {
+                    "h_true": np.asarray(batch["h"].numpy()),
+                    "y": np.asarray(batch["y"].numpy()),
+                    "ebno_db": np.asarray([ebno_db]),
+                }
+                if "baseline_ls_lmmse" in classical_h_hats:
+                    example_payload["h_ls_linear"] = np.asarray(classical_h_hats["baseline_ls_lmmse"].numpy())
+                elif h_ls is not None:
+                    example_payload["h_ls_linear"] = np.asarray(h_ls.numpy())
+                if "baseline_ls_timeavg_lmmse" in classical_h_hats:
+                    example_payload["h_ls_timeavg"] = np.asarray(classical_h_hats["baseline_ls_timeavg_lmmse"].numpy())
+                if "baseline_ls_2dlmmse_lmmse" in classical_h_hats:
+                    example_payload["h_ls_2dlmmse"] = np.asarray(classical_h_hats["baseline_ls_2dlmmse_lmmse"].numpy())
+                if "baseline_ddcpe_ls_lmmse" in classical_h_hats:
+                    example_payload["h_ddcpe_ls"] = np.asarray(classical_h_hats["baseline_ddcpe_ls_lmmse"].numpy())
+                if h_hat_prop is not None:
+                    example_payload["h_prop"] = np.asarray(h_hat_prop.numpy())
+                np.savez_compressed(paths["artifacts"] / "channel_example.npz", **example_payload)
+                example_saved = True
+
+            if _should_stop(
+                agg=agg,
+                stopping_receivers=[r for r in stopping_receivers if r in agg],
+                batches_run=batch_idx + 1,
+                min_num_batches=min_num_batches,
+                max_num_batches=max_num_batches,
+                target_block_errors=target_block_errors,
+            ):
+                break
+
+        for receiver_name in enabled_receivers:
+            counter = agg[receiver_name]
+            num_bits = int(counter["num_bits"])
+            num_blocks = int(counter["num_blocks"])
+            bit_errors = int(counter["bit_errors"])
+            block_errors = int(counter["block_errors"])
+            num_nmse_batches = int(counter["num_nmse_batches"])
+
+            row = {
+                "receiver": receiver_name,
+                "num_users": eval_num_users,
+                "ebno_db": ebno_db,
+                "ber": float(bit_errors / num_bits) if num_bits > 0 else np.nan,
+                "bler": float(block_errors / num_blocks) if num_blocks > 0 else np.nan,
+                "nmse": float(counter["nmse_sum"] / num_nmse_batches) if num_nmse_batches > 0 else np.nan,
+                "bit_errors": bit_errors,
+                "num_bits": num_bits,
+                "block_errors": block_errors,
+                "num_blocks": num_blocks,
+                "num_batches_run": int(counter["num_batches_run"]),
+                "reliable_ber": bool(bit_errors >= reliable_min_bit_errors),
+                "reliable_bler": bool(block_errors >= reliable_min_block_errors),
+            }
+            rows.append(row)
+            print(
+                f"[EVAL] receiver={receiver_name:>24s} "
+                f"Eb/N0={ebno_db:>4.1f} dB "
+                f"BER={row['ber']:.5e} "
+                f"BLER={row['bler']:.5e} "
+                f"NMSE={row['nmse']:.5e} "
+                f"bit_err={bit_errors:>6d}/{num_bits:<8d} "
+                f"blk_err={block_errors:>5d}/{num_blocks:<6d} "
+                f"batches={int(counter['num_batches_run']):>4d}"
+            )
+
+        pd.DataFrame(rows).to_csv(curves_path, index=False)
+        save_json(
+            {
+                "num_users": int(eval_num_users),
+                "completed_ebno_db": sorted(float(x) for x in completed_ebno | {float(ebno_db)}),
+                "curves_csv": str(curves_path),
+                "evaluation_complete": False,
+            },
+            eval_state_path,
+        )
+
+    df = pd.DataFrame(rows)
+    df.to_csv(curves_path, index=False)
+
+    eval_cfg = {
+        "min_num_batches_per_point": min_num_batches,
+        "max_num_batches_per_point": max_num_batches,
+        "target_block_errors_per_receiver": target_block_errors,
+        "reliable_min_block_errors": reliable_min_block_errors,
+        "reliable_min_bit_errors": reliable_min_bit_errors,
+        "stopping_receivers": stopping_receivers,
+    }
+    summary = _build_summary(
+        df=df,
+        checkpoint_path=str(checkpoint_path) if checkpoint_path is not None else None,
+        enabled_receivers=enabled_receivers,
+        artifacts=baseline_artifacts,
+        eval_cfg=eval_cfg,
+    )
+    summary["curves_csv"] = str(curves_path)
+    save_json(summary, paths["metrics"] / "evaluation_summary.json")
+    save_json(
+        {
+            "num_users": int(eval_num_users),
+            "completed_ebno_db": [float(x) for x in ebno_grid],
+            "curves_csv": str(curves_path),
+            "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
+            "evaluation_complete": True,
+        },
+        eval_state_path,
+    )
+
+    return {
+        "output_dir": str(paths["root"]),
+        "curves_path": str(curves_path),
+        "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
+    }
