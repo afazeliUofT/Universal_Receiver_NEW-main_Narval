@@ -1,9 +1,0 @@
-{
-  "latest_step": 5000,
-  "max_num_users": 4,
-  "multiuser_enabled": true,
-  "num_trainable_params": 285248,
-  "total_steps": 5000,
-  "train_user_count_sampler": "triangular",
-  "training_complete": true
-}

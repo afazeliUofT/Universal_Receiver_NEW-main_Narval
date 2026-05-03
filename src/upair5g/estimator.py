@@ -191,7 +191,13 @@ class UPAIRChannelEstimator(tf.keras.Model):
         return tf.convert_to_tensor(y), tf.convert_to_tensor(no)
 
     def _call_ls(self, y: tf.Tensor, no: tf.Tensor, ls_estimator: Any | None = None) -> tuple[tf.Tensor, tf.Tensor]:
-        out = safe_call_variants(ls_estimator or self.ls_estimator, y, no)
+        estimator = ls_estimator or self.ls_estimator
+        try:
+            out = estimator(y, no)
+        except (tf.errors.ResourceExhaustedError, MemoryError):
+            raise
+        except Exception:
+            out = safe_call_variants(estimator, y, no)
         if not isinstance(out, (tuple, list)) or len(out) < 2:
             raise ValueError("LS estimator must return (h_hat, err_var).")
         return tf.convert_to_tensor(out[0]), tf.convert_to_tensor(out[1])

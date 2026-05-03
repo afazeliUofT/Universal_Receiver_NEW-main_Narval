@@ -247,7 +247,12 @@ def call_transmitter(transmitter: Any, batch_size: int) -> tuple[tf.Tensor, tf.T
 
 
 def call_channel(channel: Any, x: tf.Tensor, no: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
-    out = safe_call_variants(channel, x, no)
+    try:
+        out = channel(x, no)
+    except (tf.errors.ResourceExhaustedError, MemoryError):
+        raise
+    except Exception:
+        out = safe_call_variants(channel, x, no)
     return infer_channel_output(out)
 
 
@@ -272,6 +277,8 @@ def call_receiver(receiver: Any, y: tf.Tensor, no: tf.Tensor, h: tf.Tensor | Non
     for attempt in attempts:
         try:
             return infer_receiver_output(attempt())
+        except (tf.errors.ResourceExhaustedError, MemoryError):
+            raise
         except Exception as err:  # pragma: no cover - runtime compatibility helper
             last_err = err
     raise RuntimeError("All receiver calling conventions failed.") from last_err

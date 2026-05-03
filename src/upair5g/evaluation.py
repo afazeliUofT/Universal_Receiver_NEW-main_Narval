@@ -25,7 +25,7 @@ from .utils import (
     call_transmitter,
     compute_ber,
     compute_bler_from_crc,
-    compute_nmse,
+    complex_sq_abs,
     ebno_db_to_no,
     save_json,
     set_global_seed,
@@ -33,7 +33,12 @@ from .utils import (
 
 
 def _call_channel_estimator(estimator: Any, y: tf.Tensor, no: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
-    out = safe_call_variants(estimator, y, no)
+    try:
+        out = estimator(y, no)
+    except (tf.errors.ResourceExhaustedError, MemoryError):
+        raise
+    except Exception:
+        out = safe_call_variants(estimator, y, no)
     if not isinstance(out, (tuple, list)) or len(out) < 2:
         raise ValueError("Channel estimator must return (h_hat, err_var).")
     return tf.convert_to_tensor(out[0]), tf.convert_to_tensor(out[1])
@@ -51,6 +56,56 @@ def _make_eval_batch(
     y, h = call_channel(channel, x, no)
     y, h = apply_symbol_phase_impairment(y, h, cfg, training=False)
     return {"b": bits, "y": y, "h": h, "no": no, "ebno_db": tf.constant(float(ebno_db), tf.float32)}
+
+
+def _first_dim(value: tf.Tensor) -> int | None:
+    tensor = tf.convert_to_tensor(value)
+    if tensor.shape.rank == 0:
+        return None
+    if tensor.shape[0] is not None:
+        return int(tensor.shape[0])
+    try:
+        return int(tf.shape(tensor)[0].numpy())
+    except Exception:
+        return None
+
+
+def _slice_batch_axis(value: tf.Tensor | None, start: int, end: int, batch_size: int) -> tf.Tensor | None:
+    if value is None:
+        return None
+    tensor = tf.convert_to_tensor(value)
+    if _first_dim(tensor) == int(batch_size):
+        return tensor[start:end]
+    return tensor
+
+
+def _iter_eval_microbatches(batch: dict[str, tf.Tensor], microbatch_size: int) -> list[dict[str, tf.Tensor]]:
+    batch_size = int(tf.shape(batch["y"])[0].numpy())
+    microbatch_size = max(1, min(int(microbatch_size), batch_size))
+    result: list[dict[str, tf.Tensor]] = []
+    for start in range(0, batch_size, microbatch_size):
+        end = min(start + microbatch_size, batch_size)
+        result.append(
+            {
+                key: _slice_batch_axis(value, start, end, batch_size)  # type: ignore[arg-type]
+                for key, value in batch.items()
+            }
+        )
+    return result
+
+
+def _nmse_components(h_true: tf.Tensor, h_hat: tf.Tensor) -> tuple[float, float]:
+    numerator = tf.reduce_sum(complex_sq_abs(tf.convert_to_tensor(h_true) - tf.convert_to_tensor(h_hat)))
+    denominator = tf.reduce_sum(complex_sq_abs(h_true))
+    return float(numerator.numpy()), float(denominator.numpy())
+
+
+def _safe_concat(parts: list[tf.Tensor]) -> tf.Tensor | None:
+    if not parts:
+        return None
+    if len(parts) == 1:
+        return parts[0]
+    return tf.concat(parts, axis=0)
 
 
 def _metric_min(df: pd.DataFrame, receiver: str, metric: str) -> float | None:
@@ -206,6 +261,16 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
     eval_num_users = int(num_users if num_users is not None else get_cfg(cfg, "multiuser.fixed_num_users", max_num_users(cfg) if multiuser_enabled(cfg) else 1))
     tx, _ = build_pusch_transmitter(cfg, num_users=eval_num_users)
     channel = build_channel(cfg, tx)
+    eval_batch_size = int(cfg["system"]["batch_size_eval"])
+    receiver_microbatch_size = int(get_cfg(cfg, "evaluation.receiver_microbatch_size", eval_batch_size))
+    if receiver_microbatch_size <= 0:
+        receiver_microbatch_size = eval_batch_size
+    receiver_microbatch_size = max(1, min(receiver_microbatch_size, eval_batch_size))
+    if receiver_microbatch_size < eval_batch_size:
+        print(
+            "[EVAL] receiver microbatching enabled: "
+            f"batch_size_eval={eval_batch_size} receiver_microbatch_size={receiver_microbatch_size}"
+        )
 
     ls_estimator = build_ls_estimator(tx, cfg, interpolation_type="lin")
     estimator = UPAIRChannelEstimator(ls_estimator=ls_estimator, resource_grid=get_resource_grid(tx), cfg=cfg)
@@ -214,7 +279,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         tx=tx,
         channel=channel,
         cfg=cfg,
-        batch_size=int(cfg["system"]["batch_size_eval"]),
+        batch_size=receiver_microbatch_size,
         ebno_db=float(get_cfg(cfg, "system.ebno_db_eval", [10])[0]),
     )
     estimator.estimate_with_ls(warmup_batch["y"], warmup_batch["no"], training=False)
@@ -283,59 +348,83 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
                 tx=tx,
                 channel=channel,
                 cfg=cfg,
-                batch_size=int(cfg["system"]["batch_size_eval"]),
+                batch_size=eval_batch_size,
                 ebno_db=ebno_db,
             )
+            micro_batches = _iter_eval_microbatches(batch, receiver_microbatch_size)
+            collect_example = not example_saved and bool(get_cfg(cfg, "evaluation.save_example_batch", True))
+            example_classical_h_hats: dict[str, tf.Tensor] = {}
+            example_h_hat_prop: tf.Tensor | None = None
+            example_h_ls: tf.Tensor | None = None
 
-            h_hat_prop = None
-            h_ls = None
-            if proposed_rx is not None:
-                h_hat_prop, _, h_ls, _ = estimator.estimate_with_ls(batch["y"], batch["no"], training=False)
-
-            classical_h_hats: dict[str, tf.Tensor] = {}
             for receiver_name, estimator_block in classical_estimators.items():
-                h_hat_base, _ = _call_channel_estimator(estimator_block, batch["y"], batch["no"])
-                classical_h_hats[receiver_name] = h_hat_base
-
-            for receiver_name, receiver_block in classical_receivers.items():
-                b_hat, crc = call_receiver(receiver_block, batch["y"], batch["no"])
-                h_hat_base = classical_h_hats[receiver_name]
-                _update_error_counters(agg[receiver_name], batch["b"], b_hat, crc)
-                agg[receiver_name]["nmse_sum"] = float(agg[receiver_name]["nmse_sum"]) + float(compute_nmse(batch["h"], h_hat_base).numpy())
+                h_parts: list[tf.Tensor] = []
+                nmse_num = 0.0
+                nmse_den = 0.0
+                for micro_batch in micro_batches:
+                    h_hat_base, _ = _call_channel_estimator(estimator_block, micro_batch["y"], micro_batch["no"])
+                    b_hat, crc = call_receiver(classical_receivers[receiver_name], micro_batch["y"], micro_batch["no"])
+                    _update_error_counters(agg[receiver_name], micro_batch["b"], b_hat, crc)
+                    num, den = _nmse_components(micro_batch["h"], h_hat_base)
+                    nmse_num += num
+                    nmse_den += den
+                    if collect_example:
+                        h_parts.append(h_hat_base)
+                agg[receiver_name]["nmse_sum"] = float(agg[receiver_name]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
                 agg[receiver_name]["num_nmse_batches"] = int(agg[receiver_name]["num_nmse_batches"]) + 1
                 agg[receiver_name]["num_batches_run"] = int(agg[receiver_name]["num_batches_run"]) + 1
+                if collect_example:
+                    concatenated = _safe_concat(h_parts)
+                    if concatenated is not None:
+                        example_classical_h_hats[receiver_name] = concatenated
 
-            if proposed_rx is not None and h_hat_prop is not None:
-                b_hat_prop, crc_prop = call_receiver(proposed_rx, batch["y"], batch["no"])
-                _update_error_counters(agg[PROPOSED_RECEIVER], batch["b"], b_hat_prop, crc_prop)
-                agg[PROPOSED_RECEIVER]["nmse_sum"] = float(agg[PROPOSED_RECEIVER]["nmse_sum"]) + float(compute_nmse(batch["h"], h_hat_prop).numpy())
+            if proposed_rx is not None:
+                h_prop_parts: list[tf.Tensor] = []
+                h_ls_parts: list[tf.Tensor] = []
+                nmse_num = 0.0
+                nmse_den = 0.0
+                for micro_batch in micro_batches:
+                    h_hat_prop, _, h_ls, _ = estimator.estimate_with_ls(micro_batch["y"], micro_batch["no"], training=False)
+                    b_hat_prop, crc_prop = call_receiver(proposed_rx, micro_batch["y"], micro_batch["no"])
+                    _update_error_counters(agg[PROPOSED_RECEIVER], micro_batch["b"], b_hat_prop, crc_prop)
+                    num, den = _nmse_components(micro_batch["h"], h_hat_prop)
+                    nmse_num += num
+                    nmse_den += den
+                    if collect_example:
+                        h_prop_parts.append(h_hat_prop)
+                        h_ls_parts.append(h_ls)
+                agg[PROPOSED_RECEIVER]["nmse_sum"] = float(agg[PROPOSED_RECEIVER]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
                 agg[PROPOSED_RECEIVER]["num_nmse_batches"] = int(agg[PROPOSED_RECEIVER]["num_nmse_batches"]) + 1
                 agg[PROPOSED_RECEIVER]["num_batches_run"] = int(agg[PROPOSED_RECEIVER]["num_batches_run"]) + 1
+                if collect_example:
+                    example_h_hat_prop = _safe_concat(h_prop_parts)
+                    example_h_ls = _safe_concat(h_ls_parts)
 
             if perfect_rx is not None:
-                b_hat_perf, crc_perf = call_receiver(perfect_rx, batch["y"], batch["no"], h=batch["h"])
-                _update_error_counters(agg[PERFECT_RECEIVER], batch["b"], b_hat_perf, crc_perf)
+                for micro_batch in micro_batches:
+                    b_hat_perf, crc_perf = call_receiver(perfect_rx, micro_batch["y"], micro_batch["no"], h=micro_batch["h"])
+                    _update_error_counters(agg[PERFECT_RECEIVER], micro_batch["b"], b_hat_perf, crc_perf)
                 agg[PERFECT_RECEIVER]["num_nmse_batches"] = int(agg[PERFECT_RECEIVER]["num_nmse_batches"]) + 1
                 agg[PERFECT_RECEIVER]["num_batches_run"] = int(agg[PERFECT_RECEIVER]["num_batches_run"]) + 1
 
-            if not example_saved and bool(get_cfg(cfg, "evaluation.save_example_batch", True)):
+            if collect_example:
                 example_payload: dict[str, Any] = {
                     "h_true": np.asarray(batch["h"].numpy()),
                     "y": np.asarray(batch["y"].numpy()),
                     "ebno_db": np.asarray([ebno_db]),
                 }
-                if "baseline_ls_lmmse" in classical_h_hats:
-                    example_payload["h_ls_linear"] = np.asarray(classical_h_hats["baseline_ls_lmmse"].numpy())
-                elif h_ls is not None:
-                    example_payload["h_ls_linear"] = np.asarray(h_ls.numpy())
-                if "baseline_ls_timeavg_lmmse" in classical_h_hats:
-                    example_payload["h_ls_timeavg"] = np.asarray(classical_h_hats["baseline_ls_timeavg_lmmse"].numpy())
-                if "baseline_ls_2dlmmse_lmmse" in classical_h_hats:
-                    example_payload["h_ls_2dlmmse"] = np.asarray(classical_h_hats["baseline_ls_2dlmmse_lmmse"].numpy())
-                if "baseline_ddcpe_ls_lmmse" in classical_h_hats:
-                    example_payload["h_ddcpe_ls"] = np.asarray(classical_h_hats["baseline_ddcpe_ls_lmmse"].numpy())
-                if h_hat_prop is not None:
-                    example_payload["h_prop"] = np.asarray(h_hat_prop.numpy())
+                if "baseline_ls_lmmse" in example_classical_h_hats:
+                    example_payload["h_ls_linear"] = np.asarray(example_classical_h_hats["baseline_ls_lmmse"].numpy())
+                elif example_h_ls is not None:
+                    example_payload["h_ls_linear"] = np.asarray(example_h_ls.numpy())
+                if "baseline_ls_timeavg_lmmse" in example_classical_h_hats:
+                    example_payload["h_ls_timeavg"] = np.asarray(example_classical_h_hats["baseline_ls_timeavg_lmmse"].numpy())
+                if "baseline_ls_2dlmmse_lmmse" in example_classical_h_hats:
+                    example_payload["h_ls_2dlmmse"] = np.asarray(example_classical_h_hats["baseline_ls_2dlmmse_lmmse"].numpy())
+                if "baseline_ddcpe_ls_lmmse" in example_classical_h_hats:
+                    example_payload["h_ddcpe_ls"] = np.asarray(example_classical_h_hats["baseline_ddcpe_ls_lmmse"].numpy())
+                if example_h_hat_prop is not None:
+                    example_payload["h_prop"] = np.asarray(example_h_hat_prop.numpy())
                 np.savez_compressed(paths["artifacts"] / "channel_example.npz", **example_payload)
                 example_saved = True
 

@@ -65,6 +65,18 @@ variant="${variants[$variant_idx]}"
 echo "[SLURM] task=${idx} dmrs_case=${dmrs_case} variant=${variant}"
 nvidia-smi
 
+extra_args=()
+if [[ "${UPAIR_COMPREHENSIVE_EVAL_ONLY:-0}" == "1" ]]; then
+  extra_args+=(--eval-only)
+fi
+if [[ "${UPAIR_COMPREHENSIVE_FORCE:-0}" == "1" ]]; then
+  extra_args+=(--force)
+fi
+if [[ -n "${UPAIR_COMPREHENSIVE_EXTRA_ARGS:-}" ]]; then
+  # shellcheck disable=SC2206
+  extra_args+=(${UPAIR_COMPREHENSIVE_EXTRA_ARGS})
+fi
+
 child_pid=""
 forward_term() {
   echo "[SLURM] received pre-timeout signal; forwarding TERM to Python worker ${child_pid}" >&2
@@ -81,6 +93,6 @@ python scripts/run_comprehensive_mu32_ablation.py \
   --dmrs-cases "${dmrs_case}" \
   --variants "${variant}" \
   --no-global-summary \
-  ${UPAIR_COMPREHENSIVE_EXTRA_ARGS:-} &
+  "${extra_args[@]}" &
 child_pid=$!
 wait "${child_pid}"

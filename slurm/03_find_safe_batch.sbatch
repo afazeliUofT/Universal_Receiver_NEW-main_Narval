@@ -53,7 +53,8 @@ python scripts/find_max_safe_batch_narval.py \
   --val-steps "${UPAIR_BATCH_PROBE_VAL_STEPS:-16}" \
   --eval-num-users "${UPAIR_BATCH_PROBE_EVAL_USERS:-4}" \
   --eval-ebno-points "${UPAIR_BATCH_PROBE_EBNO:-0,8}" \
-  --eval-num-batches "${UPAIR_BATCH_PROBE_EVAL_BATCHES:-2}" \
+  --eval-num-batches "${UPAIR_BATCH_PROBE_EVAL_BATCHES:-32}" \
   --eval-cov-batches "${UPAIR_BATCH_PROBE_COV_BATCHES:-2}" \
+  --eval-receiver-microbatch-size "${UPAIR_BATCH_PROBE_EVAL_MICROBATCH:-4}" \
   --per-case-timeout-min "${UPAIR_BATCH_PROBE_TIMEOUT_MIN:-45}" \
   ${UPAIR_BATCH_PROBE_EXTRA_ARGS:-}

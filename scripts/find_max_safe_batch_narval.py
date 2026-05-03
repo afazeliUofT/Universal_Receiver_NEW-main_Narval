@@ -74,6 +74,7 @@ def _run_case(
     eval_ebno_points: str,
     eval_num_batches: int,
     eval_cov_batches: int,
+    eval_receiver_microbatch_size: int,
     num_rx_ant: int | None,
 ) -> dict[str, Any]:
     rx_tag = f"rx{num_rx_ant}" if num_rx_ant is not None else "rx_config"
@@ -122,6 +123,8 @@ def _run_case(
             "--cov-batches",
             str(eval_cov_batches),
         ]
+        if eval_receiver_microbatch_size > 0:
+            cmd.extend(["--receiver-microbatch-size", str(eval_receiver_microbatch_size)])
         if num_rx_ant is not None:
             cmd.extend(["--num-rx-ant", str(num_rx_ant)])
     else:
@@ -182,8 +185,9 @@ def main() -> None:
     parser.add_argument("--per-case-timeout-min", type=float, default=0.0)
     parser.add_argument("--eval-num-users", type=int, default=4)
     parser.add_argument("--eval-ebno-points", default="0,8")
-    parser.add_argument("--eval-num-batches", type=int, default=2)
+    parser.add_argument("--eval-num-batches", type=int, default=32)
     parser.add_argument("--eval-cov-batches", type=int, default=2)
+    parser.add_argument("--eval-receiver-microbatch-size", type=int, default=4)
     parser.add_argument("--num-rx-ant", type=int, default=16, help="Override channel.num_rx_ant for the probe. Use 0 to keep the config value.")
     args = parser.parse_args()
 
@@ -220,6 +224,7 @@ def main() -> None:
                     eval_ebno_points=str(args.eval_ebno_points),
                     eval_num_batches=int(args.eval_num_batches),
                     eval_cov_batches=int(args.eval_cov_batches),
+                    eval_receiver_microbatch_size=int(args.eval_receiver_microbatch_size),
                     num_rx_ant=num_rx_ant,
                 )
                 results.append(result)
@@ -257,6 +262,7 @@ def main() -> None:
         "eval_ebno_points": str(args.eval_ebno_points),
         "eval_num_batches": int(args.eval_num_batches),
         "eval_cov_batches": int(args.eval_cov_batches),
+        "eval_receiver_microbatch_size": int(args.eval_receiver_microbatch_size),
         "results": results,
     }
     summary_path = output_root / "batch_probe_summary.json"

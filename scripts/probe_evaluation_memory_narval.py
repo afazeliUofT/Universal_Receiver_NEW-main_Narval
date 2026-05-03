@@ -28,6 +28,7 @@ def _eval_probe_cfg(
     num_batches: int,
     cov_batches: int,
     num_rx_ant: int | None,
+    receiver_microbatch_size: int | None,
 ) -> dict[str, Any]:
     cfg = copy.deepcopy(base_cfg)
     cfg = _apply_overrides(cfg, DMRS_CASES[dmrs_case]["overrides"])
@@ -40,6 +41,8 @@ def _eval_probe_cfg(
     set_cfg(cfg, "multiuser.fixed_num_users", int(num_users))
     set_cfg(cfg, "system.batch_size_eval", int(batch_size))
     set_cfg(cfg, "system.graph_mode", True)
+    if receiver_microbatch_size is not None and receiver_microbatch_size > 0:
+        set_cfg(cfg, "evaluation.receiver_microbatch_size", int(receiver_microbatch_size))
     set_cfg(cfg, "system.ebno_db_eval", [float(x) for x in ebno_points])
     set_cfg(cfg, "evaluation.resume", False)
     set_cfg(cfg, "evaluation.force", True)
@@ -66,6 +69,7 @@ def main() -> None:
     parser.add_argument("--num-batches", type=int, default=2)
     parser.add_argument("--cov-batches", type=int, default=2)
     parser.add_argument("--num-rx-ant", type=int, default=None)
+    parser.add_argument("--receiver-microbatch-size", type=int, default=0)
     args = parser.parse_args()
 
     ebno_points = [float(item.strip()) for item in args.ebno_points.split(",") if item.strip()]
@@ -76,7 +80,8 @@ def main() -> None:
         "[EVALPROBE] "
         f"dmrs_case={args.dmrs_case} variant={args.variant} batch_size={args.batch_size} "
         f"num_rx_ant={args.num_rx_ant} num_users={args.num_users} ebno_points={ebno_points} "
-        f"num_batches={args.num_batches} cov_batches={args.cov_batches}"
+        f"num_batches={args.num_batches} cov_batches={args.cov_batches} "
+        f"receiver_microbatch_size={args.receiver_microbatch_size}"
     )
     result = evaluate_model(
         _eval_probe_cfg(
@@ -89,6 +94,7 @@ def main() -> None:
             num_batches=args.num_batches,
             cov_batches=args.cov_batches,
             num_rx_ant=args.num_rx_ant,
+            receiver_microbatch_size=int(args.receiver_microbatch_size) if int(args.receiver_microbatch_size) > 0 else None,
         ),
         checkpoint_path=None,
         num_users=int(args.num_users),

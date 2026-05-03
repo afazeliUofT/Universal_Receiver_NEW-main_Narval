@@ -1,13 +1,26 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.pycache_check/
+
+# Slurm/runtime logs
+logs/
+slurm/logs/
+*.out
+*.err
+
+# Large generated model/result artifacts
 *.h5
 *.data-*
 *.index
 *.npz
-__pycache__/
-*.pyc
-*.pyo
 *.npy
 *.ckpt
-*.index
-*.keras
 *.keras
 
+# Temporary probe outputs
+TWC_plots_comprehensive/batch_probe_*/
+TWC_plots_comprehensive/eval_memory_probe/

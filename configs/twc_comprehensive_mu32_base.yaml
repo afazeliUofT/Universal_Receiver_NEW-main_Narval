@@ -114,6 +114,7 @@ training:
   checkpoint_name: best.weights.h5
 evaluation:
   resume: true
+  receiver_microbatch_size: 4
   num_batches_per_point: 512
   min_num_batches_per_point: 128
   max_num_batches_per_point: 512
@@ -154,5 +155,4 @@ baselines:
     weight_power: 1.0
     max_abs_residual_rad: 0.4
     anchor_to_dmrs: true
-
 
