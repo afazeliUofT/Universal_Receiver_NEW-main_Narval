@@ -13,3 +13,176 @@ WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objec
 WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
 WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
 WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+WARNING:tensorflow:Model's `__init__()` arguments contain non-serializable objects. Please implement a `get_config()` method in the subclassed Model for proper saving and loading. Defaulting to empty config.
+2026-05-03 01:08:18.556207: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:22.332861: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:26.115376: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:29.912806: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:33.714656: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:37.501919: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:41.286873: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:45.083117: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:48.873123: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:52.676721: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:08:56.469743: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:00.248702: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:04.046261: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:07.816335: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:11.607658: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:15.376492: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:19.179667: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:22.972139: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:26.774057: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:30.563105: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:34.352361: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:38.142775: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:41.940031: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:45.746350: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:49.557921: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:53.364315: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:57.165692: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-03 01:09:58.164898: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:306] gpu_async_0 cuMemAllocAsync failed to allocate 1056964608 bytes: CUDA error: out of memory (CUDA_ERROR_OUT_OF_MEMORY)
+ Reported by CUDA: Free memory/Total memory: 386203648/42406903808
+2026-05-03 01:09:58.165018: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:311] Stats: Limit:                     40353726464
+InUse:                     35807949546
+MaxInUse:                  36859409130
+NumAllocs:                    21925630
+MaxAllocSize:               1068003328
+Reserved:                            0
+PeakReserved:                        0
+LargestFreeBlock:                    0
+
+2026-05-03 01:09:58.165108: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:63] Histogram of current allocation: (allocation_size_in_bytes, nb_allocation_of_that_sizes), ...;
+2026-05-03 01:09:58.165131: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1, 6
+2026-05-03 01:09:58.165144: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 4, 128
+2026-05-03 01:09:58.165156: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 8, 215
+2026-05-03 01:09:58.165168: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 12, 5
+2026-05-03 01:09:58.165180: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 16, 4
+2026-05-03 01:09:58.165191: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 20, 1
+2026-05-03 01:09:58.165203: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 24, 8
+2026-05-03 01:09:58.165215: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 28, 14
+2026-05-03 01:09:58.165226: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 64, 1
+2026-05-03 01:09:58.165238: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 96, 2
+2026-05-03 01:09:58.165250: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 112, 15
+2026-05-03 01:09:58.165261: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 128, 17
+2026-05-03 01:09:58.165273: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 192, 2
+2026-05-03 01:09:58.165284: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 224, 2
+2026-05-03 01:09:58.165317: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 256, 325
+2026-05-03 01:09:58.165331: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 336, 2
+2026-05-03 01:09:58.165343: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 448, 2
+2026-05-03 01:09:58.165355: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 512, 36
+2026-05-03 01:09:58.165366: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 768, 6
+2026-05-03 01:09:58.165378: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1028, 1
+2026-05-03 01:09:58.165389: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1536, 10
+2026-05-03 01:09:58.165401: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1568, 1
+2026-05-03 01:09:58.165413: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1920, 5
+2026-05-03 01:09:58.165424: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 2048, 1
+2026-05-03 01:09:58.165436: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 2304, 16
+2026-05-03 01:09:58.165448: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 3072, 3
+2026-05-03 01:09:58.165459: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 4608, 1
+2026-05-03 01:09:58.165471: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 6144, 2
+2026-05-03 01:09:58.165483: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 9984, 5
+2026-05-03 01:09:58.165494: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 10752, 8
+2026-05-03 01:09:58.165506: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 16384, 156
+2026-05-03 01:09:58.165518: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 18080, 5
+2026-05-03 01:09:58.165530: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 21504, 9
+2026-05-03 01:09:58.165541: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 27648, 1
+2026-05-03 01:09:58.165553: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 32768, 52
+2026-05-03 01:09:58.165565: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 39936, 3
+2026-05-03 01:09:58.165576: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 41728, 4
+2026-05-03 01:09:58.165588: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 43008, 2
+2026-05-03 01:09:58.165600: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 43424, 5
+2026-05-03 01:09:58.165611: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 53760, 3
+2026-05-03 01:09:58.165623: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 64512, 2
+2026-05-03 01:09:58.165634: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 78336, 1
+2026-05-03 01:09:58.165646: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 79872, 1
+2026-05-03 01:09:58.165658: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 86016, 2
+2026-05-03 01:09:58.165669: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 96768, 1
+2026-05-03 01:09:58.165681: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 186464, 10
+2026-05-03 01:09:58.165693: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 294912, 1
+2026-05-03 01:09:58.165704: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 301056, 1
+2026-05-03 01:09:58.165716: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 372928, 15
+2026-05-03 01:09:58.165734: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 385024, 5
+2026-05-03 01:09:58.165747: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 387072, 1
+2026-05-03 01:09:58.165758: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 393216, 2
+2026-05-03 01:09:58.165770: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 458752, 1
+2026-05-03 01:09:58.165782: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 577536, 1
+2026-05-03 01:09:58.165793: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1204224, 4
+2026-05-03 01:09:58.165805: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1376256, 1
+2026-05-03 01:09:58.165817: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 2752512, 2
+2026-05-03 01:09:58.165828: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 3440640, 1
+2026-05-03 01:09:58.165840: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 4128768, 2
+2026-05-03 01:09:58.165851: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 5505024, 13
+2026-05-03 01:09:58.165863: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 9633792, 224
+2026-05-03 01:09:58.165875: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 16515072, 4
+2026-05-03 01:09:58.165886: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 117440512, 3
+2026-05-03 01:09:58.165898: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 132120576, 224
+2026-05-03 01:09:58.165910: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 352321536, 1
+2026-05-03 01:09:58.165921: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:66] 1056964608, 3
+2026-05-03 01:09:58.165935: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:97] CU_MEMPOOL_ATTR_RESERVED_MEM_CURRENT: 41506832384
+2026-05-03 01:09:58.165957: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:99] CU_MEMPOOL_ATTR_USED_MEM_CURRENT: 35807949546
+2026-05-03 01:09:58.165979: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:100] CU_MEMPOOL_ATTR_RESERVED_MEM_HIGH: 41875931136
+2026-05-03 01:09:58.166001: E external/local_xla/xla/stream_executor/gpu/gpu_cudamallocasync_allocator.cc:101] CU_MEMPOOL_ATTR_USED_MEM_HIGH: 36859409130
+2026-05-03 01:09:58.166030: W tensorflow/core/framework/op_kernel.cc:1839] OP_REQUIRES failed at transpose_op.cc:184 : RESOURCE_EXHAUSTED: OOM when allocating tensor with shape[16,1,16,1,1,14,192,192] and type complex64 on /job:localhost/replica:0/task:0/device:GPU:0 by allocator gpu_async_0
+Traceback (most recent call last):
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/scripts/run_comprehensive_mu32_ablation.py", line 289, in <module>
+    main()
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/scripts/run_comprehensive_mu32_ablation.py", line 251, in main
+    result = evaluate_model(cfg_eval, checkpoint_path=str(checkpoint_path), num_users=num_users)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/src/upair5g/evaluation.py", line 297, in evaluate_model
+    h_hat_base, _ = _call_channel_estimator(estimator_block, batch["y"], batch["no"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/src/upair5g/evaluation.py", line 36, in _call_channel_estimator
+    out = safe_call_variants(estimator, y, no)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/src/upair5g/compat.py", line 49, in safe_call_variants
+    return attempt()
+           ^^^^^^^^^
+  File "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/src/upair5g/compat.py", line 40, in <lambda>
+    attempts.append(lambda: fn(*args))
+                            ^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/sionna/phy/block.py", line 155, in __call__
+    return self.call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/sionna/phy/ofdm/channel_estimation.py", line 170, in call
+    h_hat, err_var = self._interpol(h_hat, err_var)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/sionna/phy/ofdm/channel_estimation.py", line 1820, in __call__
+    h_hat, err_var = interp(h_hat, err_var)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/sionna/phy/ofdm/channel_estimation.py", line 1132, in __call__
+    h_hat_var_2 = tf.transpose(h_hat_var_2, [0, 1, 2, 3, 4, 5, 7, 6])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/tensorflow/python/ops/weak_tensor_ops.py", line 88, in wrapper
+    return op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/rsadve1/scratch/.venvUPAIR/lib/python3.11/site-packages/tensorflow/python/eager/execute.py", line 53, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: {{function_node __wrapped__Transpose_device_/job:localhost/replica:0/task:0/device:GPU:0}} OOM when allocating tensor with shape[16,1,16,1,1,14,192,192] and type complex64 on /job:localhost/replica:0/task:0/device:GPU:0 by allocator gpu_async_0 [Op:Transpose]

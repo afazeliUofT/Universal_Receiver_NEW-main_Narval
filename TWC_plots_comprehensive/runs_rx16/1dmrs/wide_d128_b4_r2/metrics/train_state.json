@@ -1,8 +1,8 @@
 {
-  "best_val": 0.025465081736911088,
+  "best_val": 0.014217840842320584,
   "best_weights_path": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/1dmrs/wide_d128_b4_r2/checkpoints/best.weights.h5",
-  "latest_step": 325,
-  "latest_training_state_checkpoint": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/1dmrs/wide_d128_b4_r2/checkpoints/training_state/ckpt-325",
+  "latest_step": 3250,
+  "latest_training_state_checkpoint": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/1dmrs/wide_d128_b4_r2/checkpoints/training_state/ckpt-3250",
   "resume_enabled": true,
   "save_reason": "periodic",
   "total_steps": 5000,
