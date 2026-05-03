@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import argparse
 import copy
+import gc
 import json
 import sys
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import tensorflow as tf
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = PROJECT_ROOT / "src"
@@ -145,6 +147,21 @@ def _read_json(path: Path) -> dict[str, Any]:
         return json.load(handle)
 
 
+def _release_tensorflow_state(label: str) -> None:
+    gc.collect()
+    try:
+        tf.keras.backend.clear_session()
+    except Exception:
+        pass
+    try:
+        info = tf.config.experimental.get_memory_info("GPU:0")
+        current = float(info.get("current", 0)) / (1024.0**3)
+        peak = float(info.get("peak", 0)) / (1024.0**3)
+        print(f"[COMPREHENSIVE] cleared TensorFlow state before {label}: gpu_mem={current:.2f}GiB peak={peak:.2f}GiB")
+    except Exception:
+        print(f"[COMPREHENSIVE] cleared TensorFlow state before {label}")
+
+
 def _copy_curves(
     result: dict[str, Any],
     out_csv: Path,
@@ -239,6 +256,7 @@ def main() -> None:
             }
 
             for num_users in eval_num_users:
+                _release_tensorflow_state(f"evaluation {dmrs_case}/{variant_name}/u{num_users}")
                 cfg_eval = _eval_cfg(train_cfg, variant_name, dmrs_case, num_users)
                 out_csv = csv_dir / dmrs_case / f"{variant_name}_u{num_users}_curves.csv"
                 summary_path = _summary_path(cfg_eval)

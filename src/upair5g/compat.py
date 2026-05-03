@@ -37,12 +37,18 @@ def instantiate_filtered(cls: Callable[..., Any], /, **kwargs: Any) -> Any:
 
 def safe_call_variants(fn: Callable[..., Any], *args: Any) -> Any:
     attempts = []
-    attempts.append(lambda: fn(*args))
     if len(args) > 1:
+        # Sionna/Keras layers commonly expect a single ``inputs`` object such
+        # as [y, no]. Trying split positional tensors first can execute a
+        # wrong graph branch and allocate large temporary tensors before
+        # failing, which is especially painful during long evaluations.
         attempts.append(lambda: fn(list(args)))
         attempts.append(lambda: fn(tuple(args)))
+        attempts.append(lambda: fn(*args))
     elif len(args) == 1:
         attempts.append(lambda: fn(args[0]))
+    else:
+        attempts.append(lambda: fn())
     last_err = None
     for attempt in attempts:
         try:

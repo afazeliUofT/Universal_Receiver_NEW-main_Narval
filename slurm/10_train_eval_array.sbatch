@@ -80,6 +80,7 @@ python scripts/run_comprehensive_mu32_ablation.py \
   --config configs/twc_comprehensive_mu32_base.yaml \
   --dmrs-cases "${dmrs_case}" \
   --variants "${variant}" \
-  --no-global-summary &
+  --no-global-summary \
+  ${UPAIR_COMPREHENSIVE_EXTRA_ARGS:-} &
 child_pid=$!
 wait "${child_pid}"
