@@ -1,0 +1,119 @@
+{
+  "batch_sizes_tested": [
+    128
+  ],
+  "cases": [
+    "1dmrs:deep_d96_b6_r2",
+    "1dmrs:wide_d128_b4_r2",
+    "1dmrs:mlpwide_d96_b4_r4",
+    "2dmrs:deep_d96_b6_r2",
+    "2dmrs:wide_d128_b4_r2",
+    "2dmrs:mlpwide_d96_b4_r4"
+  ],
+  "eval_cov_batches": 1,
+  "eval_ebno_points": "0",
+  "eval_every": 175,
+  "eval_num_batches": 1,
+  "eval_num_users": 4,
+  "eval_receiver_microbatch_size": 4,
+  "num_rx_ant": 16,
+  "phase": "both",
+  "phases_run": [
+    "training",
+    "evaluation"
+  ],
+  "results": [
+    {
+      "batch_size": 128,
+      "dmrs_case": "1dmrs",
+      "elapsed_s": 67.65,
+      "passed": false,
+      "phase": "training",
+      "reason": "oom",
+      "returncode": 1,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/training_rx16_bs128_1dmrs_deep_d96_b6_r2.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/training_rx16_bs128_1dmrs_deep_d96_b6_r2.out",
+      "variant": "deep_d96_b6_r2"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "1dmrs",
+      "elapsed_s": 179.932,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_deep_d96_b6_r2.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_deep_d96_b6_r2.out",
+      "variant": "deep_d96_b6_r2"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "1dmrs",
+      "elapsed_s": 188.991,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_wide_d128_b4_r2.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_wide_d128_b4_r2.out",
+      "variant": "wide_d128_b4_r2"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "1dmrs",
+      "elapsed_s": 168.61,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_mlpwide_d96_b4_r4.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_1dmrs_mlpwide_d96_b4_r4.out",
+      "variant": "mlpwide_d96_b4_r4"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "2dmrs",
+      "elapsed_s": 171.94,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_deep_d96_b6_r2.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_deep_d96_b6_r2.out",
+      "variant": "deep_d96_b6_r2"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "2dmrs",
+      "elapsed_s": 167.801,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_wide_d128_b4_r2.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_wide_d128_b4_r2.out",
+      "variant": "wide_d128_b4_r2"
+    },
+    {
+      "batch_size": 128,
+      "dmrs_case": "2dmrs",
+      "elapsed_s": 167.224,
+      "passed": true,
+      "phase": "evaluation",
+      "reason": "passed",
+      "returncode": 0,
+      "stderr": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_mlpwide_d96_b4_r4.err",
+      "stdout": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/logs/evaluation_rx16_bs128_2dmrs_mlpwide_d96_b4_r4.out",
+      "variant": "mlpwide_d96_b4_r4"
+    }
+  ],
+  "safe_batch_size": null,
+  "safe_batch_size_by_phase": {
+    "evaluation": 128,
+    "training": null
+  },
+  "search_order": "descending",
+  "steps": 350,
+  "val_steps": 16
+}

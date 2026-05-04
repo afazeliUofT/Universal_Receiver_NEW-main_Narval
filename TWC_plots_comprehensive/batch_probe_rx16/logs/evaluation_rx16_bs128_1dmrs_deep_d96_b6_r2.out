@@ -1,0 +1,9 @@
+[EVALPROBE] dmrs_case=1dmrs variant=deep_d96_b6_r2 batch_size=128 num_rx_ant=16 num_users=4 ebno_points=[0.0] num_batches=1 cov_batches=1 receiver_microbatch_size=4
+[EVAL] receiver microbatching enabled: batch_size_eval=128 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=1 batch_size=128 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=3.75453e-01 BLER=1.00000e+00 NMSE=3.02859e-01 bit_err=1156467/3080192  blk_err=  512/512    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=3.78104e-01 BLER=1.00000e+00 NMSE=1.47962e-01 bit_err=1164632/3080192  blk_err=  512/512    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.75512e-01 BLER=1.00000e+00 NMSE=3.04060e-01 bit_err=1156649/3080192  blk_err=  512/512    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=3.73557e-01 BLER=1.00000e+00 NMSE=3.02859e-01 bit_err=1150626/3080192  blk_err=  512/512    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 0.0 dB BER=4.64398e-01 BLER=2.50000e-01 NMSE=0.00000e+00 bit_err=1430435/3080192  blk_err=  128/512    batches=   1
+[EVALPROBE] completed successfully: {'output_dir': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs128/1dmrs/deep_d96_b6_r2_u4', 'curves_path': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs128/1dmrs/deep_d96_b6_r2_u4/metrics/curves.csv', 'summary_path': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs128/1dmrs/deep_d96_b6_r2_u4/metrics/evaluation_summary.json'}

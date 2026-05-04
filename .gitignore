@@ -7,10 +7,6 @@ __pycache__/
 .pycache_check/
 
 # Slurm/runtime logs
-logs/
-slurm/logs/
-*.out
-*.err
 
 # Large generated model/result artifacts
 *.h5
@@ -22,5 +18,3 @@ slurm/logs/
 *.keras
 
 # Temporary probe outputs
-TWC_plots_comprehensive/batch_probe_*/
-TWC_plots_comprehensive/eval_memory_probe/

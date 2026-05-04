@@ -1,0 +1,39 @@
+Mon May  4 07:26:31 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:01:00.0 Off |                    0 |
+| N/A   33C    P0             57W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[BATCHPROBE] start phase=training batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=67.7
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=179.9
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=1dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=1dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=189.0
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=168.6
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=2dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=2dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=171.9
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=2dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=2dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=167.8
+[BATCHPROBE] start phase=evaluation batch=128 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=evaluation batch=128 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=167.2
+[BATCHPROBE] safe_batch_size=None
+[BATCHPROBE] safe_batch_size_training=None
+[BATCHPROBE] safe_batch_size_evaluation=128
+[BATCHPROBE] wrote /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/batch_probe_summary.json
+[BATCHPROBE] wrote /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/batch_probe_rx16/batch_probe_results.csv
