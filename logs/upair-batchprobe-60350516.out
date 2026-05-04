@@ -1,0 +1,43 @@
+Mon May  4 09:15:40 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   30C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[BATCHPROBE] start phase=training batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=429.0
+[BATCHPROBE] start phase=training batch=192 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=192 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=37.0
+[BATCHPROBE] start phase=training batch=160 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=160 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=33.7
+[BATCHPROBE] start phase=training batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=128 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=oom returncode=1 elapsed_s=31.7
+[BATCHPROBE] start phase=training batch=96 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=96 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=440.9
+[BATCHPROBE] start phase=training batch=96 dmrs_case=1dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=training batch=96 dmrs_case=1dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=388.2
+[BATCHPROBE] start phase=training batch=96 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=training batch=96 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=356.3
+[BATCHPROBE] start phase=training batch=96 dmrs_case=2dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=training batch=96 dmrs_case=2dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=433.8
+[BATCHPROBE] start phase=training batch=96 dmrs_case=2dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=training batch=96 dmrs_case=2dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=382.3
+[BATCHPROBE] start phase=training batch=96 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=training batch=96 dmrs_case=2dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=364.4
+[BATCHPROBE] start phase=evaluation batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=634.6
+[BATCHPROBE] start phase=evaluation batch=256 dmrs_case=1dmrs variant=wide_d128_b4_r2

@@ -1,0 +1,35 @@
+[MEMPROBE] case_index=manual dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 batch_size=96 num_rx_ant=16 steps=350 eval_every=175 val_steps=16
+[TRAIN] starting from scratch
+[TRAIN] step=00001 loss=-2.35085 nmse_prop=0.03397 nmse_ls=0.03397 gpu_mem=0.09GiB peak=25.12GiB
+[TRAIN] step=00025 loss=-2.50432 nmse_prop=0.02944 nmse_ls=0.03065 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=25 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-25
+[TRAIN] step=00050 loss=-2.91352 nmse_prop=0.01999 nmse_ls=0.02132 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=50 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-50
+[TRAIN] step=00075 loss=-1.82285 nmse_prop=0.05809 nmse_ls=0.05984 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=75 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-75
+[TRAIN] step=00100 loss=-2.77912 nmse_prop=0.02291 nmse_ls=0.02434 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-100
+[TRAIN] step=00125 loss=-3.08792 nmse_prop=0.01661 nmse_ls=0.01819 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=125 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-125
+[TRAIN] step=00150 loss=-2.43919 nmse_prop=0.03252 nmse_ls=0.03403 gpu_mem=0.23GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=150 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-150
+[TRAIN] saved new best weights at step=175 val_nmse=0.0275359
+[TRAIN] step=00175 loss=-1.63696 nmse_prop=0.06934 nmse_ls=0.07194 gpu_mem=0.38GiB peak=25.32GiB
+[TRAIN] saved resumable state at step=175 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-175
+[TRAIN] step=00200 loss=-3.38610 nmse_prop=0.01506 nmse_ls=0.01783 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-200
+[TRAIN] step=00225 loss=-2.06142 nmse_prop=0.04723 nmse_ls=0.05009 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=225 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-225
+[TRAIN] step=00250 loss=-3.46064 nmse_prop=0.01563 nmse_ls=0.01880 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=250 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-250
+[TRAIN] step=00275 loss=-3.49738 nmse_prop=0.01433 nmse_ls=0.01716 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=275 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-275
+[TRAIN] step=00300 loss=-3.36378 nmse_prop=0.01642 nmse_ls=0.01847 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-300
+[TRAIN] step=00325 loss=-3.22154 nmse_prop=0.01747 nmse_ls=0.02093 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=325 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-325
+[TRAIN] saved new best weights at step=350 val_nmse=0.0255844
+[TRAIN] step=00350 loss=-2.64551 nmse_prop=0.02854 nmse_ls=0.03249 gpu_mem=0.38GiB peak=25.47GiB
+[TRAIN] saved resumable state at step=350 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-350
+[TRAIN] saved resumable state at step=350 reason=final: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs96/1dmrs/mlpwide_d96_b4_r4/checkpoints/training_state/ckpt-350
+[MEMPROBE] completed successfully

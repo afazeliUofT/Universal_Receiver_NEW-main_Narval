@@ -1,0 +1,14 @@
+[EVALPROBE] dmrs_case=1dmrs variant=deep_d96_b6_r2 batch_size=256 num_rx_ant=16 num_users=4 ebno_points=[0.0, 8.0] num_batches=1 cov_batches=1 receiver_microbatch_size=4
+[EVAL] receiver microbatching enabled: batch_size_eval=256 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=1 batch_size=256 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=3.75853e-01 BLER=1.00000e+00 NMSE=3.07764e-01 bit_err=2315399/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=3.78195e-01 BLER=1.00000e+00 NMSE=1.49887e-01 bit_err=2329827/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.75936e-01 BLER=1.00000e+00 NMSE=3.09561e-01 bit_err=2315913/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=3.73952e-01 BLER=1.00000e+00 NMSE=3.07764e-01 bit_err=2303688/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 0.0 dB BER=4.64792e-01 BLER=2.50000e-01 NMSE=0.00000e+00 bit_err=2863298/6160384  blk_err=  256/1024   batches=   1
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 8.0 dB BER=3.83573e-01 BLER=1.00000e+00 NMSE=1.06865e-01 bit_err=2362957/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 8.0 dB BER=3.73628e-01 BLER=1.00000e+00 NMSE=7.01908e-02 bit_err=2301695/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 8.0 dB BER=3.83667e-01 BLER=1.00000e+00 NMSE=1.08453e-01 bit_err=2363533/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 8.0 dB BER=3.72622e-01 BLER=1.00000e+00 NMSE=1.06865e-01 bit_err=2295494/6160384  blk_err= 1024/1024   batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 8.0 dB BER=4.65913e-01 BLER=2.50000e-01 NMSE=0.00000e+00 bit_err=2870206/6160384  blk_err=  256/1024   batches=   1
+[EVALPROBE] completed successfully: {'output_dir': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs256/1dmrs/deep_d96_b6_r2_u4', 'curves_path': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs256/1dmrs/deep_d96_b6_r2_u4/metrics/curves.csv', 'summary_path': '/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_memory_probe/rx16/bs256/1dmrs/deep_d96_b6_r2_u4/metrics/evaluation_summary.json'}
