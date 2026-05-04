@@ -1,0 +1,166 @@
+experiment:
+  name: shallow_d96_b2_r2_u1
+  output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
+system:
+  seed: 1007
+  eval_seed_offset: 1000
+  seeds:
+  - 7
+  - 17
+  - 29
+  precision: single
+  graph_mode: true
+  batch_size_train: 48
+  batch_size_eval: 128
+  ebno_db_train_min: 0.0
+  ebno_db_train_max: 18.0
+  ebno_db_eval:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  training_seed: 7
+  evaluation_seed: 1007
+multiuser:
+  enabled: true
+  max_num_users: 4
+  train_user_count_sampler: triangular
+  eval_num_users:
+  - 1
+  - 2
+  - 3
+  - 4
+  dmrs:
+    config_type: 2
+    length: 1
+    additional_position: 0
+    type_a_position: 2
+    num_cdm_groups_without_data: 3
+    port_sets:
+    - - 0
+    - - 1
+    - - 2
+    - - 3
+  fixed_num_users: 1
+pusch:
+  carrier_frequency_hz: 3.5e9
+  subcarrier_spacing_khz: 30
+  n_size_grid: 16
+  n_size_bwp: 16
+  cyclic_prefix: normal
+  mapping_type: A
+  symbol_allocation:
+  - 0
+  - 14
+  num_layers: 1
+  num_antenna_ports: 1
+  precoding: non-codebook
+  transform_precoding: false
+  mcs_index: 15
+  mcs_table: qam64
+  expected_num_bits_per_symbol: 4
+  expected_modulation: qam16
+  dmrs:
+    config_type: 1
+    length: 1
+    additional_position: 0
+    type_a_position: 2
+    num_cdm_groups_without_data: 2
+channel:
+  model: C
+  delay_spread_s: 3.0e-07
+  min_speed_mps: 8.33
+  max_speed_mps: 16.67
+  num_rx_ant: 16
+  num_tx_ant: 1
+  normalize_channel: true
+impairments:
+  enabled: true
+  train:
+    cpe_sigma_rad: 0.012
+    slope_range_rad:
+    - -0.08
+    - 0.08
+    rw_sigma_rad: 0.004
+  eval:
+    cpe_sigma_rad: 0.015
+    slope_range_rad:
+    - -0.05
+    - 0.05
+    rw_sigma_rad: 0.005
+model:
+  d_model: 96
+  num_blocks: 2
+  num_heads: 4
+  mlp_ratio: 2.0
+  dropout: 0.05
+  residual_scale: 0.35
+  use_noise_feature: true
+  use_pilot_mask_feature: true
+training:
+  steps: 10000
+  resume: true
+  checkpoint_every: 100
+  max_resume_checkpoints: 3
+  val_steps: 64
+  log_every: 100
+  eval_every: 500
+  learning_rate: 0.0003
+  weight_decay: 1.0e-05
+  nmse_loss_weight: 0.1
+  grad_clip_norm: 1.0
+  checkpoint_name: best.weights.h5
+evaluation:
+  resume: true
+  receiver_microbatch_size: 4
+  num_batches_per_point: 512
+  min_num_batches_per_point: 128
+  max_num_batches_per_point: 512
+  target_block_errors_per_receiver: 100
+  stopping_receivers:
+  - baseline_ls_lmmse
+  - baseline_ls_2dlmmse_lmmse
+  - baseline_ddcpe_ls_lmmse
+  - upair5g_lmmse
+  reliable_min_block_errors: 20
+  reliable_min_bit_errors: 100
+  save_example_batch: false
+baselines:
+  enabled_receivers:
+  - baseline_ls_lmmse
+  - baseline_ls_2dlmmse_lmmse
+  - baseline_ddcpe_ls_lmmse
+  - upair5g_lmmse
+  - perfect_csi_lmmse
+  covariance_estimation:
+    cache_name: empirical_covariances.npz
+    reuse_cache: true
+    num_batches: 32
+    batch_size: 32
+    order: f-t
+    use_spatial_smoothing: false
+    use_training_impairments: false
+    diagonal_loading: 0.0001
+    normalize_trace: false
+  phase_aware_ddcpe:
+    num_iterations: 2
+    smoothing_kernel:
+    - 1.0
+    - 2.0
+    - 3.0
+    - 2.0
+    - 1.0
+    weight_power: 1.0
+    max_abs_residual_rad: 0.4
+    anchor_to_dmrs: true

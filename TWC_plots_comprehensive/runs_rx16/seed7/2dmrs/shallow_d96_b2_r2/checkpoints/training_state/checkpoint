@@ -1,0 +1,8 @@
+model_checkpoint_path: "ckpt-8300"
+all_model_checkpoint_paths: "ckpt-8100"
+all_model_checkpoint_paths: "ckpt-8200"
+all_model_checkpoint_paths: "ckpt-8300"
+all_model_checkpoint_timestamps: 1777937936.0005858
+all_model_checkpoint_timestamps: 1777937990.8022475
+all_model_checkpoint_timestamps: 1777938038.9042108
+last_preserved_timestamp: 1777933599.2435226

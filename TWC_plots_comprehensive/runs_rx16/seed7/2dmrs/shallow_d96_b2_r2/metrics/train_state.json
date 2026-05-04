@@ -1,0 +1,35 @@
+{
+  "best_val": 0.007232709453091957,
+  "best_weights_path": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/shallow_d96_b2_r2/checkpoints/best.weights.h5",
+  "checkpoint_metrics": {
+    "last_loss": -4.946944713592529,
+    "last_nmse_ls": 0.007873523980379105,
+    "last_nmse_prop": 0.0027742094825953245
+  },
+  "last_metrics": {
+    "ebno_db": 14.301164627075195,
+    "loss": -4.946944713592529,
+    "loss_nll": -4.9472222328186035,
+    "nmse_ls": 0.007873523980379105,
+    "nmse_prop": 0.0027742094825953245,
+    "num_users": 1,
+    "step": 8300
+  },
+  "latest_step": 8300,
+  "latest_training_state_checkpoint": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8300",
+  "resume_enabled": true,
+  "save_reason": "periodic",
+  "total_steps": 10000,
+  "training_complete": false,
+  "training_parameters": {
+    "batch_size_eval": 128,
+    "batch_size_train": 64,
+    "eval_every": 500,
+    "grad_clip_norm": 1.0,
+    "learning_rate": 0.0003,
+    "nmse_loss_weight": 0.1,
+    "seed": 7,
+    "val_steps": 64,
+    "weight_decay": 1e-05
+  }
+}
