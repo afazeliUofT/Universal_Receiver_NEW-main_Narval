@@ -41,3 +41,9 @@ Mon May  4 09:15:40 2026
 [BATCHPROBE] start phase=evaluation batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2
 [BATCHPROBE] done phase=evaluation batch=256 dmrs_case=1dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=634.6
 [BATCHPROBE] start phase=evaluation batch=256 dmrs_case=1dmrs variant=wide_d128_b4_r2
+[BATCHPROBE] done phase=evaluation batch=256 dmrs_case=1dmrs variant=wide_d128_b4_r2 status=passed returncode=0 elapsed_s=621.5
+[BATCHPROBE] start phase=evaluation batch=256 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+[BATCHPROBE] done phase=evaluation batch=256 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4 status=passed returncode=0 elapsed_s=597.2
+[BATCHPROBE] start phase=evaluation batch=256 dmrs_case=2dmrs variant=deep_d96_b6_r2
+[BATCHPROBE] done phase=evaluation batch=256 dmrs_case=2dmrs variant=deep_d96_b6_r2 status=passed returncode=0 elapsed_s=624.8
+[BATCHPROBE] start phase=evaluation batch=256 dmrs_case=2dmrs variant=wide_d128_b4_r2
