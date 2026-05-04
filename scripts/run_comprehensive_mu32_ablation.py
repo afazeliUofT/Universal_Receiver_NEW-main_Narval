@@ -106,6 +106,10 @@ def _seed_tag(seed: int) -> str:
     return f"seed{int(seed)}"
 
 
+def _eval_seed_from_train_seed(cfg: dict[str, Any], train_seed: int) -> int:
+    return int(train_seed) + int(get_cfg(cfg, "system.eval_seed_offset", 1000))
+
+
 def _parse_seed_values(base_cfg: dict[str, Any], seed_arg: str | None) -> list[int]:
     if seed_arg:
         values = [int(x.strip()) for x in seed_arg.split(",") if x.strip()]
@@ -136,6 +140,8 @@ def _variant_cfg(base_cfg: dict[str, Any], variant_name: str, dmrs_case: str, se
     cfg = _case_cfg(base_cfg, dmrs_case)
     cfg = _apply_overrides(cfg, VARIANTS[variant_name]["overrides"])
     set_cfg(cfg, "system.seed", int(seed))
+    set_cfg(cfg, "system.training_seed", int(seed))
+    set_cfg(cfg, "system.evaluation_seed", _eval_seed_from_train_seed(cfg, int(seed)))
     set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/runs_{_rx_tag(cfg)}/{_seed_tag(seed)}/{dmrs_case}")
     set_cfg(cfg, "experiment.name", variant_name)
     return cfg
@@ -143,8 +149,12 @@ def _variant_cfg(base_cfg: dict[str, Any], variant_name: str, dmrs_case: str, se
 
 def _eval_cfg(train_cfg: dict[str, Any], variant_name: str, dmrs_case: str, num_users: int) -> dict[str, Any]:
     cfg = copy.deepcopy(train_cfg)
-    seed = int(get_cfg(cfg, "system.seed", 0))
-    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/eval_runs_{_rx_tag(cfg)}/{_seed_tag(seed)}/{dmrs_case}")
+    training_seed = int(get_cfg(cfg, "system.training_seed", get_cfg(cfg, "system.seed", 0)))
+    evaluation_seed = int(get_cfg(cfg, "system.evaluation_seed", _eval_seed_from_train_seed(cfg, training_seed)))
+    set_cfg(cfg, "system.training_seed", training_seed)
+    set_cfg(cfg, "system.evaluation_seed", evaluation_seed)
+    set_cfg(cfg, "system.seed", evaluation_seed)
+    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/eval_runs_{_rx_tag(cfg)}/{_seed_tag(training_seed)}/{dmrs_case}")
     set_cfg(cfg, "experiment.name", f"{variant_name}_u{num_users}")
     set_cfg(cfg, "multiuser.fixed_num_users", int(num_users))
     set_cfg(cfg, "evaluation.save_example_batch", variant_name == "main_d96_b4_r2" and num_users == 4)
@@ -203,6 +213,8 @@ def _copy_curves(
     df["variant_label"] = label
     df["num_users"] = int(num_users)
     df["seed"] = int(seed)
+    df["training_seed"] = int(seed)
+    df["evaluation_seed"] = int(result.get("evaluation_seed", seed))
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_csv, index=False)
     return df
@@ -289,6 +301,8 @@ def main() -> None:
                     },
                 )
                 variant_manifest["seed_runs"][str(seed)] = {
+                    "training_seed": int(seed),
+                    "evaluation_seed": int(get_cfg(train_cfg, "system.evaluation_seed", seed)),
                     "checkpoint_path": str(checkpoint_path),
                     "model_summary": model_summary,
                     "curves": {},

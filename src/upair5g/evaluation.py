@@ -253,7 +253,9 @@ def _should_stop(
 
 
 def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_users: int | None = None) -> dict[str, Any]:
-    set_global_seed(int(cfg["system"]["seed"]))
+    training_seed = int(get_cfg(cfg, "system.training_seed", cfg["system"]["seed"]))
+    evaluation_seed = int(get_cfg(cfg, "system.evaluation_seed", cfg["system"]["seed"]))
+    set_global_seed(evaluation_seed)
     if bool(get_cfg(cfg, "system.graph_mode", True)):
         tf.config.run_functions_eagerly(False)
     paths = ensure_output_tree(cfg)
@@ -377,7 +379,9 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
             "evaluation_parameters": {
                 "batch_size_eval": int(eval_batch_size),
                 "receiver_microbatch_size": int(receiver_microbatch_size),
-                "seed": int(cfg["system"]["seed"]),
+                "seed": int(evaluation_seed),
+                "training_seed": int(training_seed),
+                "evaluation_seed": int(evaluation_seed),
                 **eval_cfg,
             },
         }
@@ -518,6 +522,8 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
                     "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
                     "evaluation_complete": False,
                     "completed_ebno_db": sorted(float(x) for x in completed_ebno),
+                    "training_seed": int(training_seed),
+                    "evaluation_seed": int(evaluation_seed),
                 }
 
             for receiver_name in enabled_receivers:
@@ -577,7 +583,9 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
     summary["curves_csv"] = str(curves_path)
     summary["batch_size_eval"] = int(eval_batch_size)
     summary["receiver_microbatch_size"] = int(receiver_microbatch_size)
-    summary["seed"] = int(cfg["system"]["seed"])
+    summary["seed"] = int(evaluation_seed)
+    summary["training_seed"] = int(training_seed)
+    summary["evaluation_seed"] = int(evaluation_seed)
     save_json(summary, paths["metrics"] / "evaluation_summary.json")
     _save_eval_state(complete=True, reason="final", completed=set(float(x) for x in ebno_grid))
 
@@ -587,4 +595,6 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
         "evaluation_complete": True,
         "completed_ebno_db": [float(x) for x in ebno_grid],
+        "training_seed": int(training_seed),
+        "evaluation_seed": int(evaluation_seed),
     }
