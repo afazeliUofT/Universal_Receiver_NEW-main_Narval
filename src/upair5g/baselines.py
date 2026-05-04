@@ -226,7 +226,7 @@ def build_empirical_lmmse_interpolator(
         raise AttributeError("Could not locate pilot_pattern in resource_grid.")
 
     covariances = estimate_empirical_covariances(tx=tx, channel=channel, cfg=cfg, paths=paths)
-    use_spatial_smoothing = bool(get_cfg(cfg, "baselines.covariance_estimation.use_spatial_smoothing", True))
+    use_spatial_smoothing = bool(get_cfg(cfg, "baselines.covariance_estimation.use_spatial_smoothing", False))
     order = _sanitize_lmmse_order(
         str(get_cfg(cfg, "baselines.covariance_estimation.order", "f-t-s")),
         use_spatial_smoothing=use_spatial_smoothing,

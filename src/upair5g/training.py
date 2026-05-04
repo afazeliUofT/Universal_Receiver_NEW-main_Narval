@@ -101,22 +101,31 @@ def _build_training_systems(cfg: dict[str, Any]) -> dict[int, dict[str, Any]]:
 def _make_optimizer(cfg: dict[str, Any]) -> tf.keras.optimizers.Optimizer:
     lr = float(cfg["training"]["learning_rate"])
     wd = float(cfg["training"]["weight_decay"])
-    common_kwargs = {
+    optimizer_jit_compile = bool(get_cfg(cfg, "training.optimizer_jit_compile", False))
+    adamw_kwargs = {
         "learning_rate": lr,
-        "jit_compile": bool(get_cfg(cfg, "training.optimizer_jit_compile", False)),
+        "weight_decay": wd,
     }
+    if optimizer_jit_compile:
+        adamw_kwargs["jit_compile"] = True
     try:
-        return tf.keras.optimizers.AdamW(weight_decay=wd, **common_kwargs)
-    except TypeError:
+        return tf.keras.optimizers.AdamW(**adamw_kwargs)
+    except (TypeError, ValueError):
+        adamw_kwargs.pop("jit_compile", None)
         try:
-            return tf.keras.optimizers.AdamW(learning_rate=lr, weight_decay=wd)
+            return tf.keras.optimizers.AdamW(**adamw_kwargs)
         except Exception:
-            return tf.keras.optimizers.Adam(learning_rate=lr)
+            pass
     except Exception:
-        try:
-            return tf.keras.optimizers.Adam(**common_kwargs)
-        except TypeError:
-            return tf.keras.optimizers.Adam(learning_rate=lr)
+        pass
+
+    adam_kwargs = {"learning_rate": lr}
+    if optimizer_jit_compile:
+        adam_kwargs["jit_compile"] = True
+    try:
+        return tf.keras.optimizers.Adam(**adam_kwargs)
+    except (TypeError, ValueError):
+        return tf.keras.optimizers.Adam(learning_rate=lr)
 
 
 @tf.function(reduce_retracing=True)

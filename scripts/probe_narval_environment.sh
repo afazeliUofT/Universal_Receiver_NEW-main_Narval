@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRATCH_ROOT="${SCRATCH_ROOT:-/home/rsadve1/scratch}"
 PROJECT_ROOT="${PROJECT_ROOT:-${SCRATCH_ROOT}/Universal_Receiver_NEW-main_Narval}"
-VENV_PATH="${VENV_PATH:-${SCRATCH_ROOT}/.venvUPAIR}"
+VENV_PATH="${VENV_PATH:-${SCRATCH_ROOT}/.venvGRAND}"
 OUTPUT_DIR="${OUTPUT_DIR:-${SCRATCH_ROOT}}"
 
 if [[ -f /etc/profile.d/modules.sh ]]; then

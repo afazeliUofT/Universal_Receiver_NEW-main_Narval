@@ -9,7 +9,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="${PROJECT_ROOT:-/home/rsadve1/scratch/Universal_Receiver_NEW-main_Narval}"
-VENV_PATH="${VENV_PATH:-/home/rsadve1/scratch/.venvUPAIR}"
+VENV_PATH="${VENV_PATH:-/home/rsadve1/scratch/.venvGRAND}"
 STDENV_MODULE="${STDENV_MODULE:-StdEnv/2023}"
 GCC_MODULE="${GCC_MODULE:-gcc/12.3}"
 PYTHON_MODULE="${PYTHON_MODULE:-python/3.11.5}"

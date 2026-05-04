@@ -53,8 +53,8 @@ def _eval_probe_cfg(
     set_cfg(cfg, "baselines.covariance_estimation.reuse_cache", False)
     set_cfg(cfg, "baselines.covariance_estimation.num_batches", int(cov_batches))
     set_cfg(cfg, "baselines.covariance_estimation.batch_size", int(batch_size))
-    set_cfg(cfg, "baselines.covariance_estimation.order", "f-t-s")
-    set_cfg(cfg, "baselines.covariance_estimation.use_spatial_smoothing", True)
+    set_cfg(cfg, "baselines.covariance_estimation.order", "f-t")
+    set_cfg(cfg, "baselines.covariance_estimation.use_spatial_smoothing", False)
     return cfg
 
 
