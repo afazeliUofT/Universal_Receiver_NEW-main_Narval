@@ -4,7 +4,7 @@
 #SBATCH --error=logs/%x-%A_%a.err
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
+#SBATCH --mem=32G
 #SBATCH --gres=gpu:1
 #SBATCH --array=0-35%6
 #SBATCH --signal=B:TERM@600
