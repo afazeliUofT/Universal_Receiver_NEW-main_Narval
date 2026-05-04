@@ -7,8 +7,12 @@ __pycache__/
 .pycache_check/
 
 # Slurm/runtime logs
+logs/
+*.out
+*.err
 
 # Large generated model/result artifacts
+TWC_plots_comprehensive/
 *.h5
 *.data-*
 *.index
@@ -18,3 +22,5 @@ __pycache__/
 *.keras
 
 # Temporary probe outputs
+narval_env_probe_*.json
+.repo1_verified/

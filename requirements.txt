@@ -2,7 +2,7 @@ numpy==1.26.4
 pandas==2.2.3
 matplotlib==3.10.0
 PyYAML==6.0.2
-tensorflow==2.15.1
+tensorflow==2.19.1
 sionna-no-rt==1.2.1
 scipy==1.15.1
 importlib_resources==6.5.2

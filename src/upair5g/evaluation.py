@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import signal
 from typing import Any
 
 import numpy as np
@@ -28,6 +29,7 @@ from .utils import (
     complex_sq_abs,
     ebno_db_to_no,
     save_json,
+    save_yaml,
     set_global_seed,
 )
 
@@ -257,6 +259,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
     paths = ensure_output_tree(cfg)
     curves_path = paths["metrics"] / "curves.csv"
     eval_state_path = paths["metrics"] / "evaluation_state.json"
+    save_yaml(cfg, paths["artifacts"] / "resolved_config.yaml")
 
     eval_num_users = int(num_users if num_users is not None else get_cfg(cfg, "multiuser.fixed_num_users", max_num_users(cfg) if multiuser_enabled(cfg) else 1))
     tx, _ = build_pusch_transmitter(cfg, num_users=eval_num_users)
@@ -329,163 +332,23 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
                 done = ", ".join(f"{x:g}" for x in sorted(completed_ebno))
                 print(f"[EVAL] resuming num_users={eval_num_users}; completed Eb/N0 points: {done}")
         except Exception as exc:
-            print(f"[EVAL] ignoring unreadable partial curves {curves_path}: {exc!r}")
+                print(f"[EVAL] ignoring unreadable partial curves {curves_path}: {exc!r}")
 
     example_saved = False
+    stop_requested = False
 
-    for ebno_db in ebno_grid:
-        if float(ebno_db) in completed_ebno:
-            print(f"[EVAL] reusing completed Eb/N0={ebno_db:g} dB for num_users={eval_num_users}")
-            continue
+    def _request_stop(signum: int, _frame: Any) -> None:
+        nonlocal stop_requested
+        stop_requested = True
+        print(f"[EVAL] received signal {signum}; will save completed Eb/N0 points and stop after current batch.")
 
-        agg: dict[str, dict[str, float | int]] = {
-            receiver_name: _init_counter()
-            for receiver_name in enabled_receivers
-        }
-
-        for batch_idx in range(max_num_batches):
-            batch = _make_eval_batch(
-                tx=tx,
-                channel=channel,
-                cfg=cfg,
-                batch_size=eval_batch_size,
-                ebno_db=ebno_db,
-            )
-            micro_batches = _iter_eval_microbatches(batch, receiver_microbatch_size)
-            collect_example = not example_saved and bool(get_cfg(cfg, "evaluation.save_example_batch", True))
-            example_classical_h_hats: dict[str, tf.Tensor] = {}
-            example_h_hat_prop: tf.Tensor | None = None
-            example_h_ls: tf.Tensor | None = None
-
-            for receiver_name, estimator_block in classical_estimators.items():
-                h_parts: list[tf.Tensor] = []
-                nmse_num = 0.0
-                nmse_den = 0.0
-                for micro_batch in micro_batches:
-                    h_hat_base, _ = _call_channel_estimator(estimator_block, micro_batch["y"], micro_batch["no"])
-                    b_hat, crc = call_receiver(classical_receivers[receiver_name], micro_batch["y"], micro_batch["no"])
-                    _update_error_counters(agg[receiver_name], micro_batch["b"], b_hat, crc)
-                    num, den = _nmse_components(micro_batch["h"], h_hat_base)
-                    nmse_num += num
-                    nmse_den += den
-                    if collect_example:
-                        h_parts.append(h_hat_base)
-                agg[receiver_name]["nmse_sum"] = float(agg[receiver_name]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
-                agg[receiver_name]["num_nmse_batches"] = int(agg[receiver_name]["num_nmse_batches"]) + 1
-                agg[receiver_name]["num_batches_run"] = int(agg[receiver_name]["num_batches_run"]) + 1
-                if collect_example:
-                    concatenated = _safe_concat(h_parts)
-                    if concatenated is not None:
-                        example_classical_h_hats[receiver_name] = concatenated
-
-            if proposed_rx is not None:
-                h_prop_parts: list[tf.Tensor] = []
-                h_ls_parts: list[tf.Tensor] = []
-                nmse_num = 0.0
-                nmse_den = 0.0
-                for micro_batch in micro_batches:
-                    h_hat_prop, _, h_ls, _ = estimator.estimate_with_ls(micro_batch["y"], micro_batch["no"], training=False)
-                    b_hat_prop, crc_prop = call_receiver(proposed_rx, micro_batch["y"], micro_batch["no"])
-                    _update_error_counters(agg[PROPOSED_RECEIVER], micro_batch["b"], b_hat_prop, crc_prop)
-                    num, den = _nmse_components(micro_batch["h"], h_hat_prop)
-                    nmse_num += num
-                    nmse_den += den
-                    if collect_example:
-                        h_prop_parts.append(h_hat_prop)
-                        h_ls_parts.append(h_ls)
-                agg[PROPOSED_RECEIVER]["nmse_sum"] = float(agg[PROPOSED_RECEIVER]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
-                agg[PROPOSED_RECEIVER]["num_nmse_batches"] = int(agg[PROPOSED_RECEIVER]["num_nmse_batches"]) + 1
-                agg[PROPOSED_RECEIVER]["num_batches_run"] = int(agg[PROPOSED_RECEIVER]["num_batches_run"]) + 1
-                if collect_example:
-                    example_h_hat_prop = _safe_concat(h_prop_parts)
-                    example_h_ls = _safe_concat(h_ls_parts)
-
-            if perfect_rx is not None:
-                for micro_batch in micro_batches:
-                    b_hat_perf, crc_perf = call_receiver(perfect_rx, micro_batch["y"], micro_batch["no"], h=micro_batch["h"])
-                    _update_error_counters(agg[PERFECT_RECEIVER], micro_batch["b"], b_hat_perf, crc_perf)
-                agg[PERFECT_RECEIVER]["num_nmse_batches"] = int(agg[PERFECT_RECEIVER]["num_nmse_batches"]) + 1
-                agg[PERFECT_RECEIVER]["num_batches_run"] = int(agg[PERFECT_RECEIVER]["num_batches_run"]) + 1
-
-            if collect_example:
-                example_payload: dict[str, Any] = {
-                    "h_true": np.asarray(batch["h"].numpy()),
-                    "y": np.asarray(batch["y"].numpy()),
-                    "ebno_db": np.asarray([ebno_db]),
-                }
-                if "baseline_ls_lmmse" in example_classical_h_hats:
-                    example_payload["h_ls_linear"] = np.asarray(example_classical_h_hats["baseline_ls_lmmse"].numpy())
-                elif example_h_ls is not None:
-                    example_payload["h_ls_linear"] = np.asarray(example_h_ls.numpy())
-                if "baseline_ls_timeavg_lmmse" in example_classical_h_hats:
-                    example_payload["h_ls_timeavg"] = np.asarray(example_classical_h_hats["baseline_ls_timeavg_lmmse"].numpy())
-                if "baseline_ls_2dlmmse_lmmse" in example_classical_h_hats:
-                    example_payload["h_ls_2dlmmse"] = np.asarray(example_classical_h_hats["baseline_ls_2dlmmse_lmmse"].numpy())
-                if "baseline_ddcpe_ls_lmmse" in example_classical_h_hats:
-                    example_payload["h_ddcpe_ls"] = np.asarray(example_classical_h_hats["baseline_ddcpe_ls_lmmse"].numpy())
-                if example_h_hat_prop is not None:
-                    example_payload["h_prop"] = np.asarray(example_h_hat_prop.numpy())
-                np.savez_compressed(paths["artifacts"] / "channel_example.npz", **example_payload)
-                example_saved = True
-
-            if _should_stop(
-                agg=agg,
-                stopping_receivers=[r for r in stopping_receivers if r in agg],
-                batches_run=batch_idx + 1,
-                min_num_batches=min_num_batches,
-                max_num_batches=max_num_batches,
-                target_block_errors=target_block_errors,
-            ):
-                break
-
-        for receiver_name in enabled_receivers:
-            counter = agg[receiver_name]
-            num_bits = int(counter["num_bits"])
-            num_blocks = int(counter["num_blocks"])
-            bit_errors = int(counter["bit_errors"])
-            block_errors = int(counter["block_errors"])
-            num_nmse_batches = int(counter["num_nmse_batches"])
-
-            row = {
-                "receiver": receiver_name,
-                "num_users": eval_num_users,
-                "ebno_db": ebno_db,
-                "ber": float(bit_errors / num_bits) if num_bits > 0 else np.nan,
-                "bler": float(block_errors / num_blocks) if num_blocks > 0 else np.nan,
-                "nmse": float(counter["nmse_sum"] / num_nmse_batches) if num_nmse_batches > 0 else np.nan,
-                "bit_errors": bit_errors,
-                "num_bits": num_bits,
-                "block_errors": block_errors,
-                "num_blocks": num_blocks,
-                "num_batches_run": int(counter["num_batches_run"]),
-                "reliable_ber": bool(bit_errors >= reliable_min_bit_errors),
-                "reliable_bler": bool(block_errors >= reliable_min_block_errors),
-            }
-            rows.append(row)
-            print(
-                f"[EVAL] receiver={receiver_name:>24s} "
-                f"Eb/N0={ebno_db:>4.1f} dB "
-                f"BER={row['ber']:.5e} "
-                f"BLER={row['bler']:.5e} "
-                f"NMSE={row['nmse']:.5e} "
-                f"bit_err={bit_errors:>6d}/{num_bits:<8d} "
-                f"blk_err={block_errors:>5d}/{num_blocks:<6d} "
-                f"batches={int(counter['num_batches_run']):>4d}"
-            )
-
-        pd.DataFrame(rows).to_csv(curves_path, index=False)
-        save_json(
-            {
-                "num_users": int(eval_num_users),
-                "completed_ebno_db": sorted(float(x) for x in completed_ebno | {float(ebno_db)}),
-                "curves_csv": str(curves_path),
-                "evaluation_complete": False,
-            },
-            eval_state_path,
-        )
-
-    df = pd.DataFrame(rows)
-    df.to_csv(curves_path, index=False)
+    previous_handlers: dict[int, Any] = {}
+    for sig in (signal.SIGTERM, signal.SIGINT):
+        try:
+            previous_handlers[sig] = signal.getsignal(sig)
+            signal.signal(sig, _request_stop)
+        except Exception:
+            pass
 
     eval_cfg = {
         "min_num_batches_per_point": min_num_batches,
@@ -495,6 +358,215 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         "reliable_min_bit_errors": reliable_min_bit_errors,
         "stopping_receivers": stopping_receivers,
     }
+
+    def _save_eval_state(
+        *,
+        complete: bool,
+        reason: str,
+        completed: set[float],
+        current_ebno_db: float | None = None,
+        partial_batches_run: int | None = None,
+    ) -> None:
+        payload: dict[str, Any] = {
+            "num_users": int(eval_num_users),
+            "completed_ebno_db": sorted(float(x) for x in completed),
+            "curves_csv": str(curves_path),
+            "evaluation_complete": bool(complete),
+            "save_reason": reason,
+            "checkpoint_path": str(checkpoint_path) if checkpoint_path is not None else None,
+            "evaluation_parameters": {
+                "batch_size_eval": int(eval_batch_size),
+                "receiver_microbatch_size": int(receiver_microbatch_size),
+                "seed": int(cfg["system"]["seed"]),
+                **eval_cfg,
+            },
+        }
+        if current_ebno_db is not None:
+            payload["current_ebno_db"] = float(current_ebno_db)
+        if partial_batches_run is not None:
+            payload["partial_batches_run"] = int(partial_batches_run)
+        if complete:
+            payload["summary_path"] = str(paths["metrics"] / "evaluation_summary.json")
+        save_json(payload, eval_state_path)
+
+    try:
+        for ebno_db in ebno_grid:
+            if float(ebno_db) in completed_ebno:
+                print(f"[EVAL] reusing completed Eb/N0={ebno_db:g} dB for num_users={eval_num_users}")
+                continue
+
+            agg: dict[str, dict[str, float | int]] = {
+                receiver_name: _init_counter()
+                for receiver_name in enabled_receivers
+            }
+            point_interrupted = False
+            batches_completed = 0
+
+            for batch_idx in range(max_num_batches):
+                batch = _make_eval_batch(
+                    tx=tx,
+                    channel=channel,
+                    cfg=cfg,
+                    batch_size=eval_batch_size,
+                    ebno_db=ebno_db,
+                )
+                micro_batches = _iter_eval_microbatches(batch, receiver_microbatch_size)
+                collect_example = not example_saved and bool(get_cfg(cfg, "evaluation.save_example_batch", True))
+                example_classical_h_hats: dict[str, tf.Tensor] = {}
+                example_h_hat_prop: tf.Tensor | None = None
+                example_h_ls: tf.Tensor | None = None
+
+                for receiver_name, estimator_block in classical_estimators.items():
+                    h_parts: list[tf.Tensor] = []
+                    nmse_num = 0.0
+                    nmse_den = 0.0
+                    for micro_batch in micro_batches:
+                        h_hat_base, _ = _call_channel_estimator(estimator_block, micro_batch["y"], micro_batch["no"])
+                        b_hat, crc = call_receiver(classical_receivers[receiver_name], micro_batch["y"], micro_batch["no"])
+                        _update_error_counters(agg[receiver_name], micro_batch["b"], b_hat, crc)
+                        num, den = _nmse_components(micro_batch["h"], h_hat_base)
+                        nmse_num += num
+                        nmse_den += den
+                        if collect_example:
+                            h_parts.append(h_hat_base)
+                    agg[receiver_name]["nmse_sum"] = float(agg[receiver_name]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
+                    agg[receiver_name]["num_nmse_batches"] = int(agg[receiver_name]["num_nmse_batches"]) + 1
+                    agg[receiver_name]["num_batches_run"] = int(agg[receiver_name]["num_batches_run"]) + 1
+                    if collect_example:
+                        concatenated = _safe_concat(h_parts)
+                        if concatenated is not None:
+                            example_classical_h_hats[receiver_name] = concatenated
+
+                if proposed_rx is not None:
+                    h_prop_parts: list[tf.Tensor] = []
+                    h_ls_parts: list[tf.Tensor] = []
+                    nmse_num = 0.0
+                    nmse_den = 0.0
+                    for micro_batch in micro_batches:
+                        h_hat_prop, _, h_ls, _ = estimator.estimate_with_ls(micro_batch["y"], micro_batch["no"], training=False)
+                        b_hat_prop, crc_prop = call_receiver(proposed_rx, micro_batch["y"], micro_batch["no"])
+                        _update_error_counters(agg[PROPOSED_RECEIVER], micro_batch["b"], b_hat_prop, crc_prop)
+                        num, den = _nmse_components(micro_batch["h"], h_hat_prop)
+                        nmse_num += num
+                        nmse_den += den
+                        if collect_example:
+                            h_prop_parts.append(h_hat_prop)
+                            h_ls_parts.append(h_ls)
+                    agg[PROPOSED_RECEIVER]["nmse_sum"] = float(agg[PROPOSED_RECEIVER]["nmse_sum"]) + float(nmse_num / max(nmse_den, 1e-9))
+                    agg[PROPOSED_RECEIVER]["num_nmse_batches"] = int(agg[PROPOSED_RECEIVER]["num_nmse_batches"]) + 1
+                    agg[PROPOSED_RECEIVER]["num_batches_run"] = int(agg[PROPOSED_RECEIVER]["num_batches_run"]) + 1
+                    if collect_example:
+                        example_h_hat_prop = _safe_concat(h_prop_parts)
+                        example_h_ls = _safe_concat(h_ls_parts)
+
+                if perfect_rx is not None:
+                    for micro_batch in micro_batches:
+                        b_hat_perf, crc_perf = call_receiver(perfect_rx, micro_batch["y"], micro_batch["no"], h=micro_batch["h"])
+                        _update_error_counters(agg[PERFECT_RECEIVER], micro_batch["b"], b_hat_perf, crc_perf)
+                    agg[PERFECT_RECEIVER]["num_nmse_batches"] = int(agg[PERFECT_RECEIVER]["num_nmse_batches"]) + 1
+                    agg[PERFECT_RECEIVER]["num_batches_run"] = int(agg[PERFECT_RECEIVER]["num_batches_run"]) + 1
+
+                if collect_example:
+                    example_payload: dict[str, Any] = {
+                        "h_true": np.asarray(batch["h"].numpy()),
+                        "y": np.asarray(batch["y"].numpy()),
+                        "ebno_db": np.asarray([ebno_db]),
+                    }
+                    if "baseline_ls_lmmse" in example_classical_h_hats:
+                        example_payload["h_ls_linear"] = np.asarray(example_classical_h_hats["baseline_ls_lmmse"].numpy())
+                    elif example_h_ls is not None:
+                        example_payload["h_ls_linear"] = np.asarray(example_h_ls.numpy())
+                    if "baseline_ls_timeavg_lmmse" in example_classical_h_hats:
+                        example_payload["h_ls_timeavg"] = np.asarray(example_classical_h_hats["baseline_ls_timeavg_lmmse"].numpy())
+                    if "baseline_ls_2dlmmse_lmmse" in example_classical_h_hats:
+                        example_payload["h_ls_2dlmmse"] = np.asarray(example_classical_h_hats["baseline_ls_2dlmmse_lmmse"].numpy())
+                    if "baseline_ddcpe_ls_lmmse" in example_classical_h_hats:
+                        example_payload["h_ddcpe_ls"] = np.asarray(example_classical_h_hats["baseline_ddcpe_ls_lmmse"].numpy())
+                    if example_h_hat_prop is not None:
+                        example_payload["h_prop"] = np.asarray(example_h_hat_prop.numpy())
+                    np.savez_compressed(paths["artifacts"] / "channel_example.npz", **example_payload)
+                    example_saved = True
+
+                batches_completed = batch_idx + 1
+                if stop_requested:
+                    point_interrupted = True
+                    break
+
+                if _should_stop(
+                    agg=agg,
+                    stopping_receivers=[r for r in stopping_receivers if r in agg],
+                    batches_run=batch_idx + 1,
+                    min_num_batches=min_num_batches,
+                    max_num_batches=max_num_batches,
+                    target_block_errors=target_block_errors,
+                ):
+                    break
+
+            if point_interrupted:
+                pd.DataFrame(rows).to_csv(curves_path, index=False)
+                _save_eval_state(
+                    complete=False,
+                    reason="signal",
+                    completed=completed_ebno,
+                    current_ebno_db=float(ebno_db),
+                    partial_batches_run=batches_completed,
+                )
+                print("[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.")
+                return {
+                    "output_dir": str(paths["root"]),
+                    "curves_path": str(curves_path),
+                    "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
+                    "evaluation_complete": False,
+                    "completed_ebno_db": sorted(float(x) for x in completed_ebno),
+                }
+
+            for receiver_name in enabled_receivers:
+                counter = agg[receiver_name]
+                num_bits = int(counter["num_bits"])
+                num_blocks = int(counter["num_blocks"])
+                bit_errors = int(counter["bit_errors"])
+                block_errors = int(counter["block_errors"])
+                num_nmse_batches = int(counter["num_nmse_batches"])
+
+                row = {
+                    "receiver": receiver_name,
+                    "num_users": eval_num_users,
+                    "ebno_db": ebno_db,
+                    "ber": float(bit_errors / num_bits) if num_bits > 0 else np.nan,
+                    "bler": float(block_errors / num_blocks) if num_blocks > 0 else np.nan,
+                    "nmse": float(counter["nmse_sum"] / num_nmse_batches) if num_nmse_batches > 0 else np.nan,
+                    "bit_errors": bit_errors,
+                    "num_bits": num_bits,
+                    "block_errors": block_errors,
+                    "num_blocks": num_blocks,
+                    "num_batches_run": int(counter["num_batches_run"]),
+                    "reliable_ber": bool(bit_errors >= reliable_min_bit_errors),
+                    "reliable_bler": bool(block_errors >= reliable_min_block_errors),
+                }
+                rows.append(row)
+                print(
+                    f"[EVAL] receiver={receiver_name:>24s} "
+                    f"Eb/N0={ebno_db:>4.1f} dB "
+                    f"BER={row['ber']:.5e} "
+                    f"BLER={row['bler']:.5e} "
+                    f"NMSE={row['nmse']:.5e} "
+                    f"bit_err={bit_errors:>6d}/{num_bits:<8d} "
+                    f"blk_err={block_errors:>5d}/{num_blocks:<6d} "
+                    f"batches={int(counter['num_batches_run']):>4d}"
+                )
+
+            completed_ebno.add(float(ebno_db))
+            pd.DataFrame(rows).to_csv(curves_path, index=False)
+            _save_eval_state(complete=False, reason="periodic", completed=completed_ebno)
+    finally:
+        for sig, handler in previous_handlers.items():
+            try:
+                signal.signal(sig, handler)
+            except Exception:
+                pass
+
+    df = pd.DataFrame(rows)
+    df.to_csv(curves_path, index=False)
     summary = _build_summary(
         df=df,
         checkpoint_path=str(checkpoint_path) if checkpoint_path is not None else None,
@@ -503,20 +575,16 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         eval_cfg=eval_cfg,
     )
     summary["curves_csv"] = str(curves_path)
+    summary["batch_size_eval"] = int(eval_batch_size)
+    summary["receiver_microbatch_size"] = int(receiver_microbatch_size)
+    summary["seed"] = int(cfg["system"]["seed"])
     save_json(summary, paths["metrics"] / "evaluation_summary.json")
-    save_json(
-        {
-            "num_users": int(eval_num_users),
-            "completed_ebno_db": [float(x) for x in ebno_grid],
-            "curves_csv": str(curves_path),
-            "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
-            "evaluation_complete": True,
-        },
-        eval_state_path,
-    )
+    _save_eval_state(complete=True, reason="final", completed=set(float(x) for x in ebno_grid))
 
     return {
         "output_dir": str(paths["root"]),
         "curves_path": str(curves_path),
         "summary_path": str(paths["metrics"] / "evaluation_summary.json"),
+        "evaluation_complete": True,
+        "completed_ebno_db": [float(x) for x in ebno_grid],
     }

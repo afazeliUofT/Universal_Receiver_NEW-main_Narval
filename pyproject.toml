@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 name = "upair5g"
 version = "0.1.0"
 description = "UPAIR-5G: Universal Prompted Axial In-context Receiver for 5G NR PUSCH"
-readme = "README_COMPREHENSIVE_MU32.md"
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 

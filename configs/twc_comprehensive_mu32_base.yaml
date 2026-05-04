@@ -3,10 +3,14 @@ experiment:
   output_root: TWC_plots_comprehensive/runs
 system:
   seed: 7
+  seeds:
+  - 7
+  - 17
+  - 29
   precision: single
   graph_mode: true
-  batch_size_train: 64
-  batch_size_eval: 16
+  batch_size_train: 96
+  batch_size_eval: 128
   ebno_db_train_min: 0.0
   ebno_db_train_max: 18.0
   ebno_db_eval:
@@ -101,12 +105,13 @@ model:
   use_noise_feature: true
   use_pilot_mask_feature: true
 training:
-  steps: 5000
+  steps: 10000
   resume: true
-  checkpoint_every: 25
+  checkpoint_every: 100
+  max_resume_checkpoints: 3
   val_steps: 64
   log_every: 100
-  eval_every: 250
+  eval_every: 500
   learning_rate: 0.0003
   weight_decay: 1.0e-05
   nmse_loss_weight: 0.1

@@ -312,9 +312,15 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
 
     step_var = tf.Variable(0, dtype=tf.int64, trainable=False, name="training_step")
     best_val_var = tf.Variable(np.inf, dtype=tf.float32, trainable=False, name="best_val")
+    last_loss_var = tf.Variable(np.nan, dtype=tf.float32, trainable=False, name="last_loss")
+    last_nmse_prop_var = tf.Variable(np.nan, dtype=tf.float32, trainable=False, name="last_nmse_prop")
+    last_nmse_ls_var = tf.Variable(np.nan, dtype=tf.float32, trainable=False, name="last_nmse_ls")
     training_ckpt = tf.train.Checkpoint(
         step=step_var,
         best_val=best_val_var,
+        last_loss=last_loss_var,
+        last_nmse_prop=last_nmse_prop_var,
+        last_nmse_ls=last_nmse_ls_var,
         optimizer=optimizer,
         estimator=estimator,
     )
@@ -336,6 +342,7 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
     history: list[dict[str, float]] = []
     best_val = float("inf")
     start_step = 1
+    last_metrics: dict[str, float] | None = None
 
     if resume_enabled and manager.latest_checkpoint:
         status = training_ckpt.restore(manager.latest_checkpoint)
@@ -343,6 +350,14 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
         start_step = int(step_var.numpy()) + 1
         best_val = float(best_val_var.numpy())
         history = _load_history(history_path)
+        if history:
+            last_metrics = dict(history[-1])
+        else:
+            last_metrics = {
+                "loss": float(last_loss_var.numpy()),
+                "nmse_prop": float(last_nmse_prop_var.numpy()),
+                "nmse_ls": float(last_nmse_ls_var.numpy()),
+            }
         print(
             f"[TRAIN] resumed from {manager.latest_checkpoint} "
             f"at completed_step={start_step - 1} best_val={best_val:.6g}"
@@ -380,6 +395,23 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
                 "latest_training_state_checkpoint": str(latest_checkpoint),
                 "resume_enabled": bool(resume_enabled),
                 "save_reason": reason,
+                "last_metrics": last_metrics,
+                "checkpoint_metrics": {
+                    "last_loss": float(last_loss_var.numpy()),
+                    "last_nmse_prop": float(last_nmse_prop_var.numpy()),
+                    "last_nmse_ls": float(last_nmse_ls_var.numpy()),
+                },
+                "training_parameters": {
+                    "batch_size_train": int(cfg["system"]["batch_size_train"]),
+                    "batch_size_eval": int(cfg["system"]["batch_size_eval"]),
+                    "learning_rate": float(cfg["training"]["learning_rate"]),
+                    "weight_decay": float(cfg["training"]["weight_decay"]),
+                    "nmse_loss_weight": float(nmse_loss_weight),
+                    "grad_clip_norm": float(grad_clip_norm),
+                    "eval_every": int(eval_every),
+                    "val_steps": int(cfg["training"]["val_steps"]),
+                    "seed": int(cfg["system"]["seed"]),
+                },
             },
             train_state_path,
         )
@@ -433,6 +465,10 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
                     print(f"[TRAIN] saved new best weights at step={step} val_nmse={best_val:.6g}")
 
             history.append(row)
+            last_metrics = dict(row)
+            last_loss_var.assign(float(row["loss"]))
+            last_nmse_prop_var.assign(float(row["nmse_prop"]))
+            last_nmse_ls_var.assign(float(row["nmse_ls"]))
             last_completed_step = step
             current_step = last_completed_step
 
@@ -478,6 +514,12 @@ def train_model(cfg: dict[str, Any]) -> dict[str, Any]:
             "training_complete": bool(training_complete),
             "latest_step": int(last_completed_step),
             "total_steps": int(total_steps),
+            "best_val": float(best_val),
+            "batch_size_train": int(cfg["system"]["batch_size_train"]),
+            "batch_size_eval": int(cfg["system"]["batch_size_eval"]),
+            "learning_rate": float(cfg["training"]["learning_rate"]),
+            "weight_decay": float(cfg["training"]["weight_decay"]),
+            "seed": int(cfg["system"]["seed"]),
         },
         paths["metrics"] / "model_summary.json",
     )

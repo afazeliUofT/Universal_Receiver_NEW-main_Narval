@@ -1,3 +1,0 @@
-[MEMPROBE] case_index=manual dmrs_case=1dmrs variant=deep_d96_b6_r2 batch_size=128 num_rx_ant=16 steps=350 eval_every=175 val_steps=16
-[TRAIN] starting from scratch
-[TRAIN] saved resumable state at step=0 reason=resource_exhausted: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/memory_probe/rx16/bs128/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-0

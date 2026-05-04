@@ -1,6 +1,0 @@
-receiver,num_users,ebno_db,ber,bler,nmse,bit_errors,num_bits,block_errors,num_blocks,num_batches_run,reliable_ber,reliable_bler
-baseline_ls_lmmse,4,0.0,0.3724982683048692,1.0,0.25836306635231365,1049718,2818048,512,512,1,True,True
-baseline_ls_2dlmmse_lmmse,4,0.0,0.37520581622456395,1.0,0.07879197976252092,1057348,2818048,512,512,1,True,True
-baseline_ddcpe_ls_lmmse,4,0.0,0.3725593034611192,1.0,0.25973537525592744,1049890,2818048,512,512,1,True,True
-upair5g_lmmse,4,0.0,0.3706459222837936,1.0,0.25836306635231365,1044498,2818048,512,512,1,True,True
-perfect_csi_lmmse,4,0.0,0.4638938016669695,0.25,0.0,1307275,2818048,128,512,1,True,True

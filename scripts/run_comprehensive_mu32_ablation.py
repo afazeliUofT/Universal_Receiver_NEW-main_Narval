@@ -102,25 +102,49 @@ def _rx_tag(cfg: dict[str, Any]) -> str:
     return f"rx{int(get_cfg(cfg, 'channel.num_rx_ant', 0))}"
 
 
+def _seed_tag(seed: int) -> str:
+    return f"seed{int(seed)}"
+
+
+def _parse_seed_values(base_cfg: dict[str, Any], seed_arg: str | None) -> list[int]:
+    if seed_arg:
+        values = [int(x.strip()) for x in seed_arg.split(",") if x.strip()]
+    else:
+        configured = get_cfg(base_cfg, "system.seeds", None)
+        if configured is None:
+            configured = [get_cfg(base_cfg, "system.seed", 7)]
+        if isinstance(configured, str):
+            values = [int(x.strip()) for x in configured.split(",") if x.strip()]
+        elif isinstance(configured, (int, float)):
+            values = [int(configured)]
+        else:
+            values = [int(x) for x in configured]
+    if not values:
+        raise ValueError("At least one seed must be configured.")
+    return values
+
+
 def _case_cfg(base_cfg: dict[str, Any], dmrs_case: str) -> dict[str, Any]:
     if dmrs_case not in DMRS_CASES:
         raise KeyError(f"Unknown DMRS case {dmrs_case}. Available: {sorted(DMRS_CASES)}")
     return _apply_overrides(base_cfg, DMRS_CASES[dmrs_case]["overrides"])
 
 
-def _variant_cfg(base_cfg: dict[str, Any], variant_name: str, dmrs_case: str) -> dict[str, Any]:
+def _variant_cfg(base_cfg: dict[str, Any], variant_name: str, dmrs_case: str, seed: int) -> dict[str, Any]:
     if variant_name not in VARIANTS:
         raise KeyError(f"Unknown variant {variant_name}. Available: {sorted(VARIANTS)}")
     cfg = _case_cfg(base_cfg, dmrs_case)
     cfg = _apply_overrides(cfg, VARIANTS[variant_name]["overrides"])
-    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/runs_{_rx_tag(cfg)}/{dmrs_case}")
+    set_cfg(cfg, "system.seed", int(seed))
+    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/runs_{_rx_tag(cfg)}/{_seed_tag(seed)}/{dmrs_case}")
     set_cfg(cfg, "experiment.name", variant_name)
     return cfg
 
 
 def _eval_cfg(train_cfg: dict[str, Any], variant_name: str, dmrs_case: str, num_users: int) -> dict[str, Any]:
     cfg = copy.deepcopy(train_cfg)
-    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/eval_runs_{_rx_tag(cfg)}/{dmrs_case}")
+    seed = int(get_cfg(cfg, "system.seed", 0))
+    set_cfg(cfg, "experiment.output_root", f"TWC_plots_comprehensive/eval_runs_{_rx_tag(cfg)}/{_seed_tag(seed)}/{dmrs_case}")
     set_cfg(cfg, "experiment.name", f"{variant_name}_u{num_users}")
     set_cfg(cfg, "multiuser.fixed_num_users", int(num_users))
     set_cfg(cfg, "evaluation.save_example_batch", variant_name == "main_d96_b4_r2" and num_users == 4)
@@ -170,6 +194,7 @@ def _copy_curves(
     dmrs_case: str,
     dmrs_label: str,
     num_users: int,
+    seed: int,
 ) -> pd.DataFrame:
     df = pd.read_csv(result["curves_path"])
     df["dmrs_case"] = dmrs_case
@@ -177,6 +202,7 @@ def _copy_curves(
     df["variant"] = variant_name
     df["variant_label"] = label
     df["num_users"] = int(num_users)
+    df["seed"] = int(seed)
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_csv, index=False)
     return df
@@ -187,6 +213,7 @@ def main() -> None:
     parser.add_argument("--config", default=str(PROJECT_ROOT / "configs" / "twc_comprehensive_mu32_base.yaml"))
     parser.add_argument("--variants", default="main_d96_b4_r2,shallow_d96_b2_r2,deep_d96_b6_r2,narrow_d64_b4_r2,wide_d128_b4_r2,mlpwide_d96_b4_r4")
     parser.add_argument("--dmrs-cases", default="1dmrs,2dmrs", help="Comma-separated DMRS cases to run. Default: 1dmrs,2dmrs.")
+    parser.add_argument("--seeds", default=None, help="Comma-separated random seeds. Defaults to system.seeds in the config.")
     parser.add_argument("--eval-only", action="store_true", help="Skip training and reuse existing checkpoints.")
     parser.add_argument("--no-global-summary", action="store_true", help="Skip shared combined CSV/manifest writes. Use this for parallel Slurm array workers.")
     parser.add_argument("--force", action="store_true", help="Re-run training/evaluation even if resumable outputs already exist.")
@@ -198,6 +225,7 @@ def main() -> None:
     base_cfg = load_config(args.config)
     variant_names = [name.strip() for name in args.variants.split(",") if name.strip()]
     dmrs_cases = [name.strip() for name in args.dmrs_cases.split(",") if name.strip()]
+    seed_values = _parse_seed_values(base_cfg, args.seeds)
     eval_num_users = [int(x) for x in get_cfg(base_cfg, "multiuser.eval_num_users", [1, 2, 3, 4])]
 
     rx_tag = _rx_tag(base_cfg)
@@ -210,70 +238,88 @@ def main() -> None:
         "num_rx_ant": int(get_cfg(base_cfg, "channel.num_rx_ant", 0)),
         "dmrs_cases": {},
         "eval_num_users": eval_num_users,
+        "seeds": seed_values,
     }
 
-    for dmrs_case in dmrs_cases:
-        if dmrs_case not in DMRS_CASES:
-            raise KeyError(f"Unknown DMRS case {dmrs_case}. Available: {sorted(DMRS_CASES)}")
-        dmrs_label = str(DMRS_CASES[dmrs_case]["label"])
-        manifest["dmrs_cases"][dmrs_case] = {
-            "label": dmrs_label,
-            "overrides": DMRS_CASES[dmrs_case]["overrides"],
-            "variants": {},
-        }
+    for seed in seed_values:
+        for dmrs_case in dmrs_cases:
+            if dmrs_case not in DMRS_CASES:
+                raise KeyError(f"Unknown DMRS case {dmrs_case}. Available: {sorted(DMRS_CASES)}")
+            dmrs_label = str(DMRS_CASES[dmrs_case]["label"])
+            manifest["dmrs_cases"].setdefault(
+                dmrs_case,
+                {
+                    "label": dmrs_label,
+                    "overrides": DMRS_CASES[dmrs_case]["overrides"],
+                    "variants": {},
+                },
+            )
 
-        for variant_name in variant_names:
-            train_cfg = _variant_cfg(base_cfg, variant_name, dmrs_case)
-            label = str(VARIANTS[variant_name]["label"])
+            for variant_name in variant_names:
+                train_cfg = _variant_cfg(base_cfg, variant_name, dmrs_case, seed)
+                label = str(VARIANTS[variant_name]["label"])
 
-            if args.eval_only:
-                checkpoint_path = _checkpoint_path(train_cfg)
-                if not checkpoint_path.exists():
-                    raise FileNotFoundError(f"--eval-only requested but checkpoint is missing: {checkpoint_path}")
-                train_result = {
-                    "checkpoint_path": str(checkpoint_path),
-                    "model_summary_path": str(_checkpoint_path(train_cfg).parents[1] / "metrics" / "model_summary.json"),
-                    "training_complete": True,
-                }
-            else:
-                if args.force:
-                    set_cfg(train_cfg, "training.resume", False)
-                train_result = train_model(train_cfg)
-                if not bool(train_result.get("training_complete", True)):
-                    raise SystemExit(
-                        "Training stopped after saving resumable state. "
-                        "Resubmit the same Slurm array task to continue from the saved checkpoint."
-                    )
-                checkpoint_path = Path(train_result["checkpoint_path"])
-
-            model_summary_path = Path(str(train_result.get("model_summary_path", "")))
-            model_summary = _read_json(model_summary_path)
-            manifest["dmrs_cases"][dmrs_case]["variants"][variant_name] = {
-                "label": label,
-                "checkpoint_path": str(checkpoint_path),
-                "model_summary": model_summary,
-                "curves": {},
-            }
-
-            for num_users in eval_num_users:
-                _release_tensorflow_state(f"evaluation {dmrs_case}/{variant_name}/u{num_users}")
-                cfg_eval = _eval_cfg(train_cfg, variant_name, dmrs_case, num_users)
-                out_csv = csv_dir / dmrs_case / f"{variant_name}_u{num_users}_curves.csv"
-                summary_path = _summary_path(cfg_eval)
-                if out_csv.exists() and not args.force:
-                    print(f"[COMPREHENSIVE] reusing existing evaluation CSV {out_csv}")
-                    frame = pd.read_csv(out_csv)
+                if args.eval_only:
+                    checkpoint_path = _checkpoint_path(train_cfg)
+                    if not checkpoint_path.exists():
+                        raise FileNotFoundError(f"--eval-only requested but checkpoint is missing: {checkpoint_path}")
+                    train_result = {
+                        "checkpoint_path": str(checkpoint_path),
+                        "model_summary_path": str(_checkpoint_path(train_cfg).parents[1] / "metrics" / "model_summary.json"),
+                        "training_complete": True,
+                    }
                 else:
                     if args.force:
-                        set_cfg(cfg_eval, "evaluation.force", True)
-                    result = evaluate_model(cfg_eval, checkpoint_path=str(checkpoint_path), num_users=num_users)
-                    summary_path = Path(str(result["summary_path"]))
-                    frame = _copy_curves(result, out_csv, variant_name, label, dmrs_case, dmrs_label, num_users)
-                all_frames.append(frame)
-                manifest["dmrs_cases"][dmrs_case]["variants"][variant_name]["curves"][str(num_users)] = {
-                    "csv": str(out_csv),
-                    "summary": str(summary_path),
+                        set_cfg(train_cfg, "training.resume", False)
+                    train_result = train_model(train_cfg)
+                    if not bool(train_result.get("training_complete", True)):
+                        raise SystemExit(
+                            "Training stopped after saving resumable state. "
+                            "Resubmit the same Slurm array task to continue from the saved checkpoint."
+                        )
+                    checkpoint_path = Path(train_result["checkpoint_path"])
+
+                model_summary_path = Path(str(train_result.get("model_summary_path", "")))
+                model_summary = _read_json(model_summary_path)
+                variant_manifest = manifest["dmrs_cases"][dmrs_case]["variants"].setdefault(
+                    variant_name,
+                    {
+                        "label": label,
+                        "seed_runs": {},
+                    },
+                )
+                variant_manifest["seed_runs"][str(seed)] = {
+                    "checkpoint_path": str(checkpoint_path),
+                    "model_summary": model_summary,
+                    "curves": {},
                 }
+
+                for num_users in eval_num_users:
+                    _release_tensorflow_state(f"evaluation seed={seed} {dmrs_case}/{variant_name}/u{num_users}")
+                    cfg_eval = _eval_cfg(train_cfg, variant_name, dmrs_case, num_users)
+                    out_csv = csv_dir / _seed_tag(seed) / dmrs_case / f"{variant_name}_u{num_users}_curves.csv"
+                    summary_path = _summary_path(cfg_eval)
+                    if out_csv.exists() and not args.force:
+                        print(f"[COMPREHENSIVE] reusing existing evaluation CSV {out_csv}")
+                        frame = pd.read_csv(out_csv)
+                        if "seed" not in frame.columns:
+                            frame["seed"] = int(seed)
+                    else:
+                        if args.force:
+                            set_cfg(cfg_eval, "evaluation.force", True)
+                        result = evaluate_model(cfg_eval, checkpoint_path=str(checkpoint_path), num_users=num_users)
+                        if not bool(result.get("evaluation_complete", True)):
+                            raise SystemExit(
+                                "Evaluation stopped after saving resumable state. "
+                                "Resubmit the same Slurm array task to continue from the saved evaluation state."
+                            )
+                        summary_path = Path(str(result["summary_path"]))
+                        frame = _copy_curves(result, out_csv, variant_name, label, dmrs_case, dmrs_label, num_users, seed)
+                    all_frames.append(frame)
+                    variant_manifest["seed_runs"][str(seed)]["curves"][str(num_users)] = {
+                        "csv": str(out_csv),
+                        "summary": str(summary_path),
+                    }
 
     if args.no_global_summary:
         print("[COMPREHENSIVE] skipped shared combined CSV/manifest writes for parallel worker mode")

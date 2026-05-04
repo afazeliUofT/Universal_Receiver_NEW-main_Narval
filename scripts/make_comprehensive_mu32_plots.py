@@ -24,6 +24,7 @@ def _csv_dir() -> Path:
 
 CSV_DIR = _csv_dir()
 CURVES_PATH = CSV_DIR / "comprehensive_curves.csv"
+SEED_SUMMARY_PATH = CSV_DIR / "comprehensive_seed_summary.csv"
 MANIFEST_PATH = CSV_DIR / "comprehensive_manifest.json"
 
 RECEIVERS = [
@@ -64,16 +65,31 @@ def _load_manifest() -> dict:
         return json.load(handle)
 
 
+def _metric_col(df: pd.DataFrame, metric: str) -> str:
+    mean_col = f"{metric}_mean"
+    return mean_col if mean_col in df.columns else metric
+
+
 def _plot_receiver(ax: plt.Axes, sub: pd.DataFrame, receiver: str, metric: str) -> None:
     color, linestyle, marker = STYLES[receiver]
     sub = sub.sort_values("ebno_db")
     x = sub["ebno_db"].to_numpy(dtype=float)
-    y = sub[metric].to_numpy(dtype=float)
+    metric_col = _metric_col(sub, metric)
+    y = sub[metric_col].to_numpy(dtype=float)
     mask = np.isfinite(y) & (y > 0.0)
     if not np.any(mask):
         return
     ax.semilogy(x[mask], y[mask], color=color, linestyle=linestyle, linewidth=2.0, label=LABELS[receiver])
+    ci_col = f"{metric}_ci95"
+    if ci_col in sub.columns:
+        ci = sub[ci_col].fillna(0.0).to_numpy(dtype=float)
+        lower = np.maximum(y - ci, np.finfo(float).tiny)
+        upper = np.maximum(y + ci, np.finfo(float).tiny)
+        ax.fill_between(x[mask], lower[mask], upper[mask], color=color, alpha=0.14, linewidth=0.0)
     reliable_col = f"reliable_{metric}"
+    reliable_all_col = f"reliable_{metric}_all_seeds"
+    if reliable_all_col in sub.columns:
+        reliable_col = reliable_all_col
     marker_mask = mask
     if reliable_col in sub:
         marker_mask = mask & sub[reliable_col].fillna(False).to_numpy(dtype=bool)
@@ -126,7 +142,7 @@ def _panel_by_user(df: pd.DataFrame, variant: str, metric: str, receivers: list[
 def _snr_at_target(sub: pd.DataFrame, target: float = 1e-2) -> float | None:
     sub = sub.sort_values("ebno_db")
     x = sub["ebno_db"].to_numpy(dtype=float)
-    y = sub["bler"].to_numpy(dtype=float)
+    y = sub[_metric_col(sub, "bler")].to_numpy(dtype=float)
     for i in range(len(x) - 1):
         y0, y1 = y[i], y[i + 1]
         if y0 >= target >= y1 and y0 > 0.0 and y1 > 0.0:
@@ -158,6 +174,7 @@ def _ablation_summary(df: pd.DataFrame, manifest: dict, dmrs_case: str) -> pd.Da
             panel = df[(df["variant"] == variant) & (df["num_users"] == num_users) & (df["receiver"] == "upair5g_lmmse")]
             if panel.empty:
                 continue
+            nmse_col = _metric_col(panel, "nmse")
             rows.append(
                 {
                     "dmrs_case": dmrs_case,
@@ -167,7 +184,7 @@ def _ablation_summary(df: pd.DataFrame, manifest: dict, dmrs_case: str) -> pd.Da
                     "num_users": num_users,
                     "num_trainable_params": params,
                     "upair_snr_at_1e2": _snr_at_target(panel),
-                    "upair_avg_nmse": float(panel["nmse"].dropna().mean()),
+                    "upair_avg_nmse": float(panel[nmse_col].dropna().mean()),
                 }
             )
     return pd.DataFrame(rows)
@@ -210,7 +227,8 @@ def _dmrs_cases(df: pd.DataFrame, manifest: dict) -> list[tuple[str, str]]:
 def main() -> None:
     if not CURVES_PATH.exists():
         raise FileNotFoundError(f"Missing comprehensive curves CSV: {CURVES_PATH}")
-    df = pd.read_csv(CURVES_PATH)
+    raw_df = pd.read_csv(CURVES_PATH)
+    df = pd.read_csv(SEED_SUMMARY_PATH) if SEED_SUMMARY_PATH.exists() else raw_df
     manifest = _load_manifest()
 
     main_variant = "main_d96_b4_r2"
