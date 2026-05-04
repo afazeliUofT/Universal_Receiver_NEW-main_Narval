@@ -259,19 +259,22 @@ def call_channel(channel: Any, x: tf.Tensor, no: tf.Tensor) -> tuple[tf.Tensor, 
 def call_receiver(receiver: Any, y: tf.Tensor, no: tf.Tensor, h: tf.Tensor | None = None) -> tuple[tf.Tensor, tf.Tensor | None]:
     attempts = []
     if h is None:
+        # Sionna/Keras receivers expect a single inputs object. Trying split
+        # positional tensors first can execute an invalid graph path and spam
+        # TensorFlow transpose warnings before falling back.
         attempts = [
-            lambda: receiver(y, no),
             lambda: receiver([y, no]),
             lambda: receiver((y, no)),
+            lambda: receiver(y, no),
         ]
     else:
         attempts = [
-            lambda: receiver(y, h, no),
             lambda: receiver([y, h, no]),
             lambda: receiver((y, h, no)),
-            lambda: receiver(y, no, h),
             lambda: receiver([y, no, h]),
             lambda: receiver((y, no, h)),
+            lambda: receiver(y, h, no),
+            lambda: receiver(y, no, h),
         ]
     last_err = None
     for attempt in attempts:
