@@ -20,6 +20,8 @@ system:
   - 0
   - 2
   - 4
+  - 6
+  - 8
 multiuser:
   enabled: true
   max_num_users: 4
