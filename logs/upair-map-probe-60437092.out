@@ -1,0 +1,200 @@
+
+==========================================================================================
+num_users=1 custom_detector=True
+tx _upair_num_users: 1
+resource_grid num_tx: 1
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 1)
+pilot RE count per stream: [384.]
+bits shape: (8, 1, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 1, 5504)
+crc shape: (8, 1)
+crc matrix:
+[[1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]]
+per-column pass rate: [1.]
+BLER: 0.0
+BER: 0.0
+
+==========================================================================================
+num_users=1 custom_detector=False
+tx _upair_num_users: 1
+resource_grid num_tx: 1
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 1)
+pilot RE count per stream: [384.]
+bits shape: (8, 1, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 1, 5504)
+crc shape: (8, 1)
+crc matrix:
+[[1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]]
+per-column pass rate: [1.]
+BLER: 0.0
+BER: 0.0
+
+==========================================================================================
+num_users=2 custom_detector=True
+tx _upair_num_users: 2
+resource_grid num_tx: 2
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 2)
+pilot RE count per stream: [384. 384.]
+bits shape: (8, 2, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 2, 5504)
+crc shape: (8, 2)
+crc matrix:
+[[0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]]
+per-column pass rate: [0. 1.]
+BLER: 0.5
+BER: 0.4082144796848297
+
+==========================================================================================
+num_users=2 custom_detector=False
+tx _upair_num_users: 2
+resource_grid num_tx: 2
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 2)
+pilot RE count per stream: [384. 384.]
+bits shape: (8, 2, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 2, 5504)
+crc shape: (8, 2)
+crc matrix:
+[[0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]
+ [0 1]]
+per-column pass rate: [0. 1.]
+BLER: 0.5
+BER: 0.4067496359348297
+
+==========================================================================================
+num_users=3 custom_detector=True
+tx _upair_num_users: 3
+resource_grid num_tx: 3
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 3)
+pilot RE count per stream: [384. 384. 384.]
+bits shape: (8, 3, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 3, 5504)
+crc shape: (8, 3)
+crc matrix:
+[[0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]]
+per-column pass rate: [0. 1. 1.]
+BLER: 0.3333333134651184
+BER: 0.44674327969551086
+
+==========================================================================================
+num_users=3 custom_detector=False
+tx _upair_num_users: 3
+resource_grid num_tx: 3
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 3)
+pilot RE count per stream: [384. 384. 384.]
+bits shape: (8, 3, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 3, 5504)
+crc shape: (8, 3)
+crc matrix:
+[[0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]
+ [0 1 1]]
+per-column pass rate: [0. 1. 1.]
+BLER: 0.3333333134651184
+BER: 0.4477652609348297
+
+==========================================================================================
+num_users=4 custom_detector=True
+tx _upair_num_users: 4
+resource_grid num_tx: 4
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 4)
+pilot RE count per stream: [384. 384. 384. 384.]
+bits shape: (8, 4, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 4, 5504)
+crc shape: (8, 4)
+crc matrix:
+[[0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]]
+per-column pass rate: [0. 1. 1. 1.]
+BLER: 0.25
+BER: 0.4665016233921051
+
+==========================================================================================
+num_users=4 custom_detector=False
+tx _upair_num_users: 4
+resource_grid num_tx: 4
+resource_grid num_streams_per_tx: 1
+pilot_mask_per_stream shape: (14, 192, 4)
+pilot RE count per stream: [384. 384. 384. 384.]
+bits shape: (8, 4, 5504)
+y shape: (8, 1, 16, 14, 192)
+h shape: (8, 1, 16, 1, 1, 14, 192)
+b_hat shape: (8, 4, 5504)
+crc shape: (8, 4)
+crc matrix:
+[[0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]
+ [0 1 1 1]]
+per-column pass rate: [0. 1. 1. 1.]
+BLER: 0.25
+BER: 0.46709778904914856
