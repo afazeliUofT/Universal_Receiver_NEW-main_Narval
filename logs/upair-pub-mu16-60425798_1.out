@@ -1,0 +1,121 @@
+[SLURM] task=1/12 seed=7 dmrs_case=1dmrs variant=shallow_d96_b2_r2
+Tue May  5 03:27:46 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
+| N/A   29C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/shallow_d96_b2_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=48
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=2/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=4/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=6/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=8/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=10/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=12/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=14/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=16/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=18/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=20/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=22/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=24/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=26/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=28/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=30/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=32/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=34/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=36/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=38/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=40/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=42/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=44/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=46/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=48/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=50/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=52/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=54/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=56/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=58/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=60/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=62/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=64/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=66/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=68/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=70/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=72/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=74/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=76/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=78/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=80/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=82/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=84/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=86/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=88/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=90/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=92/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=94/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=96/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=98/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=100/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=102/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=104/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=106/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=108/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=110/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=112/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=114/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=116/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=118/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=120/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=122/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=124/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=126/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=128/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=130/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=132/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=134/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=136/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=138/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=140/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=142/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=144/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=146/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=148/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=150/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=152/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=154/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=156/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=158/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=160/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=162/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=164/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=166/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=168/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=170/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=172/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=174/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=176/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=178/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=180/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=182/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=184/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=186/512
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=188/512
+[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
+[EVAL] progress num_users=1 Eb/N0=0 dB batches=190/512
+[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

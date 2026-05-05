@@ -15,21 +15,10 @@ system:
   ebno_db_train_min: 0.0
   ebno_db_train_max: 18.0
   ebno_db_eval:
-  - 0
-  - 1
   - 2
-  - 3
   - 4
-  - 5
   - 6
-  - 7
   - 8
-  - 9
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
 multiuser:
   enabled: true
   max_num_users: 4
@@ -120,11 +109,11 @@ training:
   checkpoint_name: best.weights.h5
 evaluation:
   resume: true
-  receiver_microbatch_size: 4
+  receiver_microbatch_size: 48
   num_batches_per_point: 512
-  min_num_batches_per_point: 128
+  min_num_batches_per_point: 1
   max_num_batches_per_point: 512
-  target_block_errors_per_receiver: 100
+  target_block_errors_per_receiver: 50
   stopping_receivers:
   - baseline_ls_lmmse
   - baseline_ls_2dlmmse_lmmse
@@ -133,6 +122,7 @@ evaluation:
   reliable_min_block_errors: 20
   reliable_min_bit_errors: 100
   save_example_batch: true
+  progress_every_batches: 2
 baselines:
   enabled_receivers:
   - baseline_ls_lmmse

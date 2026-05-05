@@ -12,3 +12,5 @@ I0000 00:00:1777960285.473428 2869669 gpu_device.cc:2019] Created device /job:lo
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
 I0000 00:00:1777960320.384930 2869669 cuda_solvers.cc:175] Creating GpuSolver handles for stream 0x791a600
 I0000 00:00:1777960352.789871 2869669 cuda_dnn.cc:529] Loaded cuDNN version 91000
+slurmstepd: error: *** JOB 60405928 ON ng30705 CANCELLED AT 2026-05-05T07:02:52 ***
+[SLURM] received pre-timeout signal; forwarding TERM to Python worker 2869669

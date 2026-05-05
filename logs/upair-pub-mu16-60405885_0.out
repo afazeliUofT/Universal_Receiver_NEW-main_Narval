@@ -22,3 +22,5 @@ Tue May  5 01:12:25 2026
 [COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
 [EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
 [BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
+[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
+[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

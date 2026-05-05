@@ -316,6 +316,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
     reliable_min_block_errors = int(get_cfg(cfg, "evaluation.reliable_min_block_errors", 1))
     reliable_min_bit_errors = int(get_cfg(cfg, "evaluation.reliable_min_bit_errors", 1))
     stopping_receivers = _bool_cfg_list(cfg, "evaluation.stopping_receivers", enabled_receivers)
+    progress_every_batches = int(get_cfg(cfg, "evaluation.progress_every_batches", 0))
 
     rows: list[dict[str, Any]] = []
     completed_ebno: set[float] = set()
@@ -359,6 +360,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         "reliable_min_block_errors": reliable_min_block_errors,
         "reliable_min_bit_errors": reliable_min_bit_errors,
         "stopping_receivers": stopping_receivers,
+        "progress_every_batches": progress_every_batches,
     }
 
     def _save_eval_state(
@@ -492,6 +494,19 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
                     example_saved = True
 
                 batches_completed = batch_idx + 1
+                if progress_every_batches > 0 and batches_completed % progress_every_batches == 0:
+                    _save_eval_state(
+                        complete=False,
+                        reason="progress",
+                        completed=completed_ebno,
+                        current_ebno_db=float(ebno_db),
+                        partial_batches_run=batches_completed,
+                    )
+                    print(
+                        f"[EVAL] progress num_users={eval_num_users} "
+                        f"Eb/N0={ebno_db:g} dB batches={batches_completed}/{max_num_batches}"
+                    )
+
                 if stop_requested:
                     point_interrupted = True
                     break

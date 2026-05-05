@@ -1,5 +1,0 @@
-receiver,num_users,ebno_db,ber,bler,nmse,bit_errors,num_bits,block_errors,num_blocks,num_batches_run,reliable_ber,reliable_bler,dmrs_case,dmrs_label,variant,variant_label,seed,training_seed,evaluation_seed
-baseline_ls_lmmse,1,0.0,0.0,0.0,0.0772188884641842,0,577536,0,96,1,False,False,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
-baseline_ls_2dlmmse_lmmse,1,0.0,0.0,0.0,0.0375042433774304,0,577536,0,96,1,False,False,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
-baseline_ddcpe_ls_lmmse,1,0.0,0.0,0.0,0.0702519750934644,0,577536,0,96,1,False,False,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
-upair5g_lmmse,1,0.0,0.0,0.0,0.0344962302117225,0,577536,0,96,1,False,False,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007

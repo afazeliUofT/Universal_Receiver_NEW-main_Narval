@@ -1,5 +1,5 @@
 experiment:
-  name: main_d96_b4_r2_u1
+  name: mlpwide_d96_b4_r4_u1
   output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
 system:
   seed: 1007
@@ -92,7 +92,7 @@ model:
   d_model: 96
   num_blocks: 4
   num_heads: 4
-  mlp_ratio: 2.0
+  mlp_ratio: 4.0
   dropout: 0.05
   residual_scale: 0.35
   use_noise_feature: true

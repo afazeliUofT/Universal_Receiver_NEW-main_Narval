@@ -1,0 +1,11 @@
+receiver,num_users,ebno_db,ber,bler,nmse,bit_errors,num_bits,block_errors,num_blocks,num_batches_run,reliable_ber,reliable_bler
+baseline_ls_lmmse,1,2.0,0.0,0.0,0.05415927116715892,0,295698432,0,49152,512,False,False
+baseline_ls_2dlmmse_lmmse,1,2.0,0.0,0.0,0.028786294100040705,0,295698432,0,49152,512,False,False
+baseline_ddcpe_ls_lmmse,1,2.0,0.0,0.0,0.047285338594188396,0,295698432,0,49152,512,False,False
+upair5g_lmmse,1,2.0,0.0,0.0,0.02364940548894977,0,295698432,0,49152,512,False,False
+perfect_csi_lmmse,1,2.0,0.0,0.0,0.0,0,295698432,0,49152,512,False,False
+baseline_ls_lmmse,1,4.0,3.3818238170434396e-09,2.0345052083333332e-05,0.04009659141045422,1,295698432,1,49152,512,False,False
+baseline_ls_2dlmmse_lmmse,1,4.0,3.3818238170434396e-09,2.0345052083333332e-05,0.023037781234584328,1,295698432,1,49152,512,False,False
+baseline_ddcpe_ls_lmmse,1,4.0,0.0,0.0,0.03305214058221408,0,295698432,0,49152,512,False,False
+upair5g_lmmse,1,4.0,0.0,0.0,0.016546305717723697,0,295698432,0,49152,512,False,False
+perfect_csi_lmmse,1,4.0,0.0,0.0,0.0,0,295698432,0,49152,512,False,False
