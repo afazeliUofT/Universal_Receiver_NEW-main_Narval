@@ -46,10 +46,10 @@ multiuser:
     type_a_position: 2
     num_cdm_groups_without_data: 3
     port_sets:
-    - [0]
-    - [1]
-    - [2]
-    - [3]
+    - - 0
+    - - 1
+    - - 2
+    - - 3
 pusch:
   carrier_frequency_hz: 3.5e9
   subcarrier_spacing_khz: 30
@@ -139,6 +139,7 @@ baselines:
   - baseline_ls_2dlmmse_lmmse
   - baseline_ddcpe_ls_lmmse
   - upair5g_lmmse
+  - perfect_csi_lmmse
   covariance_estimation:
     cache_name: empirical_covariances.npz
     reuse_cache: true

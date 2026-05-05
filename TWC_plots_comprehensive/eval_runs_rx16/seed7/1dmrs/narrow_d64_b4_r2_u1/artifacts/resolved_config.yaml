@@ -1,5 +1,5 @@
 experiment:
-  name: main_d96_b4_r2_u1
+  name: narrow_d64_b4_r2_u1
   output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
 system:
   seed: 1007
@@ -100,7 +100,7 @@ impairments:
     - 0.05
     rw_sigma_rad: 0.005
 model:
-  d_model: 96
+  d_model: 64
   num_blocks: 4
   num_heads: 4
   mlp_ratio: 2.0

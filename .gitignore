@@ -14,9 +14,7 @@ __pycache__/
 *.index
 *.npz
 *.npy
-*.ckpt
 *.keras
 
 # Temporary probe outputs
-narval_env_probe_*.json
 .repo1_verified/

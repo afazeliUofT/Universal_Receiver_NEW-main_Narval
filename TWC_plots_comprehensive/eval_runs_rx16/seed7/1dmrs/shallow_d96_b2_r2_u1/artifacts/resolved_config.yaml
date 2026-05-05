@@ -1,5 +1,5 @@
 experiment:
-  name: mlpwide_d96_b4_r4_u1
+  name: shallow_d96_b2_r2_u1
   output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
 system:
   seed: 1007
@@ -10,8 +10,8 @@ system:
   - 29
   precision: single
   graph_mode: true
-  batch_size_train: 64
-  batch_size_eval: 128
+  batch_size_train: 48
+  batch_size_eval: 96
   ebno_db_train_min: 0.0
   ebno_db_train_max: 18.0
   ebno_db_eval:
@@ -101,9 +101,9 @@ impairments:
     rw_sigma_rad: 0.005
 model:
   d_model: 96
-  num_blocks: 4
+  num_blocks: 2
   num_heads: 4
-  mlp_ratio: 4.0
+  mlp_ratio: 2.0
   dropout: 0.05
   residual_scale: 0.35
   use_noise_feature: true
@@ -136,6 +136,7 @@ evaluation:
   reliable_min_block_errors: 20
   reliable_min_bit_errors: 100
   save_example_batch: false
+  force: true
 baselines:
   enabled_receivers:
   - baseline_ls_lmmse

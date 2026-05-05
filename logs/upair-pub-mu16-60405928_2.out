@@ -1,5 +1,5 @@
-[SLURM] task=0/12 seed=7 dmrs_case=1dmrs variant=main_d96_b4_r2
-Mon May  4 22:44:41 2026       
+[SLURM] task=2/12 seed=7 dmrs_case=1dmrs variant=deep_d96_b6_r2
+Tue May  5 01:49:26 2026       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
 |-----------------------------------------+------------------------+----------------------+
@@ -7,8 +7,8 @@ Mon May  4 22:44:41 2026
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:01:00.0 Off |                    0 |
-| N/A   34C    P0             54W /  400W |       0MiB /  40960MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   35C    P0             57W /  400W |       0MiB /  40960MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
                                                                                          
@@ -19,8 +19,6 @@ Mon May  4 22:44:41 2026
 |=========================================================================================|
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
-[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/deep_d96_b6_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
 [EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
 [BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
-[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
-[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

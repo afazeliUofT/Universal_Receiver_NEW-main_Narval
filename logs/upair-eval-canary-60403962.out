@@ -1,0 +1,28 @@
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=7.72189e-02 bit_err=     0/577536   blk_err=    0/96     batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=3.75042e-02 bit_err=     0/577536   blk_err=    0/96     batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=7.02520e-02 bit_err=     0/577536   blk_err=    0/96     batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=3.44962e-02 bit_err=     0/577536   blk_err=    0/96     batches=   1
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u2: gpu_mem=0.00GiB peak=1.26GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=1 batch_size=8 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=2.97497e-01 BLER=1.00000e+00 NMSE=1.57061e-01 bit_err=343630/1155072  blk_err=  192/192    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=2.97875e-01 BLER=1.00000e+00 NMSE=9.21625e-02 bit_err=344067/1155072  blk_err=  192/192    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=2.97559e-01 BLER=1.00000e+00 NMSE=1.56872e-01 bit_err=343702/1155072  blk_err=  192/192    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=2.96100e-01 BLER=1.00000e+00 NMSE=8.63111e-02 bit_err=342017/1155072  blk_err=  192/192    batches=   1
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u3: gpu_mem=0.00GiB peak=2.43GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=1 batch_size=8 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=3.47396e-01 BLER=1.00000e+00 NMSE=2.30057e-01 bit_err=601901/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=3.49103e-01 BLER=1.00000e+00 NMSE=1.13526e-01 bit_err=604859/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.47421e-01 BLER=1.00000e+00 NMSE=2.30223e-01 bit_err=601944/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=3.45270e-01 BLER=1.00000e+00 NMSE=1.37582e-01 bit_err=598218/1732608  blk_err=  288/288    batches=   1
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/main_d96_b4_r2/u4: gpu_mem=0.00GiB peak=3.61GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=1 batch_size=8 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=3.76278e-01 BLER=1.00000e+00 NMSE=3.07444e-01 bit_err=869257/2310144  blk_err=  384/384    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=3.78722e-01 BLER=1.00000e+00 NMSE=1.58498e-01 bit_err=874903/2310144  blk_err=  384/384    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.76400e-01 BLER=1.00000e+00 NMSE=3.09238e-01 bit_err=869539/2310144  blk_err=  384/384    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=3.73757e-01 BLER=1.00000e+00 NMSE=2.03066e-01 bit_err=863432/2310144  blk_err=  384/384    batches=   1
+[COMPREHENSIVE] skipped shared combined CSV/manifest writes for parallel worker mode

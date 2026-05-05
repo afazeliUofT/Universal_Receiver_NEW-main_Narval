@@ -1,8 +1,8 @@
 experiment:
-  name: main_d96_b4_r2_u1
-  output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
+  name: mu16_main_d96_b4_r2
+  output_root: TWC_plots_comprehensive/canary_eval_fast
 system:
-  seed: 1007
+  seed: 7
   eval_seed_offset: 1000
   seeds:
   - 7
@@ -16,22 +16,6 @@ system:
   ebno_db_train_max: 18.0
   ebno_db_eval:
   - 0
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  training_seed: 7
-  evaluation_seed: 1007
 multiuser:
   enabled: true
   max_num_users: 4
@@ -44,7 +28,7 @@ multiuser:
   dmrs:
     config_type: 2
     length: 1
-    additional_position: 0
+    additional_position: 1
     type_a_position: 2
     num_cdm_groups_without_data: 3
     port_sets:
@@ -52,7 +36,6 @@ multiuser:
     - - 1
     - - 2
     - - 3
-  fixed_num_users: 1
 pusch:
   carrier_frequency_hz: 3.5e9
   subcarrier_spacing_khz: 30
@@ -125,9 +108,9 @@ evaluation:
   resume: true
   receiver_microbatch_size: 4
   num_batches_per_point: 512
-  min_num_batches_per_point: 128
-  max_num_batches_per_point: 512
-  target_block_errors_per_receiver: 100
+  min_num_batches_per_point: 1
+  max_num_batches_per_point: 1
+  target_block_errors_per_receiver: 0
   stopping_receivers:
   - baseline_ls_lmmse
   - baseline_ls_2dlmmse_lmmse
@@ -136,19 +119,17 @@ evaluation:
   reliable_min_block_errors: 20
   reliable_min_bit_errors: 100
   save_example_batch: false
-  force: true
 baselines:
   enabled_receivers:
   - baseline_ls_lmmse
   - baseline_ls_2dlmmse_lmmse
   - baseline_ddcpe_ls_lmmse
   - upair5g_lmmse
-  - perfect_csi_lmmse
   covariance_estimation:
     cache_name: empirical_covariances.npz
     reuse_cache: true
-    num_batches: 32
-    batch_size: 32
+    num_batches: 1
+    batch_size: 8
     order: f-t
     use_spatial_smoothing: false
     use_training_impairments: false

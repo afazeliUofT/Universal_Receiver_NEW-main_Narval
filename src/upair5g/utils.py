@@ -268,16 +268,15 @@ def call_receiver(receiver: Any, y: tf.Tensor, no: tf.Tensor, h: tf.Tensor | Non
             lambda: receiver(y, no),
         ]
     else:
-        # Perfect-CSI Sionna receivers on Narval accept the channel tensor
-        # after the noise tensor. Trying [y, h, no] first can trigger the
-        # repeated TensorFlow transpose warning before falling back.
+        # Perfect-CSI PUSCHReceiver on Narval/Sionna works cleanly as
+        # positional (y, no, h). Other forms are compatibility fallbacks.
         attempts = [
+            lambda: receiver(y, no, h),
             lambda: receiver([y, no, h]),
             lambda: receiver((y, no, h)),
+            lambda: receiver(y, h, no),
             lambda: receiver([y, h, no]),
             lambda: receiver((y, h, no)),
-            lambda: receiver(y, no, h),
-            lambda: receiver(y, h, no),
         ]
     last_err = None
     for attempt in attempts:

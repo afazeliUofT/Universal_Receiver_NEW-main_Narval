@@ -1,0 +1,5 @@
+receiver,num_users,ebno_db,ber,bler,nmse,bit_errors,num_bits,block_errors,num_blocks,num_batches_run,reliable_ber,reliable_bler,dmrs_case,dmrs_label,variant,variant_label,seed,training_seed,evaluation_seed
+baseline_ls_lmmse,4,0.0,0.3762782752936613,1.0,0.307444272404637,869257,2310144,384,384,1,True,True,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,4,0.0,0.3787222787843528,1.0,0.1584982172725015,874903,2310144,384,384,1,True,True,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,4,0.0,0.3764003456061613,1.0,0.3092375111342414,869539,2310144,384,384,1,True,True,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
+upair5g_lmmse,4,0.0,0.3737567874556737,1.0,0.2030661838198794,863432,2310144,384,384,1,True,True,1dmrs,1-DMRS,main_d96_b4_r2,"d=96, L=4, r=2",7,7,1007
