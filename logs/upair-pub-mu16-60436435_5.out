@@ -1,0 +1,50 @@
+[SLURM] task=5/12 seed=7 dmrs_case=1dmrs variant=mlpwide_d96_b4_r4
+Tue May  5 08:36:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
+| N/A   29C    P0             53W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/mlpwide_d96_b4_r4/u3: gpu_mem=0.00GiB peak=0.00GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=32
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0=-4.0 dB BER=3.50276e-01 BLER=1.00000e+00 NMSE=5.06350e-01 bit_err=606891/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0=-4.0 dB BER=3.50050e-01 BLER=1.00000e+00 NMSE=1.92661e-01 bit_err=606499/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0=-4.0 dB BER=3.50297e-01 BLER=1.00000e+00 NMSE=5.07211e-01 bit_err=606928/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0=-4.0 dB BER=3.48110e-01 BLER=1.00000e+00 NMSE=3.43584e-01 bit_err=603138/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0=-4.0 dB BER=4.42846e-01 BLER=3.33333e-01 NMSE=0.00000e+00 bit_err=767279/1732608  blk_err=   96/288    batches=   1
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0=-2.0 dB BER=3.48579e-01 BLER=1.00000e+00 NMSE=3.37659e-01 bit_err=603950/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0=-2.0 dB BER=3.49727e-01 BLER=1.00000e+00 NMSE=1.46980e-01 bit_err=605940/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0=-2.0 dB BER=3.48677e-01 BLER=1.00000e+00 NMSE=3.38203e-01 bit_err=604120/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0=-2.0 dB BER=3.46380e-01 BLER=1.00000e+00 NMSE=2.13337e-01 bit_err=600140/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0=-2.0 dB BER=4.43613e-01 BLER=3.33333e-01 NMSE=0.00000e+00 bit_err=768607/1732608  blk_err=   96/288    batches=   1
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=3.47476e-01 BLER=1.00000e+00 NMSE=2.30642e-01 bit_err=602040/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=3.49566e-01 BLER=1.00000e+00 NMSE=1.12431e-01 bit_err=605661/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.47581e-01 BLER=1.00000e+00 NMSE=2.30679e-01 bit_err=602221/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=3.45117e-01 BLER=1.00000e+00 NMSE=1.37797e-01 bit_err=597952/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 0.0 dB BER=4.44611e-01 BLER=3.33333e-01 NMSE=0.00000e+00 bit_err=770337/1732608  blk_err=   96/288    batches=   1
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 2.0 dB BER=3.46707e-01 BLER=1.00000e+00 NMSE=1.62022e-01 bit_err=600708/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 2.0 dB BER=3.48326e-01 BLER=1.00000e+00 NMSE=8.62891e-02 bit_err=603512/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 2.0 dB BER=3.46767e-01 BLER=1.00000e+00 NMSE=1.63092e-01 bit_err=600811/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 2.0 dB BER=3.44560e-01 BLER=1.00000e+00 NMSE=8.96881e-02 bit_err=596988/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 2.0 dB BER=4.46662e-01 BLER=3.33333e-01 NMSE=0.00000e+00 bit_err=773891/1732608  blk_err=   96/288    batches=   1
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 4.0 dB BER=3.47553e-01 BLER=1.00000e+00 NMSE=1.18809e-01 bit_err=602173/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 4.0 dB BER=3.47540e-01 BLER=1.00000e+00 NMSE=6.79123e-02 bit_err=602150/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 4.0 dB BER=3.47618e-01 BLER=1.00000e+00 NMSE=1.19495e-01 bit_err=602286/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 4.0 dB BER=3.44070e-01 BLER=1.00000e+00 NMSE=6.03676e-02 bit_err=596138/1732608  blk_err=  288/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 4.0 dB BER=4.46662e-01 BLER=3.33333e-01 NMSE=0.00000e+00 bit_err=773891/1732608  blk_err=   96/288    batches=   1
+[COMPREHENSIVE] skipped shared combined CSV/manifest writes for parallel worker mode

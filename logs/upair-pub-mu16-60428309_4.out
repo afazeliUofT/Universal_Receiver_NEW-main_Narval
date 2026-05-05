@@ -766,3 +766,46 @@ Tue May  5 04:12:21 2026
 [EVAL] progress num_users=1 Eb/N0=6 dB batches=440/512
 [EVAL] progress num_users=1 Eb/N0=6 dB batches=442/512
 [EVAL] progress num_users=1 Eb/N0=6 dB batches=444/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=446/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=448/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=450/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=452/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=454/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=456/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=458/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=460/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=462/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=464/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=466/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=468/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=470/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=472/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=474/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=476/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=478/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=480/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=482/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=484/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=486/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=488/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=490/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=492/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=494/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=496/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=498/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=500/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=502/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=504/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=506/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=508/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=510/512
+[EVAL] progress num_users=1 Eb/N0=6 dB batches=512/512
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 6.0 dB BER=1.69091e-08 BLER=1.01725e-04 NMSE=3.12411e-02 bit_err=     5/295698432 blk_err=    5/49152  batches= 512
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 6.0 dB BER=3.38182e-09 BLER=2.03451e-05 NMSE=1.90864e-02 bit_err=     1/295698432 blk_err=    1/49152  batches= 512
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 6.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=2.41266e-02 bit_err=     0/295698432 blk_err=    0/49152  batches= 512
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 6.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=9.55236e-03 bit_err=     0/295698432 blk_err=    0/49152  batches= 512
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 6.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=0.00000e+00 bit_err=     0/295698432 blk_err=    0/49152  batches= 512
+[EVAL] progress num_users=1 Eb/N0=8 dB batches=2/512
+[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
+[EVAL] progress num_users=1 Eb/N0=8 dB batches=4/512
+[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

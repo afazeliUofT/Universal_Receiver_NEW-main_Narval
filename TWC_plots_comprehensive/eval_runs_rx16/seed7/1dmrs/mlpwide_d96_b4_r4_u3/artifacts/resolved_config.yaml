@@ -1,8 +1,8 @@
 experiment:
-  name: mu16_main_d96_b4_r2
-  output_root: TWC_plots_comprehensive/runs
+  name: mlpwide_d96_b4_r4_u3
+  output_root: TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs
 system:
-  seed: 7
+  seed: 1007
   eval_seed_offset: 1000
   seeds:
   - 7
@@ -20,6 +20,8 @@ system:
   - 0
   - 2
   - 4
+  training_seed: 7
+  evaluation_seed: 1007
 multiuser:
   enabled: true
   max_num_users: 4
@@ -29,7 +31,7 @@ multiuser:
   dmrs:
     config_type: 2
     length: 1
-    additional_position: 1
+    additional_position: 0
     type_a_position: 2
     num_cdm_groups_without_data: 3
     port_sets:
@@ -88,7 +90,7 @@ model:
   d_model: 96
   num_blocks: 4
   num_heads: 4
-  mlp_ratio: 2.0
+  mlp_ratio: 4.0
   dropout: 0.05
   residual_scale: 0.35
   use_noise_feature: true
@@ -120,8 +122,9 @@ evaluation:
   - upair5g_lmmse
   reliable_min_block_errors: 20
   reliable_min_bit_errors: 100
-  save_example_batch: true
+  save_example_batch: false
   progress_every_batches: 2
+  force: true
 baselines:
   enabled_receivers:
   - baseline_ls_lmmse

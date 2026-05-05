@@ -1,0 +1,26 @@
+receiver,num_users,ebno_db,ber,bler,nmse,bit_errors,num_bits,block_errors,num_blocks,num_batches_run,reliable_ber,reliable_bler,dmrs_case,dmrs_label,variant,variant_label,seed,training_seed,evaluation_seed
+baseline_ls_lmmse,3,-4.0,0.3504497266548463,1.0,0.5004907486930726,607192,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,3,-4.0,0.3501016964021867,1.0,0.1869220052446638,606589,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,3,-4.0,0.3505103289376478,1.0,0.5009941979060097,607297,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+upair5g_lmmse,3,-4.0,0.3493796634899527,1.0,0.4166057980249798,605338,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+perfect_csi_lmmse,3,-4.0,0.4424901651152482,0.3333333333333333,0.0,766662,1732608,96,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_lmmse,3,-2.0,0.3493005919400118,1.0,0.3361620195733322,605201,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,3,-2.0,0.3505888233229905,1.0,0.1453586943078814,607433,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,3,-2.0,0.3493796634899527,1.0,0.3368795989239526,605338,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+upair5g_lmmse,3,-2.0,0.3479044307771867,1.0,0.2658081049901536,602782,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+perfect_csi_lmmse,3,-2.0,0.4429853723404255,0.3333333333333333,0.0,767520,1732608,96,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_lmmse,3,0.0,0.3474161495271867,1.0,0.2307792862683899,601936,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,3,0.0,0.3494748956486406,1.0,0.1124616815965124,605503,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,3,0.0,0.3475338911052009,1.0,0.2307825408709201,602140,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+upair5g_lmmse,3,0.0,0.3459218703826832,1.0,0.1722750696507648,599347,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+perfect_csi_lmmse,3,0.0,0.4453419353945035,0.3333333333333333,0.0,771603,1732608,96,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_lmmse,3,2.0,0.3475356225989953,1.0,0.1660706354107355,602143,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,3,2.0,0.3488117335254137,1.0,0.0899794474120869,604354,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,3,2.0,0.3475910304004137,1.0,0.1660862083054005,602239,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+upair5g_lmmse,3,2.0,0.3464430500147754,1.0,0.1133172711886507,600250,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+perfect_csi_lmmse,3,2.0,0.4467715721040189,0.3333333333333333,0.0,774080,1732608,96,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_lmmse,3,4.0,0.346611004912825,1.0,0.1193564997778998,600541,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ls_2dlmmse_lmmse,3,4.0,0.3472984079491725,1.0,0.0682916565546913,601732,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+baseline_ddcpe_ls_lmmse,3,4.0,0.3466698757018321,1.0,0.11985963488382,600643,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+upair5g_lmmse,3,4.0,0.3445337895242317,1.0,0.076015309681968,596942,1732608,288,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
+perfect_csi_lmmse,3,4.0,0.4474012586805556,0.3333333333333333,0.0,775171,1732608,96,288,1,True,True,1dmrs,1-DMRS,narrow_d64_b4_r2,"d=64, L=4, r=2",7,7,1007
