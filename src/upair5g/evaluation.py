@@ -215,6 +215,40 @@ def _init_counter() -> dict[str, float | int]:
     }
 
 
+def _counter_progress_snapshot(counter: dict[str, float | int]) -> dict[str, float | int | None]:
+    bit_errors = int(counter["bit_errors"])
+    num_bits = int(counter["num_bits"])
+    frame_errors = int(counter["block_errors"])
+    num_frames = int(counter["num_blocks"])
+    return {
+        "frame_errors": frame_errors,
+        "num_frames": num_frames,
+        "bler": float(frame_errors / num_frames) if num_frames > 0 else None,
+        "bit_errors": bit_errors,
+        "num_bits": num_bits,
+        "ber": float(bit_errors / num_bits) if num_bits > 0 else None,
+        "num_batches_run": int(counter["num_batches_run"]),
+    }
+
+
+def _receiver_progress_snapshot(
+    agg: dict[str, dict[str, float | int]],
+    receiver_order: list[str],
+) -> dict[str, dict[str, float | int | None]]:
+    return {
+        receiver_name: _counter_progress_snapshot(agg[receiver_name])
+        for receiver_name in receiver_order
+        if receiver_name in agg
+    }
+
+
+def _format_frame_error_progress(snapshot: dict[str, dict[str, float | int | None]]) -> str:
+    parts = []
+    for receiver_name, metrics in snapshot.items():
+        parts.append(f"{receiver_name}:{int(metrics['frame_errors'])}/{int(metrics['num_frames'])}")
+    return " ".join(parts)
+
+
 def _update_error_counters(counter: dict[str, float | int], bits: tf.Tensor | None, b_hat: tf.Tensor | None, crc: tf.Tensor | None) -> None:
     if bits is not None and b_hat is not None:
         num_bits = int(tf.size(bits).numpy())
@@ -370,6 +404,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
         completed: set[float],
         current_ebno_db: float | None = None,
         partial_batches_run: int | None = None,
+        current_receiver_metrics: dict[str, dict[str, float | int | None]] | None = None,
     ) -> None:
         payload: dict[str, Any] = {
             "num_users": int(eval_num_users),
@@ -391,6 +426,16 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
             payload["current_ebno_db"] = float(current_ebno_db)
         if partial_batches_run is not None:
             payload["partial_batches_run"] = int(partial_batches_run)
+        if current_receiver_metrics is not None:
+            payload["current_receiver_metrics"] = current_receiver_metrics
+            payload["current_frame_errors"] = {
+                receiver_name: int(metrics["frame_errors"])
+                for receiver_name, metrics in current_receiver_metrics.items()
+            }
+            payload["current_num_frames"] = {
+                receiver_name: int(metrics["num_frames"])
+                for receiver_name, metrics in current_receiver_metrics.items()
+            }
         if complete:
             payload["summary_path"] = str(paths["metrics"] / "evaluation_summary.json")
         save_json(payload, eval_state_path)
@@ -495,16 +540,19 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
 
                 batches_completed = batch_idx + 1
                 if progress_every_batches > 0 and batches_completed % progress_every_batches == 0:
+                    progress_snapshot = _receiver_progress_snapshot(agg, enabled_receivers)
                     _save_eval_state(
                         complete=False,
                         reason="progress",
                         completed=completed_ebno,
                         current_ebno_db=float(ebno_db),
                         partial_batches_run=batches_completed,
+                        current_receiver_metrics=progress_snapshot,
                     )
                     print(
                         f"[EVAL] progress num_users={eval_num_users} "
-                        f"Eb/N0={ebno_db:g} dB batches={batches_completed}/{max_num_batches}"
+                        f"Eb/N0={ebno_db:g} dB batches={batches_completed}/{max_num_batches} "
+                        f"frame_err={_format_frame_error_progress(progress_snapshot)}"
                     )
 
                 if stop_requested:
@@ -529,6 +577,7 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
                     completed=completed_ebno,
                     current_ebno_db=float(ebno_db),
                     partial_batches_run=batches_completed,
+                    current_receiver_metrics=_receiver_progress_snapshot(agg, enabled_receivers),
                 )
                 print("[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.")
                 return {
@@ -578,7 +627,14 @@ def evaluate_model(cfg: dict[str, Any], checkpoint_path: str | None = None, num_
 
             completed_ebno.add(float(ebno_db))
             pd.DataFrame(rows).to_csv(curves_path, index=False)
-            _save_eval_state(complete=False, reason="periodic", completed=completed_ebno)
+            _save_eval_state(
+                complete=False,
+                reason="periodic",
+                completed=completed_ebno,
+                current_ebno_db=float(ebno_db),
+                partial_batches_run=batches_completed,
+                current_receiver_metrics=_receiver_progress_snapshot(agg, enabled_receivers),
+            )
     finally:
         for sig, handler in previous_handlers.items():
             try:
