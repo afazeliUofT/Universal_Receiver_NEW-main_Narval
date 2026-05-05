@@ -290,8 +290,7 @@ def _build_bs_array(num_ant: int, carrier_frequency: float) -> Any:
     )
 
 
-def build_channel(cfg: dict[str, Any], tx: Any) -> Any:
-    OFDMChannel = resolve_attr(["sionna.phy.channel", "sionna.channel"], "OFDMChannel")
+def _build_cdl_channel_model(cfg: dict[str, Any]) -> Any:
     CDL = resolve_attr(["sionna.phy.channel.tr38901", "sionna.channel.tr38901"], "CDL")
 
     channel_cfg = cfg["channel"]
@@ -325,11 +324,16 @@ def build_channel(cfg: dict[str, Any], tx: Any) -> Any:
             min_speed=float(channel_cfg["min_speed_mps"]),
             max_speed=float(channel_cfg["max_speed_mps"]),
         )
+    return channel_model
 
+
+def _build_ofdm_channel(cfg: dict[str, Any], tx: Any, channel_model: Any, add_awgn: bool) -> Any:
+    OFDMChannel = resolve_attr(["sionna.phy.channel", "sionna.channel"], "OFDMChannel")
+    channel_cfg = cfg["channel"]
     ofdm_kwargs = {
         "channel_model": channel_model,
         "resource_grid": get_resource_grid(tx),
-        "add_awgn": True,
+        "add_awgn": bool(add_awgn),
         "normalize_channel": bool(channel_cfg["normalize_channel"]),
         "return_channel": True,
     }
@@ -339,10 +343,108 @@ def build_channel(cfg: dict[str, Any], tx: Any) -> Any:
         return OFDMChannel(
             channel_model,
             get_resource_grid(tx),
-            add_awgn=True,
+            add_awgn=bool(add_awgn),
             normalize_channel=bool(channel_cfg["normalize_channel"]),
             return_channel=True,
         )
+
+
+def _infer_channel_pair(channel_output: Any) -> tuple[tf.Tensor, tf.Tensor]:
+    if not isinstance(channel_output, (tuple, list)) or len(channel_output) < 2:
+        raise ValueError("OFDM channel must return (y, h).")
+    return tf.convert_to_tensor(channel_output[0]), tf.convert_to_tensor(channel_output[1])
+
+
+def _call_clean_ofdm_channel(channel: Any, x: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
+    zero_no = tf.constant(0.0, tf.float32)
+    attempts = [
+        lambda: channel(x),
+        lambda: channel([x]),
+        lambda: channel((x,)),
+        lambda: channel(x, zero_no),
+        lambda: channel([x, zero_no]),
+        lambda: channel((x, zero_no)),
+    ]
+    last_err = None
+    for attempt in attempts:
+        try:
+            return _infer_channel_pair(attempt())
+        except (tf.errors.ResourceExhaustedError, MemoryError):
+            raise
+        except Exception as err:  # pragma: no cover - Sionna version compatibility
+            last_err = err
+    raise RuntimeError("All clean OFDM channel calling conventions failed.") from last_err
+
+
+def _add_awgn_once(y: tf.Tensor, no: tf.Tensor) -> tf.Tensor:
+    no = tf.cast(tf.convert_to_tensor(no), tf.float32)
+    if no.shape.rank == 0:
+        scale = tf.sqrt(no / 2.0)
+    else:
+        no = tf.reshape(no, [-1])
+        scale = tf.sqrt(no / 2.0)
+        scale = tf.reshape(scale, [-1, 1, 1, 1, 1])
+    noise = tf.complex(
+        tf.random.normal(tf.shape(y), dtype=tf.float32),
+        tf.random.normal(tf.shape(y), dtype=tf.float32),
+    )
+    return y + tf.cast(scale, y.dtype) * tf.cast(noise, y.dtype)
+
+
+class IndependentMultiUserOFDMChannel:
+    """Compose independent single-user CDL links into one multi-user channel.
+
+    Sionna's CDL model represents one UT-BS link. A multi-user PUSCH resource
+    grid therefore needs one independent CDL/OFDM channel per scheduled UE.
+    The clean received grids are summed, AWGN is added once, and the true
+    channel tensors are concatenated along the transmitter axis.
+    """
+
+    def __init__(self, user_channels: list[Any]) -> None:
+        if not user_channels:
+            raise ValueError("At least one user channel is required.")
+        self.user_channels = list(user_channels)
+        self.num_users = len(self.user_channels)
+        self.return_channel = True
+
+    def __call__(self, x: tf.Tensor, no: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
+        x = tf.convert_to_tensor(x)
+        if x.shape.rank != 5:
+            raise ValueError(f"Expected transmit grid rank 5 [B,U,S,T,F], got rank {x.shape.rank}.")
+        static_num_tx = x.shape[1]
+        if static_num_tx is not None and int(static_num_tx) != self.num_users:
+            raise ValueError(f"Expected {self.num_users} transmit users, got {static_num_tx}.")
+
+        y_sum: tf.Tensor | None = None
+        h_parts: list[tf.Tensor] = []
+        for user_idx, channel in enumerate(self.user_channels):
+            x_user = x[:, user_idx : user_idx + 1, :, :, :]
+            y_user, h_user = _call_clean_ofdm_channel(channel, x_user)
+            y_sum = y_user if y_sum is None else y_sum + y_user
+            h_parts.append(h_user)
+
+        if y_sum is None:
+            raise RuntimeError("No user channels were evaluated.")
+        h = tf.concat(h_parts, axis=3)
+        return _add_awgn_once(y_sum, no), h
+
+
+def _build_independent_multiuser_channel(cfg: dict[str, Any], num_users: int) -> IndependentMultiUserOFDMChannel:
+    user_channels: list[Any] = []
+    for _ in range(int(num_users)):
+        single_tx, _ = build_pusch_transmitter(cfg, num_users=1)
+        channel_model = _build_cdl_channel_model(cfg)
+        user_channels.append(_build_ofdm_channel(cfg, single_tx, channel_model, add_awgn=False))
+    return IndependentMultiUserOFDMChannel(user_channels)
+
+
+def build_channel(cfg: dict[str, Any], tx: Any) -> Any:
+    num_tx = int(first_present_attr(tx, ["_upair_num_users", "num_tx", "_num_tx"], 1))
+    if multiuser_enabled(cfg) and num_tx > 1:
+        return _build_independent_multiuser_channel(cfg, num_tx)
+
+    channel_model = _build_cdl_channel_model(cfg)
+    return _build_ofdm_channel(cfg, tx, channel_model, add_awgn=True)
 
 
 def _build_multiuser_detector(tx: Any, cfg: dict[str, Any]) -> Any | None:
