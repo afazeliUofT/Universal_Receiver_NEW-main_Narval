@@ -1,0 +1,25 @@
+[SLURM] task=2/12 seed=7 dmrs_case=1dmrs variant=deep_d96_b6_r2
+Mon May  4 22:04:34 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   34C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/deep_d96_b6_r2/u1: gpu_mem=0.00GiB peak=0.00GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=4
+[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
+[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

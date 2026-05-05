@@ -34,6 +34,7 @@ if [[ -n "${CUDA_MODULE}" ]]; then
 fi
 
 export PYTHONNOUSERSITE=1
+export PYTHONUNBUFFERED=1
 export PIP_NO_USER=1
 export TF_GPU_ALLOCATOR="${TF_GPU_ALLOCATOR:-cuda_malloc_async}"
 unset PYTHONPATH

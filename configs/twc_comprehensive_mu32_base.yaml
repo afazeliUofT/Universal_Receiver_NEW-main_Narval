@@ -11,7 +11,7 @@ system:
   precision: single
   graph_mode: true
   batch_size_train: 48
-  batch_size_eval: 128
+  batch_size_eval: 96
   ebno_db_train_min: 0.0
   ebno_db_train_max: 18.0
   ebno_db_eval:
@@ -139,7 +139,6 @@ baselines:
   - baseline_ls_2dlmmse_lmmse
   - baseline_ddcpe_ls_lmmse
   - upair5g_lmmse
-  - perfect_csi_lmmse
   covariance_estimation:
     cache_name: empirical_covariances.npz
     reuse_cache: true

@@ -10,3 +10,73 @@ W0000 00:00:1777933947.466589 2635827 computation_placer.cc:177] computation pla
 I0000 00:00:1777934064.675939 2635827 gpu_process_state.cc:208] Using CUDA malloc Async allocator for GPU: 0
 I0000 00:00:1777934064.680572 2635827 gpu_device.cc:2019] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38484 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:01:00.0, compute capability: 8.0
 E0000 00:00:1777934091.799528 2635827 meta_optimizer.cc:967] layout failed: INVALID_ARGUMENT: Size of values 0 does not match size of permutation 4 @ fanin shape inaxial_block_0_1/dropout_5/stateless_dropout/SelectV2-2-TransposeNHWCToNCHW-LayoutOptimizer
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1777938911.487648 2635827 cuda_solvers.cc:175] Creating GpuSolver handles for stream 0x859a260
+I0000 00:00:1777938952.882618 2635827 cuda_dnn.cc:529] Loaded cuDNN version 91000
+2026-05-04 19:56:47.487399: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:48.031690: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:48.572926: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:49.117167: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:49.660838: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:50.201118: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:50.741714: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:51.284122: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:51.825801: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:52.368577: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:52.913771: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:53.458520: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:54.002775: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:54.547062: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:55.085625: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:55.622970: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:56.165395: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:56.708278: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:57.248662: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:57.790702: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:58.335213: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:58.877154: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:59.423825: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:56:59.971489: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:00.514799: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:01.058179: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:01.599488: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:02.138861: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:02.677835: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:03.219272: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:03.760609: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:57:04.302116: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:39.255830: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:39.800859: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:40.343891: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:40.887405: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:41.431454: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:41.973292: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:42.516844: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:43.058596: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:43.604029: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+slurmstepd: error: *** JOB 60392417 ON ng10204 CANCELLED AT 2026-05-04T23:58:43 ***
+[SLURM] received pre-timeout signal; forwarding TERM to Python worker 2635827
+2026-05-04 19:58:44.147572: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:44.692673: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:45.238037: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:45.783368: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:46.328381: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:46.873275: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:47.420407: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:47.966347: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:48.508354: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:49.056358: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:49.596478: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:50.140234: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:50.682279: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:51.225354: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:51.766304: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:52.305279: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:52.845533: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:53.387248: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:53.928235: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:54.470355: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:55.015977: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:55.557285: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+2026-05-04 19:58:56.104904: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at transpose_op.cc:142 : INVALID_ARGUMENT: transpose expects a vector of size 0. But input(1) is a vector of size 7
+Evaluation stopped after saving resumable state. Resubmit the same Slurm array task to continue from the saved evaluation state.

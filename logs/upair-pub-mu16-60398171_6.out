@@ -1,0 +1,45 @@
+[SLURM] task=6/12 seed=7 dmrs_case=2dmrs variant=main_d96_b4_r2
+Mon May  4 21:32:22 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   33C    P0             51W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[TRAIN] resumed from /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9265 at completed_step=9265 best_val=0.00671741
+[TRAIN] step=09300 loss=-5.88118 nmse_prop=0.00101 nmse_ls=0.00731 gpu_mem=0.13GiB peak=11.10GiB
+[TRAIN] saved resumable state at step=9300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9300
+[TRAIN] step=09400 loss=-2.41577 nmse_prop=0.02177 nmse_ls=0.04741 gpu_mem=0.13GiB peak=11.10GiB
+[TRAIN] saved resumable state at step=9400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9400
+[TRAIN] saved new best weights at step=9500 val_nmse=0.00639744
+[TRAIN] step=09500 loss=-5.47284 nmse_prop=0.00144 nmse_ls=0.00715 gpu_mem=0.33GiB peak=11.10GiB
+[TRAIN] saved resumable state at step=9500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9500
+[TRAIN] step=09600 loss=-3.61933 nmse_prop=0.00672 nmse_ls=0.01835 gpu_mem=0.33GiB peak=11.31GiB
+[TRAIN] saved resumable state at step=9600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9600
+[TRAIN] step=09700 loss=-5.78887 nmse_prop=0.00114 nmse_ls=0.00712 gpu_mem=0.33GiB peak=11.31GiB
+[TRAIN] saved resumable state at step=9700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9700
+[TRAIN] step=09800 loss=-5.10707 nmse_prop=0.00224 nmse_ls=0.00759 gpu_mem=0.33GiB peak=11.31GiB
+[TRAIN] saved resumable state at step=9800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9800
+[TRAIN] step=09900 loss=-5.75733 nmse_prop=0.00125 nmse_ls=0.00753 gpu_mem=0.33GiB peak=11.31GiB
+[TRAIN] saved resumable state at step=9900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-9900
+[TRAIN] step=10000 loss=-4.26257 nmse_prop=0.00414 nmse_ls=0.01194 gpu_mem=0.33GiB peak=11.31GiB
+[TRAIN] saved resumable state at step=10000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-10000
+[TRAIN] saved resumable state at step=10000 reason=final: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/2dmrs/main_d96_b4_r2/checkpoints/training_state/ckpt-10000
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 2dmrs/main_d96_b4_r2/u1: gpu_mem=0.01GiB peak=11.31GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=128 receiver_microbatch_size=4
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
+[EVAL] received signal 15; will save completed Eb/N0 points and stop after current batch.
+[EVAL] stopped before completing current Eb/N0; resubmit to resume from completed points.

@@ -1,0 +1,15 @@
+{
+  "batch_size_eval": 128,
+  "batch_size_train": 48,
+  "best_val": 0.010566665703663602,
+  "latest_step": 10000,
+  "learning_rate": 0.0003,
+  "max_num_users": 4,
+  "multiuser_enabled": true,
+  "num_trainable_params": 1078208,
+  "seed": 7,
+  "total_steps": 10000,
+  "train_user_count_sampler": "triangular",
+  "training_complete": true,
+  "weight_decay": 1e-05
+}

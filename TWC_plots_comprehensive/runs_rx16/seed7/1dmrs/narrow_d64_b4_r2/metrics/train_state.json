@@ -1,29 +1,29 @@
 {
-  "best_val": 0.015240063541568816,
+  "best_val": 0.014828804007265717,
   "best_weights_path": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/best.weights.h5",
   "checkpoint_metrics": {
-    "last_loss": -4.134450435638428,
-    "last_nmse_ls": 0.02024248242378235,
-    "last_nmse_prop": 0.0069853635504841805
+    "last_loss": -1.9631527662277222,
+    "last_nmse_ls": 0.06422637403011322,
+    "last_nmse_prop": 0.04958754777908325
   },
   "last_metrics": {
-    "ebno_db": 13.863101959228516,
-    "loss": -4.134450435638428,
-    "loss_nll": -4.135149002075195,
-    "nmse_ls": 0.02024248242378235,
-    "nmse_prop": 0.0069853635504841805,
-    "num_users": 2,
-    "step": 9500,
+    "ebno_db": 0.9213151931762695,
+    "loss": -1.9631527662277222,
+    "loss_nll": -1.968111515045166,
+    "nmse_ls": 0.06422637403011322,
+    "nmse_prop": 0.04958754777908325,
+    "num_users": 4,
+    "step": 10000,
     "val_ebno_db": 7.0,
-    "val_nmse_ls": 0.028871238115243614,
-    "val_nmse_prop": 0.015240063541568816
+    "val_nmse_ls": 0.028892002999782562,
+    "val_nmse_prop": 0.014828804007265717
   },
-  "latest_step": 9500,
-  "latest_training_state_checkpoint": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/training_state/ckpt-9500",
+  "latest_step": 10000,
+  "latest_training_state_checkpoint": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/training_state/ckpt-10000",
   "resume_enabled": true,
-  "save_reason": "periodic",
+  "save_reason": "final",
   "total_steps": 10000,
-  "training_complete": false,
+  "training_complete": true,
   "training_parameters": {
     "batch_size_eval": 128,
     "batch_size_train": 96,

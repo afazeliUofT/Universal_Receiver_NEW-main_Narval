@@ -1,0 +1,3 @@
+CUDA_VISIBLE_DEVICES: 0
+GPUs: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+PASS tf gpu matmul 1024.0

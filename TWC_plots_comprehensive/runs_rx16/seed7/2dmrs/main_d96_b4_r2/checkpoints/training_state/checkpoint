@@ -1,8 +1,8 @@
-model_checkpoint_path: "ckpt-7300"
-all_model_checkpoint_paths: "ckpt-7100"
-all_model_checkpoint_paths: "ckpt-7200"
-all_model_checkpoint_paths: "ckpt-7300"
-all_model_checkpoint_timestamps: 1777937896.3678906
-all_model_checkpoint_timestamps: 1777937960.13042
-all_model_checkpoint_timestamps: 1777938024.3693123
+model_checkpoint_path: "ckpt-10000"
+all_model_checkpoint_paths: "ckpt-9800"
+all_model_checkpoint_paths: "ckpt-9900"
+all_model_checkpoint_paths: "ckpt-10000"
+all_model_checkpoint_timestamps: 1777945383.9758487
+all_model_checkpoint_timestamps: 1777945440.2432187
+all_model_checkpoint_timestamps: 1777945528.583467
 last_preserved_timestamp: 1777932856.953897
