@@ -13,3 +13,6 @@ E0000 00:00:1778070764.894467 3965520 meta_optimizer.cc:967] layout failed: INVA
 WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
 I0000 00:00:1778079900.509927 3965520 cuda_solvers.cc:175] Creating GpuSolver handles for stream 0x83e4820
 I0000 00:00:1778079920.613167 3965520 cuda_dnn.cc:529] Loaded cuDNN version 91000
+slurmstepd: error: *** JOB 60490151 ON ng10402 CANCELLED AT 2026-05-06T15:56:44 ***
+[SLURM] received pre-timeout signal; forwarding TERM to Python worker 3965520
+Evaluation stopped after saving resumable state. Resubmit the same Slurm array task to continue from the saved evaluation state.

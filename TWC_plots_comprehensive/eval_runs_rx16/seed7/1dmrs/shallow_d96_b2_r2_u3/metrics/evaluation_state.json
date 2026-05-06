@@ -7,64 +7,64 @@
   ],
   "current_ebno_db": 2.0,
   "current_frame_errors": {
-    "baseline_ddcpe_ls_lmmse": 3,
+    "baseline_ddcpe_ls_lmmse": 18,
     "baseline_ls_2dlmmse_lmmse": 0,
-    "baseline_ls_lmmse": 3,
+    "baseline_ls_lmmse": 24,
     "perfect_csi_lmmse": 0,
-    "upair5g_lmmse": 1
+    "upair5g_lmmse": 4
   },
   "current_num_frames": {
-    "baseline_ddcpe_ls_lmmse": 14400,
-    "baseline_ls_2dlmmse_lmmse": 14400,
-    "baseline_ls_lmmse": 14400,
-    "perfect_csi_lmmse": 14400,
-    "upair5g_lmmse": 14400
+    "baseline_ddcpe_ls_lmmse": 58176,
+    "baseline_ls_2dlmmse_lmmse": 58176,
+    "baseline_ls_lmmse": 58176,
+    "perfect_csi_lmmse": 58176,
+    "upair5g_lmmse": 58176
   },
   "current_receiver_metrics": {
     "baseline_ddcpe_ls_lmmse": {
-      "ber": 2.8050199468085107e-06,
-      "bit_errors": 243,
-      "bler": 0.00020833333333333335,
-      "frame_errors": 3,
-      "num_batches_run": 50,
-      "num_bits": 86630400,
-      "num_frames": 14400
+      "ber": 9.966089694075791e-06,
+      "bit_errors": 3488,
+      "bler": 0.0003094059405940594,
+      "frame_errors": 18,
+      "num_batches_run": 202,
+      "num_bits": 349986816,
+      "num_frames": 58176
     },
     "baseline_ls_2dlmmse_lmmse": {
       "ber": 0.0,
       "bit_errors": 0,
       "bler": 0.0,
       "frame_errors": 0,
-      "num_batches_run": 50,
-      "num_bits": 86630400,
-      "num_frames": 14400
+      "num_batches_run": 202,
+      "num_bits": 349986816,
+      "num_frames": 58176
     },
     "baseline_ls_lmmse": {
-      "ber": 1.359799793144208e-05,
-      "bit_errors": 1178,
-      "bler": 0.00020833333333333335,
-      "frame_errors": 3,
-      "num_batches_run": 50,
-      "num_bits": 86630400,
-      "num_frames": 14400
+      "ber": 1.6512050556784403e-05,
+      "bit_errors": 5779,
+      "bler": 0.00041254125412541255,
+      "frame_errors": 24,
+      "num_batches_run": 202,
+      "num_bits": 349986816,
+      "num_frames": 58176
     },
     "perfect_csi_lmmse": {
       "ber": 0.0,
       "bit_errors": 0,
       "bler": 0.0,
       "frame_errors": 0,
-      "num_batches_run": 50,
-      "num_bits": 86630400,
-      "num_frames": 14400
+      "num_batches_run": 202,
+      "num_bits": 349986816,
+      "num_frames": 58176
     },
     "upair5g_lmmse": {
-      "ber": 1.0388962765957447e-07,
-      "bit_errors": 9,
-      "bler": 6.944444444444444e-05,
-      "frame_errors": 1,
-      "num_batches_run": 50,
-      "num_bits": 86630400,
-      "num_frames": 14400
+      "ber": 1.114327689417878e-06,
+      "bit_errors": 390,
+      "bler": 6.875687568756875e-05,
+      "frame_errors": 4,
+      "num_batches_run": 202,
+      "num_bits": 349986816,
+      "num_frames": 58176
     }
   },
   "curves_csv": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs/shallow_d96_b2_r2_u3/metrics/curves.csv",
@@ -89,6 +89,6 @@
     "training_seed": 7
   },
   "num_users": 3,
-  "partial_batches_run": 50,
-  "save_reason": "progress"
+  "partial_batches_run": 202,
+  "save_reason": "signal"
 }
