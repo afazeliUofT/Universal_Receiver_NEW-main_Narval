@@ -1,0 +1,451 @@
+[SLURM] task=1/12 seed=7 dmrs_case=1dmrs variant=shallow_d96_b2_r2
+Wed May  6 06:55:01 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
+| N/A   27C    P0             48W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[TRAIN] starting from scratch
+[TRAIN] step=00001 loss=-3.14111 nmse_prop=0.01505 nmse_ls=0.01505 gpu_mem=0.06GiB peak=5.72GiB
+[TRAIN] step=00100 loss=-3.03694 nmse_prop=0.01769 nmse_ls=0.01824 gpu_mem=0.17GiB peak=5.89GiB
+[TRAIN] saved resumable state at step=100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-100
+[TRAIN] step=00200 loss=-2.85288 nmse_prop=0.02237 nmse_ls=0.02309 gpu_mem=0.16GiB peak=5.89GiB
+[TRAIN] saved resumable state at step=200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-200
+[TRAIN] step=00300 loss=-2.79102 nmse_prop=0.02416 nmse_ls=0.02530 gpu_mem=0.17GiB peak=5.89GiB
+[TRAIN] saved resumable state at step=300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-300
+[TRAIN] step=00400 loss=-2.16771 nmse_prop=0.04219 nmse_ls=0.04391 gpu_mem=0.17GiB peak=5.89GiB
+[TRAIN] saved resumable state at step=400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-400
+[TRAIN] saved new best weights at step=500 val_nmse=0.0517062
+[TRAIN] step=00500 loss=-3.15940 nmse_prop=0.01768 nmse_ls=0.02031 gpu_mem=0.31GiB peak=5.89GiB
+[TRAIN] saved resumable state at step=500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-500
+[TRAIN] step=00600 loss=-3.00959 nmse_prop=0.02008 nmse_ls=0.02343 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-600
+[TRAIN] step=00700 loss=-2.39051 nmse_prop=0.03472 nmse_ls=0.03754 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-700
+[TRAIN] step=00800 loss=-2.52241 nmse_prop=0.03016 nmse_ls=0.03317 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-800
+[TRAIN] step=00900 loss=-3.18473 nmse_prop=0.01879 nmse_ls=0.02193 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-900
+[TRAIN] saved new best weights at step=1000 val_nmse=0.0508717
+[TRAIN] step=01000 loss=-3.34462 nmse_prop=0.01684 nmse_ls=0.02006 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1000
+[TRAIN] step=01100 loss=-3.24840 nmse_prop=0.01753 nmse_ls=0.02104 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1100
+[TRAIN] step=01200 loss=-2.81496 nmse_prop=0.02464 nmse_ls=0.02880 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1200
+[TRAIN] step=01300 loss=-3.22641 nmse_prop=0.01759 nmse_ls=0.02092 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1300
+[TRAIN] step=01400 loss=-2.69116 nmse_prop=0.02673 nmse_ls=0.03116 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1400
+[TRAIN] saved new best weights at step=1500 val_nmse=0.0500873
+[TRAIN] step=01500 loss=-3.56442 nmse_prop=0.01437 nmse_ls=0.01794 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1500
+[TRAIN] step=01600 loss=-3.40632 nmse_prop=0.01532 nmse_ls=0.01878 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1600
+[TRAIN] step=01700 loss=-3.56644 nmse_prop=0.01463 nmse_ls=0.01799 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1700
+[TRAIN] step=01800 loss=-3.37775 nmse_prop=0.01715 nmse_ls=0.02078 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1800
+[TRAIN] step=01900 loss=-2.49007 nmse_prop=0.03206 nmse_ls=0.03797 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=1900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-1900
+[TRAIN] saved new best weights at step=2000 val_nmse=0.0480644
+[TRAIN] step=02000 loss=-3.12252 nmse_prop=0.01928 nmse_ls=0.02324 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2000
+[TRAIN] step=02100 loss=-1.83675 nmse_prop=0.05806 nmse_ls=0.06897 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2100
+[TRAIN] step=02200 loss=-1.71308 nmse_prop=0.06514 nmse_ls=0.07258 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2200
+[TRAIN] step=02300 loss=-3.50514 nmse_prop=0.01553 nmse_ls=0.01983 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2300
+[TRAIN] step=02400 loss=-2.28122 nmse_prop=0.03792 nmse_ls=0.04322 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2400
+[TRAIN] saved new best weights at step=2500 val_nmse=0.046892
+[TRAIN] step=02500 loss=-2.75227 nmse_prop=0.02538 nmse_ls=0.03014 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2500
+[TRAIN] step=02600 loss=-2.54513 nmse_prop=0.03046 nmse_ls=0.03601 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2600
+[TRAIN] step=02700 loss=-3.39014 nmse_prop=0.01605 nmse_ls=0.02102 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2700
+[TRAIN] step=02800 loss=-3.37776 nmse_prop=0.01557 nmse_ls=0.01953 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2800
+[TRAIN] step=02900 loss=-3.55414 nmse_prop=0.01431 nmse_ls=0.01809 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=2900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-2900
+[TRAIN] saved new best weights at step=3000 val_nmse=0.0457922
+[TRAIN] step=03000 loss=-2.83657 nmse_prop=0.02356 nmse_ls=0.02839 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3000
+[TRAIN] step=03100 loss=-1.70293 nmse_prop=0.06533 nmse_ls=0.07646 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3100
+[TRAIN] step=03200 loss=-1.74574 nmse_prop=0.06319 nmse_ls=0.07214 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3200
+[TRAIN] step=03300 loss=-3.51733 nmse_prop=0.01579 nmse_ls=0.02002 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3300
+[TRAIN] step=03400 loss=-3.49265 nmse_prop=0.01535 nmse_ls=0.01922 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3400
+[TRAIN] saved new best weights at step=3500 val_nmse=0.044444
+[TRAIN] step=03500 loss=-2.74920 nmse_prop=0.02504 nmse_ls=0.03099 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3500
+[TRAIN] step=03600 loss=-3.48312 nmse_prop=0.01560 nmse_ls=0.02083 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3600
+[TRAIN] step=03700 loss=-3.74352 nmse_prop=0.01217 nmse_ls=0.01632 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3700
+[TRAIN] step=03800 loss=-2.46627 nmse_prop=0.03258 nmse_ls=0.04035 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3800
+[TRAIN] step=03900 loss=-3.72691 nmse_prop=0.01303 nmse_ls=0.01801 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=3900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-3900
+[TRAIN] saved new best weights at step=4000 val_nmse=0.0431961
+[TRAIN] step=04000 loss=-2.20901 nmse_prop=0.04006 nmse_ls=0.04988 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4000
+[TRAIN] step=04100 loss=-2.63629 nmse_prop=0.02788 nmse_ls=0.03511 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4100
+[TRAIN] step=04200 loss=-2.08713 nmse_prop=0.04139 nmse_ls=0.06346 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4200
+[TRAIN] step=04300 loss=-2.09579 nmse_prop=0.04318 nmse_ls=0.05945 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4300
+[TRAIN] step=04400 loss=-3.65076 nmse_prop=0.01357 nmse_ls=0.01773 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4400
+[TRAIN] saved new best weights at step=4500 val_nmse=0.0426235
+[TRAIN] step=04500 loss=-3.25516 nmse_prop=0.01762 nmse_ls=0.02252 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4500
+[TRAIN] step=04600 loss=-3.56246 nmse_prop=0.01439 nmse_ls=0.02008 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4600
+[TRAIN] step=04700 loss=-2.79027 nmse_prop=0.02447 nmse_ls=0.03035 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4700
+[TRAIN] step=04800 loss=-3.24240 nmse_prop=0.01864 nmse_ls=0.02330 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4800
+[TRAIN] step=04900 loss=-2.69914 nmse_prop=0.02590 nmse_ls=0.03578 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=4900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-4900
+[TRAIN] saved new best weights at step=5000 val_nmse=0.0417394
+[TRAIN] step=05000 loss=-3.47131 nmse_prop=0.01490 nmse_ls=0.01952 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5000
+[TRAIN] step=05100 loss=-3.45543 nmse_prop=0.01557 nmse_ls=0.01990 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5100
+[TRAIN] step=05200 loss=-1.99477 nmse_prop=0.04667 nmse_ls=0.06725 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5200
+[TRAIN] step=05300 loss=-3.11222 nmse_prop=0.01820 nmse_ls=0.02604 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5300
+[TRAIN] step=05400 loss=-3.75611 nmse_prop=0.01270 nmse_ls=0.01705 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5400
+[TRAIN] saved new best weights at step=5500 val_nmse=0.0402505
+[TRAIN] step=05500 loss=-3.05480 nmse_prop=0.01958 nmse_ls=0.02574 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5500
+[TRAIN] step=05600 loss=-3.32012 nmse_prop=0.01648 nmse_ls=0.02161 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5600
+[TRAIN] step=05700 loss=-3.47992 nmse_prop=0.01566 nmse_ls=0.02142 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5700
+[TRAIN] step=05800 loss=-2.97408 nmse_prop=0.02151 nmse_ls=0.02717 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5800
+[TRAIN] step=05900 loss=-3.13426 nmse_prop=0.01756 nmse_ls=0.02539 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=5900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-5900
+[TRAIN] saved new best weights at step=6000 val_nmse=0.0397922
+[TRAIN] step=06000 loss=-3.45116 nmse_prop=0.01507 nmse_ls=0.01990 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6000
+[TRAIN] step=06100 loss=-2.47155 nmse_prop=0.03189 nmse_ls=0.04024 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6100
+[TRAIN] step=06200 loss=-3.02502 nmse_prop=0.02050 nmse_ls=0.02624 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6200
+[TRAIN] step=06300 loss=-3.00658 nmse_prop=0.02029 nmse_ls=0.02620 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6300
+[TRAIN] step=06400 loss=-3.47261 nmse_prop=0.01502 nmse_ls=0.02000 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6400
+[TRAIN] step=06500 loss=-3.14164 nmse_prop=0.01795 nmse_ls=0.02557 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6500
+[TRAIN] step=06600 loss=-3.33290 nmse_prop=0.01620 nmse_ls=0.02239 gpu_mem=0.28GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6600
+[TRAIN] step=06700 loss=-3.29143 nmse_prop=0.01704 nmse_ls=0.02263 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6700
+[TRAIN] step=06800 loss=-1.78617 nmse_prop=0.05914 nmse_ls=0.07462 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6800
+[TRAIN] step=06900 loss=-3.22789 nmse_prop=0.01762 nmse_ls=0.02450 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=6900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-6900
+[TRAIN] saved new best weights at step=7000 val_nmse=0.0393702
+[TRAIN] step=07000 loss=-2.94298 nmse_prop=0.02168 nmse_ls=0.02872 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7000
+[TRAIN] step=07100 loss=-2.61236 nmse_prop=0.02709 nmse_ls=0.04051 gpu_mem=0.29GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7100
+[TRAIN] step=07200 loss=-3.49172 nmse_prop=0.01502 nmse_ls=0.02010 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7200
+[TRAIN] step=07300 loss=-2.61795 nmse_prop=0.02789 nmse_ls=0.03757 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7300
+[TRAIN] step=07400 loss=-3.76138 nmse_prop=0.01314 nmse_ls=0.01762 gpu_mem=0.31GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7400
+[TRAIN] saved new best weights at step=7500 val_nmse=0.0380662
+[TRAIN] step=07500 loss=-3.72711 nmse_prop=0.01263 nmse_ls=0.01719 gpu_mem=0.33GiB peak=6.04GiB
+[TRAIN] saved resumable state at step=7500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7500
+[TRAIN] step=07600 loss=-3.36264 nmse_prop=0.01561 nmse_ls=0.02084 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=7600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7600
+[TRAIN] step=07700 loss=-3.85073 nmse_prop=0.01233 nmse_ls=0.01649 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=7700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7700
+[TRAIN] step=07800 loss=-3.72734 nmse_prop=0.01372 nmse_ls=0.01850 gpu_mem=0.31GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=7800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7800
+[TRAIN] step=07900 loss=-1.93544 nmse_prop=0.05182 nmse_ls=0.06661 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=7900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-7900
+[TRAIN] step=08000 loss=-2.85586 nmse_prop=0.02324 nmse_ls=0.02995 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8000
+[TRAIN] step=08100 loss=-3.38486 nmse_prop=0.01529 nmse_ls=0.02083 gpu_mem=0.31GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8100
+[TRAIN] step=08200 loss=-3.24761 nmse_prop=0.01797 nmse_ls=0.02349 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8200
+[TRAIN] step=08300 loss=-3.28926 nmse_prop=0.01640 nmse_ls=0.02344 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8300
+[TRAIN] step=08400 loss=-3.76291 nmse_prop=0.01231 nmse_ls=0.01706 gpu_mem=0.31GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8400
+[TRAIN] step=08500 loss=-3.37642 nmse_prop=0.01603 nmse_ls=0.02146 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8500
+[TRAIN] step=08600 loss=-3.41363 nmse_prop=0.01484 nmse_ls=0.02057 gpu_mem=0.31GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8600
+[TRAIN] step=08700 loss=-2.25823 nmse_prop=0.03840 nmse_ls=0.05014 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8700
+[TRAIN] step=08800 loss=-3.26742 nmse_prop=0.01677 nmse_ls=0.02400 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8800
+[TRAIN] step=08900 loss=-3.38178 nmse_prop=0.01588 nmse_ls=0.02108 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=8900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-8900
+[TRAIN] saved new best weights at step=9000 val_nmse=0.0370689
+[TRAIN] step=09000 loss=-3.36469 nmse_prop=0.01530 nmse_ls=0.02096 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9000
+[TRAIN] step=09100 loss=-2.83911 nmse_prop=0.02121 nmse_ls=0.03594 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9100
+[TRAIN] step=09200 loss=-3.59631 nmse_prop=0.01314 nmse_ls=0.01819 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9200
+[TRAIN] step=09300 loss=-2.95489 nmse_prop=0.02038 nmse_ls=0.03179 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9300
+[TRAIN] step=09400 loss=-3.56804 nmse_prop=0.01408 nmse_ls=0.01892 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9400
+[TRAIN] saved new best weights at step=9500 val_nmse=0.036177
+[TRAIN] step=09500 loss=-3.52356 nmse_prop=0.01574 nmse_ls=0.02204 gpu_mem=0.30GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9500
+[TRAIN] step=09600 loss=-2.56230 nmse_prop=0.02968 nmse_ls=0.03894 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9600
+[TRAIN] step=09700 loss=-2.50221 nmse_prop=0.03090 nmse_ls=0.04280 gpu_mem=0.31GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9700
+[TRAIN] step=09800 loss=-2.34121 nmse_prop=0.03292 nmse_ls=0.05493 gpu_mem=0.30GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9800
+[TRAIN] step=09900 loss=-3.56404 nmse_prop=0.01399 nmse_ls=0.01996 gpu_mem=0.28GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=9900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-9900
+[TRAIN] step=10000 loss=-3.11051 nmse_prop=0.01948 nmse_ls=0.02566 gpu_mem=0.33GiB peak=6.05GiB
+[TRAIN] saved resumable state at step=10000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-10000
+[TRAIN] saved resumable state at step=10000 reason=final: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/shallow_d96_b2_r2/checkpoints/training_state/ckpt-10000
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/shallow_d96_b2_r2/u3: gpu_mem=0.00GiB peak=6.05GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=32
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0=-4.0 dB BER=6.21745e-02 BLER=8.02083e-01 NMSE=1.67245e-01 bit_err=107724/1732608  blk_err=  231/288    batches=   1
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0=-4.0 dB BER=1.41804e-02 BLER=2.70833e-01 NMSE=6.32796e-02 bit_err= 24569/1732608  blk_err=   78/288    batches=   1
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0=-4.0 dB BER=6.10311e-02 BLER=7.77778e-01 NMSE=1.66327e-01 bit_err=105743/1732608  blk_err=  224/288    batches=   1
+[EVAL] receiver=           upair5g_lmmse Eb/N0=-4.0 dB BER=3.85783e-02 BLER=5.76389e-01 NMSE=1.15828e-01 bit_err= 66841/1732608  blk_err=  166/288    batches=   1
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0=-4.0 dB BER=1.21089e-03 BLER=3.12500e-02 NMSE=0.00000e+00 bit_err=  2098/1732608  blk_err=    9/288    batches=   1
+[EVAL] progress num_users=3 Eb/N0=-2 dB batches=2/512 frame_err=baseline_ls_lmmse:88/576 baseline_ls_2dlmmse_lmmse:10/576 baseline_ddcpe_ls_lmmse:80/576 upair5g_lmmse:28/576 perfect_csi_lmmse:1/576
+[EVAL] progress num_users=3 Eb/N0=-2 dB batches=4/512 frame_err=baseline_ls_lmmse:175/1152 baseline_ls_2dlmmse_lmmse:27/1152 baseline_ddcpe_ls_lmmse:152/1152 upair5g_lmmse:64/1152 perfect_csi_lmmse:3/1152
+[EVAL] progress num_users=3 Eb/N0=-2 dB batches=6/512 frame_err=baseline_ls_lmmse:261/1728 baseline_ls_2dlmmse_lmmse:38/1728 baseline_ddcpe_ls_lmmse:225/1728 upair5g_lmmse:99/1728 perfect_csi_lmmse:3/1728
+[EVAL] progress num_users=3 Eb/N0=-2 dB batches=8/512 frame_err=baseline_ls_lmmse:340/2304 baseline_ls_2dlmmse_lmmse:49/2304 baseline_ddcpe_ls_lmmse:294/2304 upair5g_lmmse:134/2304 perfect_csi_lmmse:3/2304
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0=-2.0 dB BER=8.06915e-03 BLER=1.48920e-01 NMSE=1.11780e-01 bit_err=125826/15593472 blk_err=  386/2592   batches=   9
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0=-2.0 dB BER=9.52386e-04 BLER=2.08333e-02 NMSE=4.83927e-02 bit_err= 14851/15593472 blk_err=   54/2592   batches=   9
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0=-2.0 dB BER=7.20827e-03 BLER=1.28472e-01 NMSE=1.09125e-01 bit_err=112402/15593472 blk_err=  333/2592   batches=   9
+[EVAL] receiver=           upair5g_lmmse Eb/N0=-2.0 dB BER=2.93790e-03 BLER=6.05710e-02 NMSE=7.58127e-02 bit_err= 45812/15593472 blk_err=  157/2592   batches=   9
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0=-2.0 dB BER=3.55277e-05 BLER=1.15741e-03 NMSE=0.00000e+00 bit_err=   554/15593472 blk_err=    3/2592   batches=   9
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=2/512 frame_err=baseline_ls_lmmse:5/576 baseline_ls_2dlmmse_lmmse:0/576 baseline_ddcpe_ls_lmmse:5/576 upair5g_lmmse:1/576 perfect_csi_lmmse:0/576
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=4/512 frame_err=baseline_ls_lmmse:10/1152 baseline_ls_2dlmmse_lmmse:0/1152 baseline_ddcpe_ls_lmmse:10/1152 upair5g_lmmse:1/1152 perfect_csi_lmmse:0/1152
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=6/512 frame_err=baseline_ls_lmmse:13/1728 baseline_ls_2dlmmse_lmmse:1/1728 baseline_ddcpe_ls_lmmse:12/1728 upair5g_lmmse:3/1728 perfect_csi_lmmse:0/1728
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=8/512 frame_err=baseline_ls_lmmse:17/2304 baseline_ls_2dlmmse_lmmse:1/2304 baseline_ddcpe_ls_lmmse:15/2304 upair5g_lmmse:3/2304 perfect_csi_lmmse:0/2304
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=10/512 frame_err=baseline_ls_lmmse:23/2880 baseline_ls_2dlmmse_lmmse:1/2880 baseline_ddcpe_ls_lmmse:19/2880 upair5g_lmmse:3/2880 perfect_csi_lmmse:0/2880
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=12/512 frame_err=baseline_ls_lmmse:27/3456 baseline_ls_2dlmmse_lmmse:1/3456 baseline_ddcpe_ls_lmmse:23/3456 upair5g_lmmse:6/3456 perfect_csi_lmmse:0/3456
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=14/512 frame_err=baseline_ls_lmmse:40/4032 baseline_ls_2dlmmse_lmmse:2/4032 baseline_ddcpe_ls_lmmse:36/4032 upair5g_lmmse:10/4032 perfect_csi_lmmse:0/4032
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=16/512 frame_err=baseline_ls_lmmse:49/4608 baseline_ls_2dlmmse_lmmse:2/4608 baseline_ddcpe_ls_lmmse:44/4608 upair5g_lmmse:14/4608 perfect_csi_lmmse:0/4608
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=18/512 frame_err=baseline_ls_lmmse:53/5184 baseline_ls_2dlmmse_lmmse:2/5184 baseline_ddcpe_ls_lmmse:47/5184 upair5g_lmmse:15/5184 perfect_csi_lmmse:0/5184
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=20/512 frame_err=baseline_ls_lmmse:66/5760 baseline_ls_2dlmmse_lmmse:3/5760 baseline_ddcpe_ls_lmmse:56/5760 upair5g_lmmse:17/5760 perfect_csi_lmmse:0/5760
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=22/512 frame_err=baseline_ls_lmmse:69/6336 baseline_ls_2dlmmse_lmmse:3/6336 baseline_ddcpe_ls_lmmse:57/6336 upair5g_lmmse:17/6336 perfect_csi_lmmse:0/6336
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=24/512 frame_err=baseline_ls_lmmse:79/6912 baseline_ls_2dlmmse_lmmse:5/6912 baseline_ddcpe_ls_lmmse:64/6912 upair5g_lmmse:20/6912 perfect_csi_lmmse:0/6912
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=26/512 frame_err=baseline_ls_lmmse:85/7488 baseline_ls_2dlmmse_lmmse:5/7488 baseline_ddcpe_ls_lmmse:68/7488 upair5g_lmmse:21/7488 perfect_csi_lmmse:0/7488
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=28/512 frame_err=baseline_ls_lmmse:91/8064 baseline_ls_2dlmmse_lmmse:5/8064 baseline_ddcpe_ls_lmmse:72/8064 upair5g_lmmse:23/8064 perfect_csi_lmmse:0/8064
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=30/512 frame_err=baseline_ls_lmmse:99/8640 baseline_ls_2dlmmse_lmmse:7/8640 baseline_ddcpe_ls_lmmse:77/8640 upair5g_lmmse:26/8640 perfect_csi_lmmse:0/8640
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=32/512 frame_err=baseline_ls_lmmse:106/9216 baseline_ls_2dlmmse_lmmse:7/9216 baseline_ddcpe_ls_lmmse:83/9216 upair5g_lmmse:27/9216 perfect_csi_lmmse:0/9216
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=34/512 frame_err=baseline_ls_lmmse:117/9792 baseline_ls_2dlmmse_lmmse:9/9792 baseline_ddcpe_ls_lmmse:92/9792 upair5g_lmmse:33/9792 perfect_csi_lmmse:0/9792
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=36/512 frame_err=baseline_ls_lmmse:134/10368 baseline_ls_2dlmmse_lmmse:9/10368 baseline_ddcpe_ls_lmmse:107/10368 upair5g_lmmse:38/10368 perfect_csi_lmmse:0/10368
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=38/512 frame_err=baseline_ls_lmmse:141/10944 baseline_ls_2dlmmse_lmmse:9/10944 baseline_ddcpe_ls_lmmse:110/10944 upair5g_lmmse:39/10944 perfect_csi_lmmse:0/10944
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=40/512 frame_err=baseline_ls_lmmse:141/11520 baseline_ls_2dlmmse_lmmse:9/11520 baseline_ddcpe_ls_lmmse:110/11520 upair5g_lmmse:39/11520 perfect_csi_lmmse:0/11520
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=42/512 frame_err=baseline_ls_lmmse:150/12096 baseline_ls_2dlmmse_lmmse:9/12096 baseline_ddcpe_ls_lmmse:116/12096 upair5g_lmmse:39/12096 perfect_csi_lmmse:0/12096
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=44/512 frame_err=baseline_ls_lmmse:158/12672 baseline_ls_2dlmmse_lmmse:9/12672 baseline_ddcpe_ls_lmmse:122/12672 upair5g_lmmse:41/12672 perfect_csi_lmmse:0/12672
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=46/512 frame_err=baseline_ls_lmmse:161/13248 baseline_ls_2dlmmse_lmmse:9/13248 baseline_ddcpe_ls_lmmse:125/13248 upair5g_lmmse:42/13248 perfect_csi_lmmse:0/13248
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=48/512 frame_err=baseline_ls_lmmse:175/13824 baseline_ls_2dlmmse_lmmse:9/13824 baseline_ddcpe_ls_lmmse:137/13824 upair5g_lmmse:46/13824 perfect_csi_lmmse:0/13824
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=50/512 frame_err=baseline_ls_lmmse:184/14400 baseline_ls_2dlmmse_lmmse:9/14400 baseline_ddcpe_ls_lmmse:143/14400 upair5g_lmmse:49/14400 perfect_csi_lmmse:0/14400
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=52/512 frame_err=baseline_ls_lmmse:187/14976 baseline_ls_2dlmmse_lmmse:9/14976 baseline_ddcpe_ls_lmmse:146/14976 upair5g_lmmse:50/14976 perfect_csi_lmmse:0/14976
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=54/512 frame_err=baseline_ls_lmmse:191/15552 baseline_ls_2dlmmse_lmmse:9/15552 baseline_ddcpe_ls_lmmse:150/15552 upair5g_lmmse:51/15552 perfect_csi_lmmse:0/15552
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=56/512 frame_err=baseline_ls_lmmse:198/16128 baseline_ls_2dlmmse_lmmse:9/16128 baseline_ddcpe_ls_lmmse:156/16128 upair5g_lmmse:53/16128 perfect_csi_lmmse:0/16128
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=58/512 frame_err=baseline_ls_lmmse:200/16704 baseline_ls_2dlmmse_lmmse:9/16704 baseline_ddcpe_ls_lmmse:158/16704 upair5g_lmmse:55/16704 perfect_csi_lmmse:0/16704
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=60/512 frame_err=baseline_ls_lmmse:205/17280 baseline_ls_2dlmmse_lmmse:10/17280 baseline_ddcpe_ls_lmmse:162/17280 upair5g_lmmse:57/17280 perfect_csi_lmmse:0/17280
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=62/512 frame_err=baseline_ls_lmmse:211/17856 baseline_ls_2dlmmse_lmmse:11/17856 baseline_ddcpe_ls_lmmse:166/17856 upair5g_lmmse:60/17856 perfect_csi_lmmse:0/17856
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=64/512 frame_err=baseline_ls_lmmse:216/18432 baseline_ls_2dlmmse_lmmse:11/18432 baseline_ddcpe_ls_lmmse:169/18432 upair5g_lmmse:61/18432 perfect_csi_lmmse:0/18432
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=66/512 frame_err=baseline_ls_lmmse:221/19008 baseline_ls_2dlmmse_lmmse:11/19008 baseline_ddcpe_ls_lmmse:172/19008 upair5g_lmmse:61/19008 perfect_csi_lmmse:0/19008
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=68/512 frame_err=baseline_ls_lmmse:225/19584 baseline_ls_2dlmmse_lmmse:13/19584 baseline_ddcpe_ls_lmmse:175/19584 upair5g_lmmse:64/19584 perfect_csi_lmmse:0/19584
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=70/512 frame_err=baseline_ls_lmmse:234/20160 baseline_ls_2dlmmse_lmmse:13/20160 baseline_ddcpe_ls_lmmse:182/20160 upair5g_lmmse:64/20160 perfect_csi_lmmse:0/20160
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=72/512 frame_err=baseline_ls_lmmse:239/20736 baseline_ls_2dlmmse_lmmse:13/20736 baseline_ddcpe_ls_lmmse:186/20736 upair5g_lmmse:64/20736 perfect_csi_lmmse:0/20736
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=74/512 frame_err=baseline_ls_lmmse:240/21312 baseline_ls_2dlmmse_lmmse:13/21312 baseline_ddcpe_ls_lmmse:186/21312 upair5g_lmmse:64/21312 perfect_csi_lmmse:0/21312
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=76/512 frame_err=baseline_ls_lmmse:247/21888 baseline_ls_2dlmmse_lmmse:13/21888 baseline_ddcpe_ls_lmmse:192/21888 upair5g_lmmse:65/21888 perfect_csi_lmmse:0/21888
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=78/512 frame_err=baseline_ls_lmmse:252/22464 baseline_ls_2dlmmse_lmmse:13/22464 baseline_ddcpe_ls_lmmse:196/22464 upair5g_lmmse:67/22464 perfect_csi_lmmse:0/22464
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=80/512 frame_err=baseline_ls_lmmse:262/23040 baseline_ls_2dlmmse_lmmse:13/23040 baseline_ddcpe_ls_lmmse:203/23040 upair5g_lmmse:67/23040 perfect_csi_lmmse:0/23040
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=82/512 frame_err=baseline_ls_lmmse:266/23616 baseline_ls_2dlmmse_lmmse:13/23616 baseline_ddcpe_ls_lmmse:206/23616 upair5g_lmmse:68/23616 perfect_csi_lmmse:0/23616
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=84/512 frame_err=baseline_ls_lmmse:272/24192 baseline_ls_2dlmmse_lmmse:14/24192 baseline_ddcpe_ls_lmmse:210/24192 upair5g_lmmse:69/24192 perfect_csi_lmmse:0/24192
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=86/512 frame_err=baseline_ls_lmmse:278/24768 baseline_ls_2dlmmse_lmmse:14/24768 baseline_ddcpe_ls_lmmse:215/24768 upair5g_lmmse:70/24768 perfect_csi_lmmse:0/24768
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=88/512 frame_err=baseline_ls_lmmse:282/25344 baseline_ls_2dlmmse_lmmse:14/25344 baseline_ddcpe_ls_lmmse:219/25344 upair5g_lmmse:71/25344 perfect_csi_lmmse:0/25344
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=90/512 frame_err=baseline_ls_lmmse:289/25920 baseline_ls_2dlmmse_lmmse:14/25920 baseline_ddcpe_ls_lmmse:223/25920 upair5g_lmmse:72/25920 perfect_csi_lmmse:0/25920
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=92/512 frame_err=baseline_ls_lmmse:300/26496 baseline_ls_2dlmmse_lmmse:14/26496 baseline_ddcpe_ls_lmmse:233/26496 upair5g_lmmse:76/26496 perfect_csi_lmmse:0/26496
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=94/512 frame_err=baseline_ls_lmmse:312/27072 baseline_ls_2dlmmse_lmmse:17/27072 baseline_ddcpe_ls_lmmse:244/27072 upair5g_lmmse:83/27072 perfect_csi_lmmse:0/27072
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=96/512 frame_err=baseline_ls_lmmse:319/27648 baseline_ls_2dlmmse_lmmse:17/27648 baseline_ddcpe_ls_lmmse:247/27648 upair5g_lmmse:83/27648 perfect_csi_lmmse:0/27648
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=98/512 frame_err=baseline_ls_lmmse:322/28224 baseline_ls_2dlmmse_lmmse:17/28224 baseline_ddcpe_ls_lmmse:250/28224 upair5g_lmmse:83/28224 perfect_csi_lmmse:0/28224
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=100/512 frame_err=baseline_ls_lmmse:330/28800 baseline_ls_2dlmmse_lmmse:17/28800 baseline_ddcpe_ls_lmmse:257/28800 upair5g_lmmse:85/28800 perfect_csi_lmmse:0/28800
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=102/512 frame_err=baseline_ls_lmmse:335/29376 baseline_ls_2dlmmse_lmmse:17/29376 baseline_ddcpe_ls_lmmse:262/29376 upair5g_lmmse:86/29376 perfect_csi_lmmse:0/29376
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=104/512 frame_err=baseline_ls_lmmse:337/29952 baseline_ls_2dlmmse_lmmse:17/29952 baseline_ddcpe_ls_lmmse:263/29952 upair5g_lmmse:87/29952 perfect_csi_lmmse:0/29952
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=106/512 frame_err=baseline_ls_lmmse:348/30528 baseline_ls_2dlmmse_lmmse:17/30528 baseline_ddcpe_ls_lmmse:272/30528 upair5g_lmmse:88/30528 perfect_csi_lmmse:0/30528
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=108/512 frame_err=baseline_ls_lmmse:357/31104 baseline_ls_2dlmmse_lmmse:17/31104 baseline_ddcpe_ls_lmmse:276/31104 upair5g_lmmse:89/31104 perfect_csi_lmmse:0/31104
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=110/512 frame_err=baseline_ls_lmmse:365/31680 baseline_ls_2dlmmse_lmmse:17/31680 baseline_ddcpe_ls_lmmse:281/31680 upair5g_lmmse:90/31680 perfect_csi_lmmse:0/31680
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=112/512 frame_err=baseline_ls_lmmse:366/32256 baseline_ls_2dlmmse_lmmse:17/32256 baseline_ddcpe_ls_lmmse:283/32256 upair5g_lmmse:91/32256 perfect_csi_lmmse:0/32256
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=114/512 frame_err=baseline_ls_lmmse:372/32832 baseline_ls_2dlmmse_lmmse:17/32832 baseline_ddcpe_ls_lmmse:288/32832 upair5g_lmmse:94/32832 perfect_csi_lmmse:0/32832
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=116/512 frame_err=baseline_ls_lmmse:374/33408 baseline_ls_2dlmmse_lmmse:17/33408 baseline_ddcpe_ls_lmmse:290/33408 upair5g_lmmse:94/33408 perfect_csi_lmmse:0/33408
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=118/512 frame_err=baseline_ls_lmmse:382/33984 baseline_ls_2dlmmse_lmmse:18/33984 baseline_ddcpe_ls_lmmse:297/33984 upair5g_lmmse:96/33984 perfect_csi_lmmse:0/33984
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=120/512 frame_err=baseline_ls_lmmse:389/34560 baseline_ls_2dlmmse_lmmse:18/34560 baseline_ddcpe_ls_lmmse:303/34560 upair5g_lmmse:98/34560 perfect_csi_lmmse:0/34560
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=122/512 frame_err=baseline_ls_lmmse:395/35136 baseline_ls_2dlmmse_lmmse:18/35136 baseline_ddcpe_ls_lmmse:308/35136 upair5g_lmmse:100/35136 perfect_csi_lmmse:0/35136
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=124/512 frame_err=baseline_ls_lmmse:398/35712 baseline_ls_2dlmmse_lmmse:18/35712 baseline_ddcpe_ls_lmmse:309/35712 upair5g_lmmse:101/35712 perfect_csi_lmmse:0/35712
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=126/512 frame_err=baseline_ls_lmmse:401/36288 baseline_ls_2dlmmse_lmmse:19/36288 baseline_ddcpe_ls_lmmse:311/36288 upair5g_lmmse:103/36288 perfect_csi_lmmse:0/36288
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=128/512 frame_err=baseline_ls_lmmse:405/36864 baseline_ls_2dlmmse_lmmse:19/36864 baseline_ddcpe_ls_lmmse:311/36864 upair5g_lmmse:103/36864 perfect_csi_lmmse:0/36864
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=130/512 frame_err=baseline_ls_lmmse:415/37440 baseline_ls_2dlmmse_lmmse:19/37440 baseline_ddcpe_ls_lmmse:319/37440 upair5g_lmmse:105/37440 perfect_csi_lmmse:0/37440
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=132/512 frame_err=baseline_ls_lmmse:421/38016 baseline_ls_2dlmmse_lmmse:20/38016 baseline_ddcpe_ls_lmmse:324/38016 upair5g_lmmse:107/38016 perfect_csi_lmmse:0/38016
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=134/512 frame_err=baseline_ls_lmmse:429/38592 baseline_ls_2dlmmse_lmmse:20/38592 baseline_ddcpe_ls_lmmse:331/38592 upair5g_lmmse:107/38592 perfect_csi_lmmse:0/38592
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=136/512 frame_err=baseline_ls_lmmse:433/39168 baseline_ls_2dlmmse_lmmse:20/39168 baseline_ddcpe_ls_lmmse:332/39168 upair5g_lmmse:108/39168 perfect_csi_lmmse:0/39168
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=138/512 frame_err=baseline_ls_lmmse:436/39744 baseline_ls_2dlmmse_lmmse:21/39744 baseline_ddcpe_ls_lmmse:335/39744 upair5g_lmmse:110/39744 perfect_csi_lmmse:0/39744
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=140/512 frame_err=baseline_ls_lmmse:440/40320 baseline_ls_2dlmmse_lmmse:21/40320 baseline_ddcpe_ls_lmmse:337/40320 upair5g_lmmse:110/40320 perfect_csi_lmmse:0/40320
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=142/512 frame_err=baseline_ls_lmmse:442/40896 baseline_ls_2dlmmse_lmmse:21/40896 baseline_ddcpe_ls_lmmse:337/40896 upair5g_lmmse:110/40896 perfect_csi_lmmse:0/40896
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=144/512 frame_err=baseline_ls_lmmse:445/41472 baseline_ls_2dlmmse_lmmse:21/41472 baseline_ddcpe_ls_lmmse:340/41472 upair5g_lmmse:110/41472 perfect_csi_lmmse:0/41472
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=146/512 frame_err=baseline_ls_lmmse:455/42048 baseline_ls_2dlmmse_lmmse:21/42048 baseline_ddcpe_ls_lmmse:348/42048 upair5g_lmmse:114/42048 perfect_csi_lmmse:0/42048
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=148/512 frame_err=baseline_ls_lmmse:463/42624 baseline_ls_2dlmmse_lmmse:21/42624 baseline_ddcpe_ls_lmmse:353/42624 upair5g_lmmse:115/42624 perfect_csi_lmmse:0/42624
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=150/512 frame_err=baseline_ls_lmmse:472/43200 baseline_ls_2dlmmse_lmmse:21/43200 baseline_ddcpe_ls_lmmse:361/43200 upair5g_lmmse:118/43200 perfect_csi_lmmse:0/43200
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=152/512 frame_err=baseline_ls_lmmse:476/43776 baseline_ls_2dlmmse_lmmse:22/43776 baseline_ddcpe_ls_lmmse:364/43776 upair5g_lmmse:119/43776 perfect_csi_lmmse:0/43776
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=154/512 frame_err=baseline_ls_lmmse:481/44352 baseline_ls_2dlmmse_lmmse:22/44352 baseline_ddcpe_ls_lmmse:369/44352 upair5g_lmmse:120/44352 perfect_csi_lmmse:0/44352
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=156/512 frame_err=baseline_ls_lmmse:488/44928 baseline_ls_2dlmmse_lmmse:22/44928 baseline_ddcpe_ls_lmmse:371/44928 upair5g_lmmse:121/44928 perfect_csi_lmmse:0/44928
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=158/512 frame_err=baseline_ls_lmmse:498/45504 baseline_ls_2dlmmse_lmmse:22/45504 baseline_ddcpe_ls_lmmse:379/45504 upair5g_lmmse:123/45504 perfect_csi_lmmse:0/45504
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=160/512 frame_err=baseline_ls_lmmse:501/46080 baseline_ls_2dlmmse_lmmse:22/46080 baseline_ddcpe_ls_lmmse:381/46080 upair5g_lmmse:123/46080 perfect_csi_lmmse:0/46080
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=162/512 frame_err=baseline_ls_lmmse:508/46656 baseline_ls_2dlmmse_lmmse:22/46656 baseline_ddcpe_ls_lmmse:385/46656 upair5g_lmmse:123/46656 perfect_csi_lmmse:0/46656
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=164/512 frame_err=baseline_ls_lmmse:520/47232 baseline_ls_2dlmmse_lmmse:24/47232 baseline_ddcpe_ls_lmmse:394/47232 upair5g_lmmse:128/47232 perfect_csi_lmmse:0/47232
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=166/512 frame_err=baseline_ls_lmmse:527/47808 baseline_ls_2dlmmse_lmmse:25/47808 baseline_ddcpe_ls_lmmse:399/47808 upair5g_lmmse:132/47808 perfect_csi_lmmse:0/47808
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=168/512 frame_err=baseline_ls_lmmse:534/48384 baseline_ls_2dlmmse_lmmse:25/48384 baseline_ddcpe_ls_lmmse:405/48384 upair5g_lmmse:133/48384 perfect_csi_lmmse:0/48384
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=170/512 frame_err=baseline_ls_lmmse:540/48960 baseline_ls_2dlmmse_lmmse:25/48960 baseline_ddcpe_ls_lmmse:411/48960 upair5g_lmmse:134/48960 perfect_csi_lmmse:0/48960
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=172/512 frame_err=baseline_ls_lmmse:544/49536 baseline_ls_2dlmmse_lmmse:25/49536 baseline_ddcpe_ls_lmmse:414/49536 upair5g_lmmse:135/49536 perfect_csi_lmmse:0/49536
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=174/512 frame_err=baseline_ls_lmmse:547/50112 baseline_ls_2dlmmse_lmmse:25/50112 baseline_ddcpe_ls_lmmse:415/50112 upair5g_lmmse:135/50112 perfect_csi_lmmse:0/50112
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=176/512 frame_err=baseline_ls_lmmse:548/50688 baseline_ls_2dlmmse_lmmse:25/50688 baseline_ddcpe_ls_lmmse:415/50688 upair5g_lmmse:135/50688 perfect_csi_lmmse:0/50688
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=178/512 frame_err=baseline_ls_lmmse:550/51264 baseline_ls_2dlmmse_lmmse:25/51264 baseline_ddcpe_ls_lmmse:417/51264 upair5g_lmmse:136/51264 perfect_csi_lmmse:0/51264
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=180/512 frame_err=baseline_ls_lmmse:557/51840 baseline_ls_2dlmmse_lmmse:26/51840 baseline_ddcpe_ls_lmmse:421/51840 upair5g_lmmse:137/51840 perfect_csi_lmmse:0/51840
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=182/512 frame_err=baseline_ls_lmmse:568/52416 baseline_ls_2dlmmse_lmmse:26/52416 baseline_ddcpe_ls_lmmse:429/52416 upair5g_lmmse:138/52416 perfect_csi_lmmse:0/52416
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=184/512 frame_err=baseline_ls_lmmse:573/52992 baseline_ls_2dlmmse_lmmse:26/52992 baseline_ddcpe_ls_lmmse:435/52992 upair5g_lmmse:141/52992 perfect_csi_lmmse:0/52992
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=186/512 frame_err=baseline_ls_lmmse:581/53568 baseline_ls_2dlmmse_lmmse:26/53568 baseline_ddcpe_ls_lmmse:440/53568 upair5g_lmmse:142/53568 perfect_csi_lmmse:0/53568
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=188/512 frame_err=baseline_ls_lmmse:587/54144 baseline_ls_2dlmmse_lmmse:26/54144 baseline_ddcpe_ls_lmmse:445/54144 upair5g_lmmse:144/54144 perfect_csi_lmmse:0/54144
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=190/512 frame_err=baseline_ls_lmmse:594/54720 baseline_ls_2dlmmse_lmmse:26/54720 baseline_ddcpe_ls_lmmse:450/54720 upair5g_lmmse:146/54720 perfect_csi_lmmse:0/54720
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=192/512 frame_err=baseline_ls_lmmse:603/55296 baseline_ls_2dlmmse_lmmse:26/55296 baseline_ddcpe_ls_lmmse:458/55296 upair5g_lmmse:150/55296 perfect_csi_lmmse:0/55296
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=194/512 frame_err=baseline_ls_lmmse:607/55872 baseline_ls_2dlmmse_lmmse:26/55872 baseline_ddcpe_ls_lmmse:459/55872 upair5g_lmmse:150/55872 perfect_csi_lmmse:0/55872
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=196/512 frame_err=baseline_ls_lmmse:613/56448 baseline_ls_2dlmmse_lmmse:26/56448 baseline_ddcpe_ls_lmmse:463/56448 upair5g_lmmse:150/56448 perfect_csi_lmmse:0/56448
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=198/512 frame_err=baseline_ls_lmmse:618/57024 baseline_ls_2dlmmse_lmmse:26/57024 baseline_ddcpe_ls_lmmse:466/57024 upair5g_lmmse:151/57024 perfect_csi_lmmse:0/57024
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=200/512 frame_err=baseline_ls_lmmse:625/57600 baseline_ls_2dlmmse_lmmse:26/57600 baseline_ddcpe_ls_lmmse:469/57600 upair5g_lmmse:153/57600 perfect_csi_lmmse:0/57600
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=202/512 frame_err=baseline_ls_lmmse:630/58176 baseline_ls_2dlmmse_lmmse:26/58176 baseline_ddcpe_ls_lmmse:473/58176 upair5g_lmmse:154/58176 perfect_csi_lmmse:0/58176
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=204/512 frame_err=baseline_ls_lmmse:634/58752 baseline_ls_2dlmmse_lmmse:26/58752 baseline_ddcpe_ls_lmmse:476/58752 upair5g_lmmse:156/58752 perfect_csi_lmmse:0/58752
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=206/512 frame_err=baseline_ls_lmmse:638/59328 baseline_ls_2dlmmse_lmmse:26/59328 baseline_ddcpe_ls_lmmse:480/59328 upair5g_lmmse:156/59328 perfect_csi_lmmse:0/59328
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=208/512 frame_err=baseline_ls_lmmse:642/59904 baseline_ls_2dlmmse_lmmse:26/59904 baseline_ddcpe_ls_lmmse:482/59904 upair5g_lmmse:156/59904 perfect_csi_lmmse:0/59904
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=210/512 frame_err=baseline_ls_lmmse:646/60480 baseline_ls_2dlmmse_lmmse:26/60480 baseline_ddcpe_ls_lmmse:485/60480 upair5g_lmmse:156/60480 perfect_csi_lmmse:0/60480
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=212/512 frame_err=baseline_ls_lmmse:654/61056 baseline_ls_2dlmmse_lmmse:27/61056 baseline_ddcpe_ls_lmmse:489/61056 upair5g_lmmse:159/61056 perfect_csi_lmmse:0/61056
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=214/512 frame_err=baseline_ls_lmmse:659/61632 baseline_ls_2dlmmse_lmmse:28/61632 baseline_ddcpe_ls_lmmse:494/61632 upair5g_lmmse:161/61632 perfect_csi_lmmse:0/61632
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=216/512 frame_err=baseline_ls_lmmse:667/62208 baseline_ls_2dlmmse_lmmse:28/62208 baseline_ddcpe_ls_lmmse:502/62208 upair5g_lmmse:164/62208 perfect_csi_lmmse:0/62208
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=218/512 frame_err=baseline_ls_lmmse:670/62784 baseline_ls_2dlmmse_lmmse:28/62784 baseline_ddcpe_ls_lmmse:503/62784 upair5g_lmmse:165/62784 perfect_csi_lmmse:0/62784
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=220/512 frame_err=baseline_ls_lmmse:676/63360 baseline_ls_2dlmmse_lmmse:28/63360 baseline_ddcpe_ls_lmmse:508/63360 upair5g_lmmse:165/63360 perfect_csi_lmmse:0/63360
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=222/512 frame_err=baseline_ls_lmmse:680/63936 baseline_ls_2dlmmse_lmmse:28/63936 baseline_ddcpe_ls_lmmse:511/63936 upair5g_lmmse:166/63936 perfect_csi_lmmse:0/63936
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=224/512 frame_err=baseline_ls_lmmse:685/64512 baseline_ls_2dlmmse_lmmse:29/64512 baseline_ddcpe_ls_lmmse:515/64512 upair5g_lmmse:167/64512 perfect_csi_lmmse:0/64512
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=226/512 frame_err=baseline_ls_lmmse:695/65088 baseline_ls_2dlmmse_lmmse:31/65088 baseline_ddcpe_ls_lmmse:521/65088 upair5g_lmmse:170/65088 perfect_csi_lmmse:0/65088
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=228/512 frame_err=baseline_ls_lmmse:700/65664 baseline_ls_2dlmmse_lmmse:31/65664 baseline_ddcpe_ls_lmmse:525/65664 upair5g_lmmse:173/65664 perfect_csi_lmmse:0/65664
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=230/512 frame_err=baseline_ls_lmmse:705/66240 baseline_ls_2dlmmse_lmmse:31/66240 baseline_ddcpe_ls_lmmse:529/66240 upair5g_lmmse:173/66240 perfect_csi_lmmse:0/66240
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=232/512 frame_err=baseline_ls_lmmse:708/66816 baseline_ls_2dlmmse_lmmse:32/66816 baseline_ddcpe_ls_lmmse:531/66816 upair5g_lmmse:174/66816 perfect_csi_lmmse:0/66816
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=234/512 frame_err=baseline_ls_lmmse:718/67392 baseline_ls_2dlmmse_lmmse:32/67392 baseline_ddcpe_ls_lmmse:540/67392 upair5g_lmmse:177/67392 perfect_csi_lmmse:0/67392
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=236/512 frame_err=baseline_ls_lmmse:724/67968 baseline_ls_2dlmmse_lmmse:32/67968 baseline_ddcpe_ls_lmmse:542/67968 upair5g_lmmse:177/67968 perfect_csi_lmmse:0/67968
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=238/512 frame_err=baseline_ls_lmmse:734/68544 baseline_ls_2dlmmse_lmmse:33/68544 baseline_ddcpe_ls_lmmse:549/68544 upair5g_lmmse:178/68544 perfect_csi_lmmse:0/68544
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=240/512 frame_err=baseline_ls_lmmse:741/69120 baseline_ls_2dlmmse_lmmse:33/69120 baseline_ddcpe_ls_lmmse:553/69120 upair5g_lmmse:178/69120 perfect_csi_lmmse:0/69120
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=242/512 frame_err=baseline_ls_lmmse:751/69696 baseline_ls_2dlmmse_lmmse:33/69696 baseline_ddcpe_ls_lmmse:559/69696 upair5g_lmmse:181/69696 perfect_csi_lmmse:0/69696
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=244/512 frame_err=baseline_ls_lmmse:753/70272 baseline_ls_2dlmmse_lmmse:33/70272 baseline_ddcpe_ls_lmmse:560/70272 upair5g_lmmse:182/70272 perfect_csi_lmmse:0/70272
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=246/512 frame_err=baseline_ls_lmmse:758/70848 baseline_ls_2dlmmse_lmmse:33/70848 baseline_ddcpe_ls_lmmse:563/70848 upair5g_lmmse:184/70848 perfect_csi_lmmse:0/70848
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=248/512 frame_err=baseline_ls_lmmse:764/71424 baseline_ls_2dlmmse_lmmse:33/71424 baseline_ddcpe_ls_lmmse:569/71424 upair5g_lmmse:189/71424 perfect_csi_lmmse:0/71424
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=250/512 frame_err=baseline_ls_lmmse:772/72000 baseline_ls_2dlmmse_lmmse:33/72000 baseline_ddcpe_ls_lmmse:577/72000 upair5g_lmmse:191/72000 perfect_csi_lmmse:0/72000
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=252/512 frame_err=baseline_ls_lmmse:781/72576 baseline_ls_2dlmmse_lmmse:33/72576 baseline_ddcpe_ls_lmmse:585/72576 upair5g_lmmse:195/72576 perfect_csi_lmmse:0/72576
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=254/512 frame_err=baseline_ls_lmmse:788/73152 baseline_ls_2dlmmse_lmmse:33/73152 baseline_ddcpe_ls_lmmse:588/73152 upair5g_lmmse:196/73152 perfect_csi_lmmse:0/73152
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=256/512 frame_err=baseline_ls_lmmse:790/73728 baseline_ls_2dlmmse_lmmse:33/73728 baseline_ddcpe_ls_lmmse:589/73728 upair5g_lmmse:197/73728 perfect_csi_lmmse:0/73728
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=258/512 frame_err=baseline_ls_lmmse:795/74304 baseline_ls_2dlmmse_lmmse:33/74304 baseline_ddcpe_ls_lmmse:593/74304 upair5g_lmmse:198/74304 perfect_csi_lmmse:0/74304
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=260/512 frame_err=baseline_ls_lmmse:802/74880 baseline_ls_2dlmmse_lmmse:33/74880 baseline_ddcpe_ls_lmmse:599/74880 upair5g_lmmse:199/74880 perfect_csi_lmmse:0/74880
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=262/512 frame_err=baseline_ls_lmmse:810/75456 baseline_ls_2dlmmse_lmmse:33/75456 baseline_ddcpe_ls_lmmse:602/75456 upair5g_lmmse:200/75456 perfect_csi_lmmse:0/75456
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=264/512 frame_err=baseline_ls_lmmse:818/76032 baseline_ls_2dlmmse_lmmse:34/76032 baseline_ddcpe_ls_lmmse:607/76032 upair5g_lmmse:204/76032 perfect_csi_lmmse:0/76032
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=266/512 frame_err=baseline_ls_lmmse:824/76608 baseline_ls_2dlmmse_lmmse:34/76608 baseline_ddcpe_ls_lmmse:611/76608 upair5g_lmmse:204/76608 perfect_csi_lmmse:0/76608
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=268/512 frame_err=baseline_ls_lmmse:831/77184 baseline_ls_2dlmmse_lmmse:35/77184 baseline_ddcpe_ls_lmmse:616/77184 upair5g_lmmse:206/77184 perfect_csi_lmmse:0/77184
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=270/512 frame_err=baseline_ls_lmmse:837/77760 baseline_ls_2dlmmse_lmmse:35/77760 baseline_ddcpe_ls_lmmse:620/77760 upair5g_lmmse:207/77760 perfect_csi_lmmse:0/77760
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=272/512 frame_err=baseline_ls_lmmse:843/78336 baseline_ls_2dlmmse_lmmse:35/78336 baseline_ddcpe_ls_lmmse:624/78336 upair5g_lmmse:207/78336 perfect_csi_lmmse:0/78336
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=274/512 frame_err=baseline_ls_lmmse:853/78912 baseline_ls_2dlmmse_lmmse:35/78912 baseline_ddcpe_ls_lmmse:631/78912 upair5g_lmmse:211/78912 perfect_csi_lmmse:0/78912
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=276/512 frame_err=baseline_ls_lmmse:865/79488 baseline_ls_2dlmmse_lmmse:36/79488 baseline_ddcpe_ls_lmmse:640/79488 upair5g_lmmse:214/79488 perfect_csi_lmmse:0/79488
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=278/512 frame_err=baseline_ls_lmmse:868/80064 baseline_ls_2dlmmse_lmmse:36/80064 baseline_ddcpe_ls_lmmse:642/80064 upair5g_lmmse:214/80064 perfect_csi_lmmse:0/80064
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=280/512 frame_err=baseline_ls_lmmse:877/80640 baseline_ls_2dlmmse_lmmse:36/80640 baseline_ddcpe_ls_lmmse:649/80640 upair5g_lmmse:216/80640 perfect_csi_lmmse:0/80640
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=282/512 frame_err=baseline_ls_lmmse:880/81216 baseline_ls_2dlmmse_lmmse:36/81216 baseline_ddcpe_ls_lmmse:651/81216 upair5g_lmmse:217/81216 perfect_csi_lmmse:0/81216
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=284/512 frame_err=baseline_ls_lmmse:890/81792 baseline_ls_2dlmmse_lmmse:36/81792 baseline_ddcpe_ls_lmmse:658/81792 upair5g_lmmse:220/81792 perfect_csi_lmmse:0/81792
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=286/512 frame_err=baseline_ls_lmmse:895/82368 baseline_ls_2dlmmse_lmmse:36/82368 baseline_ddcpe_ls_lmmse:661/82368 upair5g_lmmse:220/82368 perfect_csi_lmmse:0/82368
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=288/512 frame_err=baseline_ls_lmmse:901/82944 baseline_ls_2dlmmse_lmmse:37/82944 baseline_ddcpe_ls_lmmse:666/82944 upair5g_lmmse:222/82944 perfect_csi_lmmse:0/82944
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=290/512 frame_err=baseline_ls_lmmse:904/83520 baseline_ls_2dlmmse_lmmse:38/83520 baseline_ddcpe_ls_lmmse:668/83520 upair5g_lmmse:223/83520 perfect_csi_lmmse:0/83520
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=292/512 frame_err=baseline_ls_lmmse:909/84096 baseline_ls_2dlmmse_lmmse:38/84096 baseline_ddcpe_ls_lmmse:672/84096 upair5g_lmmse:225/84096 perfect_csi_lmmse:0/84096
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=294/512 frame_err=baseline_ls_lmmse:916/84672 baseline_ls_2dlmmse_lmmse:38/84672 baseline_ddcpe_ls_lmmse:677/84672 upair5g_lmmse:226/84672 perfect_csi_lmmse:0/84672
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=296/512 frame_err=baseline_ls_lmmse:922/85248 baseline_ls_2dlmmse_lmmse:39/85248 baseline_ddcpe_ls_lmmse:683/85248 upair5g_lmmse:228/85248 perfect_csi_lmmse:0/85248
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=298/512 frame_err=baseline_ls_lmmse:931/85824 baseline_ls_2dlmmse_lmmse:39/85824 baseline_ddcpe_ls_lmmse:687/85824 upair5g_lmmse:229/85824 perfect_csi_lmmse:0/85824
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=300/512 frame_err=baseline_ls_lmmse:939/86400 baseline_ls_2dlmmse_lmmse:39/86400 baseline_ddcpe_ls_lmmse:691/86400 upair5g_lmmse:229/86400 perfect_csi_lmmse:0/86400
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=302/512 frame_err=baseline_ls_lmmse:947/86976 baseline_ls_2dlmmse_lmmse:40/86976 baseline_ddcpe_ls_lmmse:695/86976 upair5g_lmmse:232/86976 perfect_csi_lmmse:0/86976
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=304/512 frame_err=baseline_ls_lmmse:953/87552 baseline_ls_2dlmmse_lmmse:41/87552 baseline_ddcpe_ls_lmmse:699/87552 upair5g_lmmse:234/87552 perfect_csi_lmmse:0/87552
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=306/512 frame_err=baseline_ls_lmmse:954/88128 baseline_ls_2dlmmse_lmmse:41/88128 baseline_ddcpe_ls_lmmse:699/88128 upair5g_lmmse:234/88128 perfect_csi_lmmse:0/88128
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=308/512 frame_err=baseline_ls_lmmse:959/88704 baseline_ls_2dlmmse_lmmse:42/88704 baseline_ddcpe_ls_lmmse:703/88704 upair5g_lmmse:236/88704 perfect_csi_lmmse:0/88704
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=310/512 frame_err=baseline_ls_lmmse:968/89280 baseline_ls_2dlmmse_lmmse:42/89280 baseline_ddcpe_ls_lmmse:707/89280 upair5g_lmmse:237/89280 perfect_csi_lmmse:0/89280
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=312/512 frame_err=baseline_ls_lmmse:971/89856 baseline_ls_2dlmmse_lmmse:44/89856 baseline_ddcpe_ls_lmmse:710/89856 upair5g_lmmse:240/89856 perfect_csi_lmmse:0/89856
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=314/512 frame_err=baseline_ls_lmmse:972/90432 baseline_ls_2dlmmse_lmmse:44/90432 baseline_ddcpe_ls_lmmse:711/90432 upair5g_lmmse:240/90432 perfect_csi_lmmse:0/90432
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=316/512 frame_err=baseline_ls_lmmse:978/91008 baseline_ls_2dlmmse_lmmse:45/91008 baseline_ddcpe_ls_lmmse:715/91008 upair5g_lmmse:243/91008 perfect_csi_lmmse:0/91008
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=318/512 frame_err=baseline_ls_lmmse:991/91584 baseline_ls_2dlmmse_lmmse:49/91584 baseline_ddcpe_ls_lmmse:726/91584 upair5g_lmmse:250/91584 perfect_csi_lmmse:0/91584
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=320/512 frame_err=baseline_ls_lmmse:997/92160 baseline_ls_2dlmmse_lmmse:49/92160 baseline_ddcpe_ls_lmmse:731/92160 upair5g_lmmse:251/92160 perfect_csi_lmmse:0/92160
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=322/512 frame_err=baseline_ls_lmmse:1005/92736 baseline_ls_2dlmmse_lmmse:49/92736 baseline_ddcpe_ls_lmmse:738/92736 upair5g_lmmse:254/92736 perfect_csi_lmmse:0/92736
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=324/512 frame_err=baseline_ls_lmmse:1013/93312 baseline_ls_2dlmmse_lmmse:49/93312 baseline_ddcpe_ls_lmmse:744/93312 upair5g_lmmse:255/93312 perfect_csi_lmmse:0/93312
+[EVAL] progress num_users=3 Eb/N0=0 dB batches=326/512 frame_err=baseline_ls_lmmse:1016/93888 baseline_ls_2dlmmse_lmmse:49/93888 baseline_ddcpe_ls_lmmse:747/93888 upair5g_lmmse:256/93888 perfect_csi_lmmse:0/93888
+[EVAL] receiver=       baseline_ls_lmmse Eb/N0= 0.0 dB BER=4.83419e-04 BLER=1.08308e-02 NMSE=7.69113e-02 bit_err=273887/566562816 blk_err= 1020/94176  batches= 327
+[EVAL] receiver=baseline_ls_2dlmmse_lmmse Eb/N0= 0.0 dB BER=1.58447e-05 BLER=5.30921e-04 NMSE=3.75300e-02 bit_err=  8977/566562816 blk_err=   50/94176  batches= 327
+[EVAL] receiver= baseline_ddcpe_ls_lmmse Eb/N0= 0.0 dB BER=3.68062e-04 BLER=7.97443e-03 NMSE=7.21893e-02 bit_err=208530/566562816 blk_err=  751/94176  batches= 327
+[EVAL] receiver=           upair5g_lmmse Eb/N0= 0.0 dB BER=9.98177e-05 BLER=2.72893e-03 NMSE=5.24275e-02 bit_err= 56553/566562816 blk_err=  257/94176  batches= 327
+[EVAL] receiver=       perfect_csi_lmmse Eb/N0= 0.0 dB BER=0.00000e+00 BLER=0.00000e+00 NMSE=0.00000e+00 bit_err=     0/566562816 blk_err=    0/94176  batches= 327
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=2/512 frame_err=baseline_ls_lmmse:0/576 baseline_ls_2dlmmse_lmmse:0/576 baseline_ddcpe_ls_lmmse:0/576 upair5g_lmmse:0/576 perfect_csi_lmmse:0/576
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=4/512 frame_err=baseline_ls_lmmse:1/1152 baseline_ls_2dlmmse_lmmse:0/1152 baseline_ddcpe_ls_lmmse:1/1152 upair5g_lmmse:0/1152 perfect_csi_lmmse:0/1152
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=6/512 frame_err=baseline_ls_lmmse:2/1728 baseline_ls_2dlmmse_lmmse:0/1728 baseline_ddcpe_ls_lmmse:2/1728 upair5g_lmmse:0/1728 perfect_csi_lmmse:0/1728
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=8/512 frame_err=baseline_ls_lmmse:2/2304 baseline_ls_2dlmmse_lmmse:0/2304 baseline_ddcpe_ls_lmmse:2/2304 upair5g_lmmse:0/2304 perfect_csi_lmmse:0/2304
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=10/512 frame_err=baseline_ls_lmmse:2/2880 baseline_ls_2dlmmse_lmmse:0/2880 baseline_ddcpe_ls_lmmse:2/2880 upair5g_lmmse:0/2880 perfect_csi_lmmse:0/2880
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=12/512 frame_err=baseline_ls_lmmse:2/3456 baseline_ls_2dlmmse_lmmse:0/3456 baseline_ddcpe_ls_lmmse:2/3456 upair5g_lmmse:0/3456 perfect_csi_lmmse:0/3456
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=14/512 frame_err=baseline_ls_lmmse:2/4032 baseline_ls_2dlmmse_lmmse:0/4032 baseline_ddcpe_ls_lmmse:2/4032 upair5g_lmmse:0/4032 perfect_csi_lmmse:0/4032
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=16/512 frame_err=baseline_ls_lmmse:2/4608 baseline_ls_2dlmmse_lmmse:0/4608 baseline_ddcpe_ls_lmmse:2/4608 upair5g_lmmse:0/4608 perfect_csi_lmmse:0/4608
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=18/512 frame_err=baseline_ls_lmmse:2/5184 baseline_ls_2dlmmse_lmmse:0/5184 baseline_ddcpe_ls_lmmse:2/5184 upair5g_lmmse:0/5184 perfect_csi_lmmse:0/5184
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=20/512 frame_err=baseline_ls_lmmse:3/5760 baseline_ls_2dlmmse_lmmse:0/5760 baseline_ddcpe_ls_lmmse:3/5760 upair5g_lmmse:1/5760 perfect_csi_lmmse:0/5760
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=22/512 frame_err=baseline_ls_lmmse:3/6336 baseline_ls_2dlmmse_lmmse:0/6336 baseline_ddcpe_ls_lmmse:3/6336 upair5g_lmmse:1/6336 perfect_csi_lmmse:0/6336
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=24/512 frame_err=baseline_ls_lmmse:3/6912 baseline_ls_2dlmmse_lmmse:0/6912 baseline_ddcpe_ls_lmmse:3/6912 upair5g_lmmse:1/6912 perfect_csi_lmmse:0/6912
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=26/512 frame_err=baseline_ls_lmmse:3/7488 baseline_ls_2dlmmse_lmmse:0/7488 baseline_ddcpe_ls_lmmse:3/7488 upair5g_lmmse:1/7488 perfect_csi_lmmse:0/7488
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=28/512 frame_err=baseline_ls_lmmse:3/8064 baseline_ls_2dlmmse_lmmse:0/8064 baseline_ddcpe_ls_lmmse:3/8064 upair5g_lmmse:1/8064 perfect_csi_lmmse:0/8064
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=30/512 frame_err=baseline_ls_lmmse:3/8640 baseline_ls_2dlmmse_lmmse:0/8640 baseline_ddcpe_ls_lmmse:3/8640 upair5g_lmmse:1/8640 perfect_csi_lmmse:0/8640
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=32/512 frame_err=baseline_ls_lmmse:3/9216 baseline_ls_2dlmmse_lmmse:0/9216 baseline_ddcpe_ls_lmmse:3/9216 upair5g_lmmse:1/9216 perfect_csi_lmmse:0/9216
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=34/512 frame_err=baseline_ls_lmmse:3/9792 baseline_ls_2dlmmse_lmmse:0/9792 baseline_ddcpe_ls_lmmse:3/9792 upair5g_lmmse:1/9792 perfect_csi_lmmse:0/9792
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=36/512 frame_err=baseline_ls_lmmse:3/10368 baseline_ls_2dlmmse_lmmse:0/10368 baseline_ddcpe_ls_lmmse:3/10368 upair5g_lmmse:1/10368 perfect_csi_lmmse:0/10368
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=38/512 frame_err=baseline_ls_lmmse:3/10944 baseline_ls_2dlmmse_lmmse:0/10944 baseline_ddcpe_ls_lmmse:3/10944 upair5g_lmmse:1/10944 perfect_csi_lmmse:0/10944
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=40/512 frame_err=baseline_ls_lmmse:3/11520 baseline_ls_2dlmmse_lmmse:0/11520 baseline_ddcpe_ls_lmmse:3/11520 upair5g_lmmse:1/11520 perfect_csi_lmmse:0/11520
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=42/512 frame_err=baseline_ls_lmmse:3/12096 baseline_ls_2dlmmse_lmmse:0/12096 baseline_ddcpe_ls_lmmse:3/12096 upair5g_lmmse:1/12096 perfect_csi_lmmse:0/12096
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=44/512 frame_err=baseline_ls_lmmse:3/12672 baseline_ls_2dlmmse_lmmse:0/12672 baseline_ddcpe_ls_lmmse:3/12672 upair5g_lmmse:1/12672 perfect_csi_lmmse:0/12672
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=46/512 frame_err=baseline_ls_lmmse:3/13248 baseline_ls_2dlmmse_lmmse:0/13248 baseline_ddcpe_ls_lmmse:3/13248 upair5g_lmmse:1/13248 perfect_csi_lmmse:0/13248
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=48/512 frame_err=baseline_ls_lmmse:3/13824 baseline_ls_2dlmmse_lmmse:0/13824 baseline_ddcpe_ls_lmmse:3/13824 upair5g_lmmse:1/13824 perfect_csi_lmmse:0/13824
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=50/512 frame_err=baseline_ls_lmmse:3/14400 baseline_ls_2dlmmse_lmmse:0/14400 baseline_ddcpe_ls_lmmse:3/14400 upair5g_lmmse:1/14400 perfect_csi_lmmse:0/14400
+[EVAL] progress num_users=3 Eb/N0=2 dB batches=52/512 frame_err=baseline_ls_lmmse:3/14976 baseline_ls_2dlmmse_lmmse:0/14976 baseline_ddcpe_ls_lmmse:3/14976 upair5g_lmmse:1/14976 perfect_csi_lmmse:0/14976

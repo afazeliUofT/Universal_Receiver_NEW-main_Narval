@@ -1,0 +1,93 @@
+{
+  "checkpoint_path": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/narrow_d64_b4_r2/checkpoints/best.weights.h5",
+  "completed_ebno_db": [
+    -4.0,
+    -2.0
+  ],
+  "current_ebno_db": 0.0,
+  "current_frame_errors": {
+    "baseline_ddcpe_ls_lmmse": 19,
+    "baseline_ls_2dlmmse_lmmse": 3,
+    "baseline_ls_lmmse": 22,
+    "perfect_csi_lmmse": 0,
+    "upair5g_lmmse": 12
+  },
+  "current_num_frames": {
+    "baseline_ddcpe_ls_lmmse": 1728,
+    "baseline_ls_2dlmmse_lmmse": 1728,
+    "baseline_ls_lmmse": 1728,
+    "perfect_csi_lmmse": 1728,
+    "upair5g_lmmse": 1728
+  },
+  "current_receiver_metrics": {
+    "baseline_ddcpe_ls_lmmse": {
+      "ber": 0.0005639860064519306,
+      "bit_errors": 5863,
+      "bler": 0.01099537037037037,
+      "frame_errors": 19,
+      "num_batches_run": 6,
+      "num_bits": 10395648,
+      "num_frames": 1728
+    },
+    "baseline_ls_2dlmmse_lmmse": {
+      "ber": 4.328734485815603e-06,
+      "bit_errors": 45,
+      "bler": 0.001736111111111111,
+      "frame_errors": 3,
+      "num_batches_run": 6,
+      "num_bits": 10395648,
+      "num_frames": 1728
+    },
+    "baseline_ls_lmmse": {
+      "ber": 0.0006931746823286053,
+      "bit_errors": 7206,
+      "bler": 0.01273148148148148,
+      "frame_errors": 22,
+      "num_batches_run": 6,
+      "num_bits": 10395648,
+      "num_frames": 1728
+    },
+    "perfect_csi_lmmse": {
+      "ber": 0.0,
+      "bit_errors": 0,
+      "bler": 0.0,
+      "frame_errors": 0,
+      "num_batches_run": 6,
+      "num_bits": 10395648,
+      "num_frames": 1728
+    },
+    "upair5g_lmmse": {
+      "ber": 0.0003770808707643814,
+      "bit_errors": 3920,
+      "bler": 0.006944444444444444,
+      "frame_errors": 12,
+      "num_batches_run": 6,
+      "num_bits": 10395648,
+      "num_frames": 1728
+    }
+  },
+  "curves_csv": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs/narrow_d64_b4_r2_u3/metrics/curves.csv",
+  "evaluation_complete": false,
+  "evaluation_parameters": {
+    "batch_size_eval": 96,
+    "evaluation_seed": 1007,
+    "max_num_batches_per_point": 512,
+    "min_num_batches_per_point": 1,
+    "progress_every_batches": 2,
+    "receiver_microbatch_size": 32,
+    "reliable_min_bit_errors": 100,
+    "reliable_min_block_errors": 20,
+    "seed": 1007,
+    "stopping_receivers": [
+      "baseline_ls_lmmse",
+      "baseline_ls_2dlmmse_lmmse",
+      "baseline_ddcpe_ls_lmmse",
+      "upair5g_lmmse"
+    ],
+    "target_block_errors_per_receiver": 50,
+    "training_seed": 7
+  },
+  "num_users": 3,
+  "partial_batches_run": 6,
+  "save_reason": "progress"
+}

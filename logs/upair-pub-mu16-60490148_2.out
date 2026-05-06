@@ -1,0 +1,243 @@
+[SLURM] task=2/12 seed=7 dmrs_case=1dmrs variant=deep_d96_b6_r2
+Wed May  6 07:28:29 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   35C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[TRAIN] starting from scratch
+[TRAIN] step=00001 loss=-2.98695 nmse_prop=0.01832 nmse_ls=0.01832 gpu_mem=0.06GiB peak=16.24GiB
+[TRAIN] step=00100 loss=-3.05526 nmse_prop=0.01742 nmse_ls=0.01784 gpu_mem=0.18GiB peak=16.41GiB
+[TRAIN] saved resumable state at step=100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-100
+[TRAIN] step=00200 loss=-2.93205 nmse_prop=0.02174 nmse_ls=0.02248 gpu_mem=0.16GiB peak=16.41GiB
+[TRAIN] saved resumable state at step=200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-200
+[TRAIN] step=00300 loss=-2.79345 nmse_prop=0.02491 nmse_ls=0.02613 gpu_mem=0.18GiB peak=16.41GiB
+[TRAIN] saved resumable state at step=300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-300
+[TRAIN] step=00400 loss=-2.17489 nmse_prop=0.04234 nmse_ls=0.04415 gpu_mem=0.18GiB peak=16.41GiB
+[TRAIN] saved resumable state at step=400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-400
+[TRAIN] saved new best weights at step=500 val_nmse=0.051535
+[TRAIN] step=00500 loss=-3.11357 nmse_prop=0.02011 nmse_ls=0.02300 gpu_mem=0.32GiB peak=16.41GiB
+[TRAIN] saved resumable state at step=500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-500
+[TRAIN] step=00600 loss=-3.00002 nmse_prop=0.02158 nmse_ls=0.02524 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-600
+[TRAIN] step=00700 loss=-2.38308 nmse_prop=0.03561 nmse_ls=0.03849 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-700
+[TRAIN] step=00800 loss=-2.51425 nmse_prop=0.03108 nmse_ls=0.03422 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-800
+[TRAIN] step=00900 loss=-3.27175 nmse_prop=0.01769 nmse_ls=0.02097 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-900
+[TRAIN] saved new best weights at step=1000 val_nmse=0.050419
+[TRAIN] step=01000 loss=-3.35823 nmse_prop=0.01768 nmse_ls=0.02075 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1000
+[TRAIN] step=01100 loss=-3.25698 nmse_prop=0.01856 nmse_ls=0.02197 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1100
+[TRAIN] step=01200 loss=-2.90603 nmse_prop=0.02272 nmse_ls=0.02712 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1200
+[TRAIN] step=01300 loss=-3.30515 nmse_prop=0.01712 nmse_ls=0.02072 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1300
+[TRAIN] step=01400 loss=-2.75973 nmse_prop=0.02532 nmse_ls=0.03027 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1400
+[TRAIN] saved new best weights at step=1500 val_nmse=0.0488462
+[TRAIN] step=01500 loss=-3.65301 nmse_prop=0.01447 nmse_ls=0.01837 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1500
+[TRAIN] step=01600 loss=-3.48479 nmse_prop=0.01515 nmse_ls=0.01874 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1600
+[TRAIN] step=01700 loss=-3.68306 nmse_prop=0.01373 nmse_ls=0.01770 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1700
+[TRAIN] step=01800 loss=-3.52090 nmse_prop=0.01683 nmse_ls=0.02098 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1800
+[TRAIN] step=01900 loss=-2.60706 nmse_prop=0.02824 nmse_ls=0.03491 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=1900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-1900
+[TRAIN] saved new best weights at step=2000 val_nmse=0.0460653
+[TRAIN] step=02000 loss=-3.20117 nmse_prop=0.01864 nmse_ls=0.02290 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2000
+[TRAIN] step=02100 loss=-1.94787 nmse_prop=0.05050 nmse_ls=0.06564 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2100
+[TRAIN] step=02200 loss=-1.74243 nmse_prop=0.06299 nmse_ls=0.07286 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2200
+[TRAIN] step=02300 loss=-3.74497 nmse_prop=0.01306 nmse_ls=0.01779 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2300
+[TRAIN] step=02400 loss=-2.29311 nmse_prop=0.03799 nmse_ls=0.04448 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2400
+[TRAIN] saved new best weights at step=2500 val_nmse=0.045006
+[TRAIN] step=02500 loss=-2.79894 nmse_prop=0.02470 nmse_ls=0.02971 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2500
+[TRAIN] step=02600 loss=-2.61752 nmse_prop=0.02854 nmse_ls=0.03485 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2600
+[TRAIN] step=02700 loss=-3.42616 nmse_prop=0.01707 nmse_ls=0.02225 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2700
+[TRAIN] step=02800 loss=-3.47334 nmse_prop=0.01515 nmse_ls=0.01965 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2800
+[TRAIN] step=02900 loss=-3.72256 nmse_prop=0.01304 nmse_ls=0.01713 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=2900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-2900
+[TRAIN] saved new best weights at step=3000 val_nmse=0.0435946
+[TRAIN] step=03000 loss=-2.91690 nmse_prop=0.02206 nmse_ls=0.02725 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3000
+[TRAIN] step=03100 loss=-1.74082 nmse_prop=0.06229 nmse_ls=0.07624 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3100
+[TRAIN] step=03200 loss=-1.76402 nmse_prop=0.06186 nmse_ls=0.07281 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3200
+[TRAIN] step=03300 loss=-3.80342 nmse_prop=0.01327 nmse_ls=0.01831 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3300
+[TRAIN] step=03400 loss=-3.65854 nmse_prop=0.01414 nmse_ls=0.01860 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3400
+[TRAIN] saved new best weights at step=3500 val_nmse=0.0421095
+[TRAIN] step=03500 loss=-2.79577 nmse_prop=0.02444 nmse_ls=0.03104 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3500
+[TRAIN] step=03600 loss=-3.60646 nmse_prop=0.01512 nmse_ls=0.02070 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3600
+[TRAIN] step=03700 loss=-3.70236 nmse_prop=0.01487 nmse_ls=0.01904 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3700
+[TRAIN] step=03800 loss=-2.53350 nmse_prop=0.03062 nmse_ls=0.03912 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3800
+[TRAIN] step=03900 loss=-3.93202 nmse_prop=0.01220 nmse_ls=0.01741 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=3900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-3900
+[TRAIN] saved new best weights at step=4000 val_nmse=0.0411107
+[TRAIN] step=04000 loss=-2.22392 nmse_prop=0.03954 nmse_ls=0.05100 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4000
+[TRAIN] step=04100 loss=-2.67515 nmse_prop=0.02740 nmse_ls=0.03520 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4100
+[TRAIN] step=04200 loss=-2.11185 nmse_prop=0.03981 nmse_ls=0.06589 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4200
+[TRAIN] step=04300 loss=-2.12781 nmse_prop=0.04137 nmse_ls=0.06161 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4300
+[TRAIN] step=04400 loss=-3.79594 nmse_prop=0.01278 nmse_ls=0.01737 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4400
+[TRAIN] saved new best weights at step=4500 val_nmse=0.040577
+[TRAIN] step=04500 loss=-3.41701 nmse_prop=0.01554 nmse_ls=0.02030 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4500
+[TRAIN] step=04600 loss=-3.67491 nmse_prop=0.01398 nmse_ls=0.01973 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4600
+[TRAIN] step=04700 loss=-2.84295 nmse_prop=0.02377 nmse_ls=0.03019 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4700
+[TRAIN] step=04800 loss=-3.41390 nmse_prop=0.01637 nmse_ls=0.02132 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4800
+[TRAIN] step=04900 loss=-2.75096 nmse_prop=0.02474 nmse_ls=0.03674 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=4900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-4900
+[TRAIN] saved new best weights at step=5000 val_nmse=0.0393524
+[TRAIN] step=05000 loss=-3.59268 nmse_prop=0.01375 nmse_ls=0.01888 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5000
+[TRAIN] step=05100 loss=-3.58182 nmse_prop=0.01463 nmse_ls=0.01962 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5100
+[TRAIN] step=05200 loss=-2.05329 nmse_prop=0.04270 nmse_ls=0.06731 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5200
+[TRAIN] step=05300 loss=-3.06525 nmse_prop=0.02079 nmse_ls=0.02963 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5300
+[TRAIN] step=05400 loss=-3.80409 nmse_prop=0.01381 nmse_ls=0.01858 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5400
+[TRAIN] saved new best weights at step=5500 val_nmse=0.0375487
+[TRAIN] step=05500 loss=-3.13951 nmse_prop=0.01845 nmse_ls=0.02544 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5500
+[TRAIN] step=05600 loss=-3.45611 nmse_prop=0.01477 nmse_ls=0.01996 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5600
+[TRAIN] step=05700 loss=-3.65967 nmse_prop=0.01403 nmse_ls=0.02067 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5700
+[TRAIN] step=05800 loss=-3.04762 nmse_prop=0.02059 nmse_ls=0.02704 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5800
+[TRAIN] step=05900 loss=-3.13859 nmse_prop=0.01888 nmse_ls=0.02801 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=5900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-5900
+[TRAIN] saved new best weights at step=6000 val_nmse=0.0368052
+[TRAIN] step=06000 loss=-3.46368 nmse_prop=0.01639 nmse_ls=0.02171 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6000
+[TRAIN] step=06100 loss=-2.53177 nmse_prop=0.02991 nmse_ls=0.03935 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6100
+[TRAIN] step=06200 loss=-3.15373 nmse_prop=0.01848 nmse_ls=0.02450 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6200
+[TRAIN] step=06300 loss=-3.00412 nmse_prop=0.02146 nmse_ls=0.02797 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6300
+[TRAIN] step=06400 loss=-3.56931 nmse_prop=0.01464 nmse_ls=0.02012 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6400
+[TRAIN] step=06500 loss=-3.33535 nmse_prop=0.01452 nmse_ls=0.02352 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6500
+[TRAIN] step=06600 loss=-3.43195 nmse_prop=0.01591 nmse_ls=0.02373 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6600
+[TRAIN] step=06700 loss=-3.34365 nmse_prop=0.01754 nmse_ls=0.02311 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6700
+[TRAIN] step=06800 loss=-1.82504 nmse_prop=0.05609 nmse_ls=0.07465 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6800
+[TRAIN] step=06900 loss=-3.35007 nmse_prop=0.01637 nmse_ls=0.02427 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=6900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-6900
+[TRAIN] saved new best weights at step=7000 val_nmse=0.0362044
+[TRAIN] step=07000 loss=-3.02158 nmse_prop=0.02058 nmse_ls=0.02880 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7000
+[TRAIN] step=07100 loss=-2.67796 nmse_prop=0.02501 nmse_ls=0.04141 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7100
+[TRAIN] step=07200 loss=-3.60599 nmse_prop=0.01431 nmse_ls=0.01991 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7200
+[TRAIN] step=07300 loss=-2.66679 nmse_prop=0.02693 nmse_ls=0.03870 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7300
+[TRAIN] step=07400 loss=-3.92590 nmse_prop=0.01215 nmse_ls=0.01712 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7400
+[TRAIN] saved new best weights at step=7500 val_nmse=0.0347945
+[TRAIN] step=07500 loss=-3.82113 nmse_prop=0.01263 nmse_ls=0.01742 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7500
+[TRAIN] step=07600 loss=-3.39045 nmse_prop=0.01661 nmse_ls=0.02240 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7600
+[TRAIN] step=07700 loss=-4.04444 nmse_prop=0.01117 nmse_ls=0.01625 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7700
+[TRAIN] step=07800 loss=-3.85320 nmse_prop=0.01338 nmse_ls=0.01851 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7800
+[TRAIN] step=07900 loss=-1.99046 nmse_prop=0.04825 nmse_ls=0.06557 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=7900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-7900
+[TRAIN] step=08000 loss=-2.97588 nmse_prop=0.02074 nmse_ls=0.02798 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8000
+[TRAIN] step=08100 loss=-3.47866 nmse_prop=0.01482 nmse_ls=0.02102 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8100
+[TRAIN] step=08200 loss=-3.46410 nmse_prop=0.01438 nmse_ls=0.02035 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8200
+[TRAIN] step=08300 loss=-3.34141 nmse_prop=0.01702 nmse_ls=0.02567 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8300
+[TRAIN] step=08400 loss=-3.87398 nmse_prop=0.01232 nmse_ls=0.01707 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8400
+[TRAIN] step=08500 loss=-3.50594 nmse_prop=0.01488 nmse_ls=0.02053 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8500
+[TRAIN] step=08600 loss=-3.48501 nmse_prop=0.01512 nmse_ls=0.02149 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8600
+[TRAIN] step=08700 loss=-2.30735 nmse_prop=0.03613 nmse_ls=0.04972 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8700
+[TRAIN] step=08800 loss=-3.45907 nmse_prop=0.01422 nmse_ls=0.02263 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8800
+[TRAIN] step=08900 loss=-3.42502 nmse_prop=0.01677 nmse_ls=0.02251 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=8900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-8900
+[TRAIN] saved new best weights at step=9000 val_nmse=0.0338365
+[TRAIN] step=09000 loss=-3.39034 nmse_prop=0.01618 nmse_ls=0.02212 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9000
+[TRAIN] step=09100 loss=-2.99157 nmse_prop=0.01660 nmse_ls=0.03370 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9100 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9100
+[TRAIN] step=09200 loss=-3.56002 nmse_prop=0.01571 nmse_ls=0.02076 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9200 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9200
+[TRAIN] step=09300 loss=-3.15215 nmse_prop=0.01535 nmse_ls=0.02843 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9300 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9300
+[TRAIN] step=09400 loss=-3.64849 nmse_prop=0.01419 nmse_ls=0.01934 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9400 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9400
+[TRAIN] saved new best weights at step=9500 val_nmse=0.0331335
+[TRAIN] step=09500 loss=-3.82976 nmse_prop=0.01190 nmse_ls=0.01886 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9500 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9500
+[TRAIN] step=09600 loss=-2.67183 nmse_prop=0.02610 nmse_ls=0.03618 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9600 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9600
+[TRAIN] step=09700 loss=-2.60190 nmse_prop=0.02743 nmse_ls=0.04104 gpu_mem=0.32GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9700 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9700
+[TRAIN] step=09800 loss=-2.39546 nmse_prop=0.03022 nmse_ls=0.05626 gpu_mem=0.30GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9800 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9800
+[TRAIN] step=09900 loss=-3.66871 nmse_prop=0.01390 nmse_ls=0.02067 gpu_mem=0.29GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=9900 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-9900
+[TRAIN] step=10000 loss=-3.27482 nmse_prop=0.01704 nmse_ls=0.02372 gpu_mem=0.33GiB peak=16.56GiB
+[TRAIN] saved resumable state at step=10000 reason=periodic: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-10000
+[TRAIN] saved resumable state at step=10000 reason=final: /lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/deep_d96_b6_r2/checkpoints/training_state/ckpt-10000
+[COMPREHENSIVE] cleared TensorFlow state before evaluation seed=7 1dmrs/deep_d96_b6_r2/u3: gpu_mem=0.01GiB peak=16.56GiB
+[EVAL] receiver microbatching enabled: batch_size_eval=96 receiver_microbatch_size=32
+[BASELINES] Estimating empirical LMMSE covariances with num_batches=32 batch_size=32 mode=clean-channel

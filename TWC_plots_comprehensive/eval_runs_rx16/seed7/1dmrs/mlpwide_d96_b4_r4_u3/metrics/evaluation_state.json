@@ -1,0 +1,93 @@
+{
+  "checkpoint_path": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/runs_rx16/seed7/1dmrs/mlpwide_d96_b4_r4/checkpoints/best.weights.h5",
+  "completed_ebno_db": [
+    -4.0,
+    -2.0
+  ],
+  "current_ebno_db": 0.0,
+  "current_frame_errors": {
+    "baseline_ddcpe_ls_lmmse": 8,
+    "baseline_ls_2dlmmse_lmmse": 0,
+    "baseline_ls_lmmse": 9,
+    "perfect_csi_lmmse": 0,
+    "upair5g_lmmse": 0
+  },
+  "current_num_frames": {
+    "baseline_ddcpe_ls_lmmse": 1152,
+    "baseline_ls_2dlmmse_lmmse": 1152,
+    "baseline_ls_lmmse": 1152,
+    "perfect_csi_lmmse": 1152,
+    "upair5g_lmmse": 1152
+  },
+  "current_receiver_metrics": {
+    "baseline_ddcpe_ls_lmmse": {
+      "ber": 0.00021932254728132387,
+      "bit_errors": 1520,
+      "bler": 0.006944444444444444,
+      "frame_errors": 8,
+      "num_batches_run": 4,
+      "num_bits": 6930432,
+      "num_frames": 1152
+    },
+    "baseline_ls_2dlmmse_lmmse": {
+      "ber": 0.0,
+      "bit_errors": 0,
+      "bler": 0.0,
+      "frame_errors": 0,
+      "num_batches_run": 4,
+      "num_bits": 6930432,
+      "num_frames": 1152
+    },
+    "baseline_ls_lmmse": {
+      "ber": 0.00027314314605496456,
+      "bit_errors": 1893,
+      "bler": 0.0078125,
+      "frame_errors": 9,
+      "num_batches_run": 4,
+      "num_bits": 6930432,
+      "num_frames": 1152
+    },
+    "perfect_csi_lmmse": {
+      "ber": 0.0,
+      "bit_errors": 0,
+      "bler": 0.0,
+      "frame_errors": 0,
+      "num_batches_run": 4,
+      "num_bits": 6930432,
+      "num_frames": 1152
+    },
+    "upair5g_lmmse": {
+      "ber": 0.0,
+      "bit_errors": 0,
+      "bler": 0.0,
+      "frame_errors": 0,
+      "num_batches_run": 4,
+      "num_bits": 6930432,
+      "num_frames": 1152
+    }
+  },
+  "curves_csv": "/lustre07/scratch/rsadve1/Universal_Receiver_NEW-main_Narval/TWC_plots_comprehensive/eval_runs_rx16/seed7/1dmrs/mlpwide_d96_b4_r4_u3/metrics/curves.csv",
+  "evaluation_complete": false,
+  "evaluation_parameters": {
+    "batch_size_eval": 96,
+    "evaluation_seed": 1007,
+    "max_num_batches_per_point": 512,
+    "min_num_batches_per_point": 1,
+    "progress_every_batches": 2,
+    "receiver_microbatch_size": 32,
+    "reliable_min_bit_errors": 100,
+    "reliable_min_block_errors": 20,
+    "seed": 1007,
+    "stopping_receivers": [
+      "baseline_ls_lmmse",
+      "baseline_ls_2dlmmse_lmmse",
+      "baseline_ddcpe_ls_lmmse",
+      "upair5g_lmmse"
+    ],
+    "target_block_errors_per_receiver": 50,
+    "training_seed": 7
+  },
+  "num_users": 3,
+  "partial_batches_run": 4,
+  "save_reason": "progress"
+}
